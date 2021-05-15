@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 14:25:00 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/15 16:47:30 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	move_cursor_right_word(t_line *input);
 void	move_cursor_prev_line(t_line *input);
 void	move_cursor_next_line(t_line *input);
 void	set_cursor_pos(t_line input);
-void	special_bonus_keys(t_line *input, int key_code);
 
 /*
 **
