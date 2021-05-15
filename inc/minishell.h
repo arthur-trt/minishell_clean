@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 14:22:23 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/15 15:16:17 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include "sh_parser.h"
 # include "sh_builtins.h"
 # include "sh_input.h"
+# include "sh_env.h"
 
 
 #endif
