@@ -6,27 +6,18 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 15:42:56 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 15:13:59 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:49:55 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob	*g_glob;
-
-/*
-**	Search for the value of a key in the environment
-**
-**	@param Key whose value must be sought
-**
-**	@return The value if found, NULL otherwise
-*/
-char	*search_env(char *key)
+char	*search_env(t_env env, char *key)
 {
 	t_env	tmp;
 
-	tmp = *(g_glob->env);
-	while (tmp.next != NULL)
+	tmp = env;
+	while(tmp.next != NULL)
 	{
 		if (!ft_strncmp(tmp.key, key, ft_strlen(key)))
 		{
@@ -34,5 +25,5 @@ char	*search_env(char *key)
 		}
 		tmp = *(tmp.next);
 	}
-	return (NULL);
+	return NULL;
 }

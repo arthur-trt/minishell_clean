@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 15:53:58 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/15 12:52:29 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:06:33 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_parse_error(t_list *command)
+int		ft_parse_error(t_list *command)
 {
 	if (command)
 	{
@@ -22,7 +22,7 @@ int	ft_parse_error(t_list *command)
 	return (-1);
 }
 
-int	ft_double_error(int r, t_list *command, char *res)
+int		ft_double_error(int r, t_list *command, char *res)
 {
 	if (res)
 		free(res);

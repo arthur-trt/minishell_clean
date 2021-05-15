@@ -8,7 +8,7 @@ endif
 TARGET			:= minishell
 TARGET_BONUS		:= minishell-bonus
 
-BUILD			:= release
+BUILD			:= debug
 
 include sources.mk
 
@@ -27,7 +27,7 @@ OBJECTS_BONUS		:= $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES_BONUS:.$(SRCEXT
 #Flags, Libraries and Includes
 cflags.release		:= -Wall -Werror -Wextra
 cflags.valgrind		:= -Wall -Werror -Wextra -DDEBUG -ggdb
-cflags.debug		:= -Wall -Werror -Wextra -DDEBUG -ggdb -fsanitize=address -fno-omit-frame-pointer
+cflags.debug		:= -DDEBUG -ggdb -fsanitize=address -fno-omit-frame-pointer
 CFLAGS			:= $(cflags.$(BUILD))
 
 lib.release		:=  -Llibftprintf -lftprintf -ltermcap

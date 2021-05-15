@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:59:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 14:58:24 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/04/22 14:22:44 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../inc/minishell.h"
 
 /*
 **	Search for the next occurrence of quotes
@@ -20,7 +20,7 @@
 **
 **	@return Position of the first quotes found
 */
-int	continue_while_quote(char *str, int pos)
+int		continue_while_quote(char *str, int pos)
 {
 	char	quote;
 
@@ -69,20 +69,24 @@ t_lexer	*lexer(char *input)
 	last_pos = 0;
 	while (input[i] != '\0')
 	{
-		if ((input[i] == QUOTE || input[i] == DQUOTE)
-			&& ((i > 0 && input[i - 1] != BACKSLAH) || i == 0))
-			i = continue_while_quote(input, i);
+		if ((input[i] == QUOTE || input[i] == DQUOTE) &&
+			((i > 0 && input[i - 1] != BACKSLAH) || i == 0))
+				i = continue_while_quote(input, i);
 		else if (input[i] == PIPE || input[i] == SEMICOLON)
 		{
-			add_cmd_to_lexer(&lexer,
+			add_cmd_to_lexer(
+				&lexer,
 				ft_substr(input, last_pos, i - last_pos),
-				find_previous_token(input, last_pos));
+				find_previous_token(input, last_pos)
+			);
 			last_pos = i;
 		}
 		i++;
 	}
-	add_cmd_to_lexer(&lexer,
+	add_cmd_to_lexer(
+		&lexer,
 		ft_substr(input, last_pos, i - last_pos),
-		find_previous_token(input, last_pos));
+		find_previous_token(input, last_pos)
+	);
 	return (lexer);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 16:48:56 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 15:02:31 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/02 18:06:23 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob	*g_glob;
+extern t_glob *g_glob;
 
 /*
 **	Free global variable

@@ -6,11 +6,11 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 18:45:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 14:57:22 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/03/05 19:09:52 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+# include "minishell.h"
 
 /*
 **	Clean string used as command, remove pipe and semicolon at the begining
@@ -33,4 +33,5 @@ char	*clean_cmd(char *input)
 	res = ft_strdup(ft_clean_str(tmp + add));
 	free(tmp);
 	return (res);
+
 }

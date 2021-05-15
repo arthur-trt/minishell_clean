@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 15:58:32 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/15 14:54:22 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/02 20:39:05 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_PARSER_H
 # define SH_PARSER_H
-# include <stdio.h>
-# include <stdlib.h>
-# include "../libftprintf/includes/libftprintf.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "../libftprintf/includes/libftprintf.h"
 
 t_list	*ft_parse(char *s);
 char	*ft_double(char *s, int *i, int *r);
-int		ft_apply_double(char *s, int *i,
-			char *(*f)(char *s, int *i, int *r), char **res);
+int		ft_apply_double(char *s, int *i, char *(*f)(char *s, int *i, int *r), char **res);
 char	*ft_apply(char *s, int *i, char *(*f)(char *s, int *i), char *res);
 char	*ft_apply_var(char *s, int *i, char *res);
 char	*ft_concat(t_list *list, int len);
