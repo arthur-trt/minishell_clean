@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_lexer.c                                      :+:      :+:    :+:   */
+/*   ft_str_malloc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:22:52 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/16 13:41:48 by atrouill         ###   ########.fr       */
+/*   Created: 2021/05/16 13:24:06 by atrouill          #+#    #+#             */
+/*   Updated: 2021/05/16 13:24:11 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
-**	Print linked list lexer to stdout
-**
-**	@param lexer Linked list to print
-*/
-void	print_lexer(t_lexer *lexer)
+char	*ft_str_malloc(size_t size)
 {
-	t_lexer	*tmp;
+	char			*str;
+	unsigned int	i;
 
-	tmp = lexer;
-	while (tmp)
+	if ((str = (char *)malloc(sizeof(*str) * size + 1)) == NULL)
+		return (NULL);
+	i = 0;
+	while (i <= size)
 	{
-		printf("\ncmd : \"%s\"\n", tmp->cmd);
-		printf("token_type : %d\n\n", tmp->token);
-		tmp = tmp->next;
-	}
+		str[i] = '\0';
+		i++;
+	};
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:02:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 14:05:34 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/16 13:21:01 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*input(t_hist **history)
 	tmp_hist = (*history);
 	init_struct(&input);
 	set_term_raw_mode();
-	outfun_str("PROMTP > ");
+	ft_prompt();
 	input.cursor_pos = get_current_cursor_position();
 	input.win_size = get_win_size();
 	input_loop(&input, &tmp_hist);

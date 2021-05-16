@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_lexer.c                                      :+:      :+:    :+:   */
+/*   ft_clean_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:22:52 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/16 13:41:48 by atrouill         ###   ########.fr       */
+/*   Created: 2021/05/16 13:32:21 by atrouill          #+#    #+#             */
+/*   Updated: 2021/05/16 13:32:26 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-**	Print linked list lexer to stdout
+**	Remove every space, cr, return in front of string
 **
-**	@param lexer Linked list to print
+**	@param str input string to clean
+**
+**	@return string cleaned
 */
-void	print_lexer(t_lexer *lexer)
+char	*ft_clean_str(char *str)
 {
-	t_lexer	*tmp;
+	int		i;
 
-	tmp = lexer;
-	while (tmp)
-	{
-		printf("\ncmd : \"%s\"\n", tmp->cmd);
-		printf("token_type : %d\n\n", tmp->token);
-		tmp = tmp->next;
-	}
+	if (!*str)
+		return (str);
+	i = 0;
+	while (str[i] && (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' ||
+			str[i] == '\v' || str[i] == '\f' || str[i] == ' '))
+		i++;
+	return ((char *)(str + i));
 }
