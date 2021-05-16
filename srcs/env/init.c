@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:48:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 15:07:56 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/16 15:48:10 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ void	add_env(char *key, char *value)
 	t_env	*tmp;
 
 	new = malloc(sizeof(t_env));
+	init_env_elem(new);
 	if (new == NULL)
 		exit(EXIT_FAILURE);
-	init_env_elem(new);
 	new->key = ft_strdup(key);
-	new->value = ft_strdup(value);
+	if (value == NULL)
+		new->value = ft_strdup("");
+	else
+		new->value = ft_strdup(value);
 	if ((g_glob->env) == NULL)
 	{
 		new->next = NULL;
@@ -55,7 +58,7 @@ static void	construct_env(char **environ)
 	i = 0;
 	while (environ[i])
 	{
-		tmp = ft_split(environ[i], '=');
+		tmp = ft_split_env(environ[i]);
 		add_env(tmp[0], tmp[1]);
 		free(tmp[0]);
 		free(tmp[1]);

@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_env.h                                           :+:      :+:    :+:   */
+/*   print_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/15 15:14:24 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/16 15:52:13 by atrouill         ###   ########.fr       */
+/*   Created: 2021/05/16 15:50:12 by atrouill          #+#    #+#             */
+/*   Updated: 2021/05/16 15:52:06 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_ENV_H
-# define SH_ENV_H
+#include "minishell.h"
 
-void	free_glob(void);
-void	add_env(char *key, char *value);
-int		ft_init_gobal(void);
-int		ft_modify_value(char *key, char *new_value);
-char	*search_env(char *key);
-char	**ft_split_env(char const *s);
-void	print_env(void);
+extern t_glob	*g_glob;
 
-#endif
+void	print_env(void)
+{
+	t_env	*tmp;
+
+	tmp = g_glob->env;
+	while (tmp)
+	{
+		printf("key : %s\nvalue : %s\n\n", tmp->key, tmp->value);
+		tmp = tmp->next;
+	}
+}
