@@ -35,6 +35,12 @@ SOURCES		+=                                   		\
 		srcs/input/history/construct_history.c      	\
 
 
+## SRCS/EXEC ##
+
+SOURCES		+=                                   		\
+		srcs/exec/search_path.c                     	\
+
+
 ## SRCS/UTILS ##
 
 SOURCES		+=                                   		\
