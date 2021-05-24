@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 14:18:19 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:00:48 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+#include <sys/wait.h>
 
 
 # include "sh_utils.h"
@@ -31,7 +32,7 @@
 # include "sh_builtins.h"
 # include "sh_input.h"
 # include "sh_env.h"
-# include "sh_bonus.h"
+
 # include "sh_exec.h"
 
 typedef struct s_env

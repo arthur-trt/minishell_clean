@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_exec.h                                          :+:      :+:    :+:   */
+/*   sh_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 18:59:31 by jcueille         ###   ########.fr       */
+/*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
+/*   Updated: 2021/05/24 19:01:27 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_EXEC_H
-# define SH_EXEC_H
+#ifndef SH_UTILS_H
+# define SH_UTILS_H
 
 # include "minishell.h"
 
-# include <dirent.h>
+char	*ft_clean_str(char *str);
+char	*ft_str_malloc(size_t size);
+char	*ft_clean_str(char *str);
 
-char	*search_path(char *exec_name);
-int		is_builtin(t_list *cmds);
-char	**argv_exec_creator(t_list *cmds);
-char	**env_exec_creator(void);
+void	free_split(char **array);
+
+void	c_handler(int sigld);
+void	d_handler(int sigld);
+
+void		ft_prompt(void);
 
 #endif

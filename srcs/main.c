@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 18:54:39 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:02:12 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,6 @@ int			exec_path(t_list *cmds)
 	execve(path, args, env);
 	return (0);
 }
-	
-}
 
 int			ft_exec(t_lexer *lexed)
 {
@@ -175,7 +173,7 @@ int			ft_exec(t_lexer *lexed)
 		dup2(g_glob->save_out, 1);
 		close(g_glob->save_in);
 		close(g_glob->save_out);
-		waitpid(ret, NULL, NULL);
+		waitpid(ret, NULL, 0);
 		tmp = tmp->next;
 	}
 	return (0);	
