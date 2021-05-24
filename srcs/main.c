@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/17 19:48:15 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/24 13:33:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		minishell(t_hist **hist)
 {
 	t_lexer	*lexed;
 	char	*input_user;
+	char	*path_exec;
 
 	while (true)
 	{
@@ -26,8 +27,14 @@ int		minishell(t_hist **hist)
 		if (ft_strcmp(input_user, "exit") == 0)
 			break ;
 		lexed = lexer(input_user);
+		path_exec = search_path(input_user);
 		print_lexer(lexed);
 		free_lexer(&lexed);
+		if (path_exec != NULL)
+		{
+			printf("PATH FOUND : %s\n", path_exec);
+			free(path_exec);
+		}
 		free(input_user);
 	}
 	free(input_user);

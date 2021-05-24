@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:16:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 13:22:45 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/24 13:30:02 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ static char	*scan_dir(char *path, char *exec_name)
 /*
 **	Search exec in all PATH folder and in current dir
 **
-**	@param env Linked list representation of Env
 **	@param exec_name Exec to search in path
 **
 **	@return Return path + exec_name

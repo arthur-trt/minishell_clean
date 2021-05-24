@@ -3,3 +3,4 @@ obj/*
 *.o
 .sh_history
 .vscode
+bin/*
