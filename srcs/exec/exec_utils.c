@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/15 15:50:05 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/24 13:57:49 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,32 @@ int				ft_exec_path(t_list *cmds)
 	}
 }
 
-int			is_builtin(t_list *cmds)
+/*
+***	Checks if the command is a builtin
+***
+*** @param the cmds linked list containing the command
+*/
+int			is_builtin(char *s)
 {
-	if (!(ft_strcmp("echo", cmds->content)))
-		ft_echo;
-	if (!(ft_strcmp("pwd", cmds->content)))
-		ft_pwd;
-	if (!(ft_strcmp("env", cmds->content)))
-		ft_env;
-	if (!(ft_strcmp("export", cmds->content)))
-		ft_export;
-	if (!(ft_strcmp("unset", cmds->content)))
-		ft_unset;
+	int		r;
+
+	if (!(ft_strcmp("echo", s)))
+		r = ft_echo;
+	else if (!(ft_strcmp("pwd", s)))
+		r = ft_pwd;
+	else if (!(ft_strcmp("env", s)))
+		r = ft_env;
+	else if (!(ft_strcmp("export", s)))
+		r = ft_export;
+	else if (!(ft_strcmp("unset", s)))
+		r = ft_unset;
 	//if (!(ft_strcmp("exit", cmds->content)))
-		// ft_exit;
+		// r = ft_exit;
 	// if (!(ft_strcmp("cd", cmds->content)))
-		// ft_cd;
+		// r = ft_cd;
 	else
-		ft_exec_path(cmds);
+		return (0);
+	return (r);
 }
 
 char		*env_concat(t_env *tmp)
@@ -111,6 +119,11 @@ char		**argv_exec_creator(t_list *cmds)
 	return (res);
 }
 
+
+/*
+*** Creates a char** environment for the execve function
+*** @return a char** containing the environment
+*/
 char		**env_exec_creator(void)
 {
 	char	**envp;
