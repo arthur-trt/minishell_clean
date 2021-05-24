@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:16:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 13:30:02 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/24 18:54:24 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,33 @@ static char	*scan_dir(char *path, char *exec_name)
 }
 
 /*
+**	See if the input path is absolute or relative.
+**	If absolute, returned as is. If relative, replaced by the absolute path.
+**
+**	@param path Path to be checked
+**
+**	@return Absolute path
+*/
+static char	*convert_in_absolute(char *path)
+{
+	char	*absolute;
+	char	*cwd;
+	char	*cleaned_path;
+	char	buf[4096];
+
+	if (path[0] == '/')
+		absolute = ft_strdup(path);
+	else
+	{
+		cwd = ft_strdup(getcwd(buf, 4096));
+		cleaned_path = clean_path(cwd);
+		absolute = ft_strjoin(cleaned_path, path);
+		free(cleaned_path);
+	}
+	return (absolute);
+}
+
+/*
 **	Search exec in all PATH folder and in current dir
 **
 **	@param exec_name Exec to search in path
@@ -115,8 +142,7 @@ char	*search_path(char *exec_name)
 		i++;
 	}
 	free_split(tmp);
-	test = scan_dir("./", exec_name);
-	if (test != NULL)
-		return (test);
+	if (can_exec(exec_name))
+		return (convert_in_absolute(exec_name));
 	return (NULL);
 }
