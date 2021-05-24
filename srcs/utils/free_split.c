@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_utils.h                                         :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 13:28:53 by atrouill         ###   ########.fr       */
+/*   Created: 2021/05/24 13:28:35 by atrouill          #+#    #+#             */
+/*   Updated: 2021/05/24 13:28:43 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_UTILS_H
-# define SH_UTILS_H
+#include "minishell.h"
 
-# include "minishell.h"
+/*
+** Free a char array obtain with ft_split
+**
+**	@param array Array to split
+*/
+void	free_split(char **array)
+{
+	int	i;
 
-char	*ft_clean_str(char *str);
-char	*ft_str_malloc(size_t size);
-char	*ft_clean_str(char *str);
-
-void	free_split(char **array);
-
-void	c_handler(int sigld);
-void	d_handler(int sigld);
-
-#endif
+	i = 0;
+	while(array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
