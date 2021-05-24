@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Minishell.h                                        :+:      :+:    :+:   */
+/*   sh_exec.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 20:28:25 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/24 12:56:05 by jcueille         ###   ########.fr       */
+/*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
+/*   Updated: 2021/05/24 18:13:48 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef SH_EXEC_H
+# define SH_EXEC_H
 
-typedef struct		s_env
-{
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}					t_env;
+# include "minishell.h"
 
-t_env *g_env;
+# include <dirent.h>
 
-int		ft_pwd(void);
-void    ft_prompt(void);
-void    ft_env(void);
-void	ft_export(t_list *cmd);
+char	*search_path(char *exec_name);
+int		is_builtin(char *s);
+char	**argv_exec_creator(t_list *cmds);
+char	**env_exec_creator(void);
 
 #endif

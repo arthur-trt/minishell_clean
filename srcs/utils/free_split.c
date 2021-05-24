@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 14:47:10 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/02 18:37:42 by jcueille         ###   ########.fr       */
+/*   Created: 2021/05/24 13:28:35 by atrouill          #+#    #+#             */
+/*   Updated: 2021/05/24 13:28:43 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURES_H
-# define STRUCTURES_H
+#include "minishell.h"
 
-typedef struct		s_env
+/*
+** Free a char array obtain with ft_split
+**
+**	@param array Array to split
+*/
+void	free_split(char **array)
 {
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}					t_env;
+	int	i;
 
-typedef struct 		s_glob
-{
-	t_env			*env;
-	int				ret;
-	int				save_out;
-	int				save_in;
-}					t_glob;
-
-
-#endif
+	i = 0;
+	while(array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}

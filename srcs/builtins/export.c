@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:38:43 by jcueille          #+#    #+#             */
-/*   Updated: 2021/04/24 21:30:50 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:25:45 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,49 +96,4 @@ int			ft_export(t_list *cmd)
 	else
 		ft_env();
 	return (0);
-}
-
-void		ft_new_env(void)
-{
-	t_env	*tmp;
-
-	g_glob->env = malloc(sizeof(t_env));
-	g_glob->env->key = ft_strdup("VAR");
-	g_glob->env->value = ft_strdup("VALUE");
-	tmp = malloc(sizeof(t_env));
-	g_glob->env->next = tmp;
-	tmp->key = ft_strdup("VARZ");
-	tmp->value = ft_strdup("VA     LUW");
-	tmp->next = NULL;
-}
-
-void		ft_free_env(void)
-{
-	t_env	*tmp;
-
-	while (g_glob->env)
-	{
-		tmp = g_glob->env->next;
-		free(g_glob->env->key);
-		free(g_glob->env->value);
-		free(g_glob->env);
-		g_glob->env = tmp;
-	}
-}
-
-void ft_newcmd(t_list **cmd)
-{
-	char *s;
-	t_list *tmp;
-
-	s = ft_strdup("export");
-	tmp = ft_lstnew(s);
-	ft_lstadd_back(cmd, tmp);
-	s = ft_strdup("VALUE=name");
-	tmp = ft_lstnew(s);
-	ft_lstadd_back(cmd, tmp);
-	s = ft_strdup("2lu=n");
-	tmp = ft_lstnew(s);
-	ft_lstadd_back(cmd, tmp);
-
 }

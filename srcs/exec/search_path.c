@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   search_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:16:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 13:30:02 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/24 14:19:39 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../inc/minishell.h"
 
 /*
 **	Check if the user have permission to execute the file

@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 14:02:17 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/24 18:54:39 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,25 @@ int			ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 	return (0);
 }
 
-int			exec_path(char *s)
+int			exec_path(t_list *cmds)
 {
-	if (is_builtin(s))
-		return (0);
+	char	*path;
+	char	**env;
+	char	**args;
+
+	if (!(path = search_path(cmds->content)))
+	{	
+		ft_putstr_fd("Error: path or executable name incorrect.\n", 2);
+		return (-1);
+	}
+	if (!(env = env_exec_creator()) || !(args = argv_exec_creator(cmds)))
+	{	
+		ft_putstr_fd("Error: malloc failed.\n", 2);
+		return (-1);
+	}
+	execve(path, args, env);
+	return (0);
+}
 	
 }
 
@@ -153,7 +168,7 @@ int			ft_exec(t_lexer *lexed)
 		ret=fork();
 		if(ret==0)
 		{
-			execve(cmds->content,  );
+			is_builtin(cmds);
 			exit(1);
 		}
 		dup2(g_glob->save_in, 0);
@@ -164,66 +179,6 @@ int			ft_exec(t_lexer *lexed)
 		tmp = tmp->next;
 	}
 	return (0);	
-// 	{
-
-   
-//      //set the initial input 
-
-//     if (infile)
-//        fdin = open(infile,O_READ); 
-//     else
-//       fdin=dup(tmpin);
-  
-//     int ret;
-//     int fdout;
-//     for(i=0;i<numsimplecommands; i++) {
-//       //redirect input
-//       dup2(fdin, 0);
-//       close(fdin);
-//       //setup output
-//       if (i == numsimplecommands­1){
-//         // Last simple command 
-//         if(outfile)
-//           fdout=open(outfile,â€¦â€¦);
-//         else
-//           fdout=dup(tmpout);
-//       }
-  
-//        else {
-//           // Not last 
-//           //simple command
-//           //create pipe
-//           int fdpipe[2];
-//           pipe(fdpipe);
-//           fdout=fdpipe[1];
-//           fdin=fdpipe[0];
-//        }// if/else
-  
-//        // Redirect output
-//        dup2(fdout,1);
-//        close(fdout);
-   
-//        // Create child process
-//        ret=fork(); 
-//        if(ret==0) {
-//          execvp(scmd[i].args[0], scmd[i].args);
-//          perror(â€œexecvpâ€);
-//          _exit(1);
-//        }
-//      } //  for
-   
-//      //restore in/out defaults
-//      dup2(tmpin,0);
-//      dup2(tmpout,1);
-//      close(tmpin);
-//      close(tmpout);
-  
-//      if (!background) {
-//        // Wait for last command
-//        waitpid(ret, NULL);
-//      }
-  
-//   }
 }
 
 /*

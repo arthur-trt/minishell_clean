@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/03 21:44:11 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/24 14:18:19 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,29 @@
 # include <fcntl.h>
 
 
-# include "structures.h"
-# include "functions.h"
+# include "sh_utils.h"
 # include "sh_lexer.h"
 # include "sh_constants.h"
 # include "sh_parser.h"
-# include  "sh_builtins.h"
+# include "sh_builtins.h"
+# include "sh_input.h"
+# include "sh_env.h"
+# include "sh_bonus.h"
+# include "sh_exec.h"
 
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}					t_env;
 
+typedef struct s_glob
+{
+	t_env			*env;
+	int				ret;
+	int				save_out;
+	int				save_in;
+}					t_glob;
 
 #endif

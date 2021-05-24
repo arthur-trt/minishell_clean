@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/24 13:57:49 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/24 18:04:11 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,34 @@
 
 extern t_glob *g_glob;
 
-int				ft_exec_path(t_list *cmds)
-{
-	char		*filename;
-	char		*execname;
-	char		**path;
-	int			i;
-	struct stat file;
-
-	i = -1;
-	if (cmds->content[0] == '>' || cmds->content[0] == '/')
-		filename = cmds->content;
-	else
-	{
-		execname = ft_strjoin("/", cmds->content);
-		path = ft_split(cmds->content, ':');
-		while (path[++i])
-		{
-			filename = ft_strjoin(path[i], execname);
-			
-		}
-	}
-}
-
 /*
 ***	Checks if the command is a builtin
 ***
 *** @param the cmds linked list containing the command
 */
-int			is_builtin(char *s)
+int			is_builtin(t_list *cmds)
 {
 	int		r;
 
-	if (!(ft_strcmp("echo", s)))
+	r = 0;
+	if (!(ft_strcmp("echo", cmds->content)))
 		r = ft_echo;
-	else if (!(ft_strcmp("pwd", s)))
+	else if (!(ft_strcmp("pwd", cmds->content)))
 		r = ft_pwd;
-	else if (!(ft_strcmp("env", s)))
+	else if (!(ft_strcmp("env", cmds->content)))
 		r = ft_env;
-	else if (!(ft_strcmp("export", s)))
+	else if (!(ft_strcmp("export", cmds->content)))
 		r = ft_export;
-	else if (!(ft_strcmp("unset", s)))
+	else if (!(ft_strcmp("unset", cmds->content)))
 		r = ft_unset;
 	//if (!(ft_strcmp("exit", cmds->content)))
 		// r = ft_exit;
 	// if (!(ft_strcmp("cd", cmds->content)))
 		// r = ft_cd;
 	else
-		return (0);
+		r = exec_path()
+	if (r != 0)
+		ft_putstr_fd("Error executing builtin.", 2);
 	return (r);
 }
 
@@ -94,6 +74,10 @@ char		*env_concat(t_env *tmp)
 	return (res);
 }
 
+/*
+*** Puts all the args in a single char** to send to execve
+*** @return a char** containing all the arguments
+*/
 char		**argv_exec_creator(t_list *cmds)
 {
 	char	**res;
@@ -118,7 +102,6 @@ char		**argv_exec_creator(t_list *cmds)
 	res[i] = NULL;
 	return (res);
 }
-
 
 /*
 *** Creates a char** environment for the execve function
