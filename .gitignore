@@ -1,0 +1,5 @@
+obj/*
+*.d
+*.o
+.sh_history
+.vscode

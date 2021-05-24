@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/16 13:27:27 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/24 13:19:27 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include "sh_input.h"
 # include "sh_env.h"
 # include "sh_bonus.h"
+# include "sh_exec.h"
 
 typedef struct s_env
 {
