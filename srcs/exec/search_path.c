@@ -6,11 +6,11 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:16:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 14:19:39 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:10:11 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
 /*
 **	Check if the user have permission to execute the file
@@ -68,22 +68,52 @@ static char	*scan_dir(char *path, char *exec_name)
 	char			*final_path;
 
 	folder = opendir(path);
-	entry = readdir(folder);
-	while (entry != NULL)
+	if (folder != NULL)
 	{
-		if (ft_strcmp(exec_name, entry->d_name) == 0)
-		{
-			final_path = ft_strjoin(path, exec_name);
-			if (can_exec(final_path) == true)
-			{
-				free(folder);
-				return (final_path);
-			}
-		}
 		entry = readdir(folder);
+		while (entry != NULL)
+		{
+			if (ft_strcmp(exec_name, entry->d_name) == 0)
+			{
+				final_path = ft_strjoin(path, exec_name);
+				if (can_exec(final_path) == true)
+				{
+					free(folder);
+					return (final_path);
+				}
+			}
+			entry = readdir(folder);
+		}
+		free(folder);
 	}
-	free(folder);
 	return (NULL);
+}
+
+/*
+**	See if the input path is absolute or relative.
+**	If absolute, returned as is. If relative, replaced by the absolute path.
+**
+**	@param path Path to be checked
+**
+**	@return Absolute path
+*/
+static char	*convert_in_absolute(char *path)
+{
+	char	*absolute;
+	char	*cwd;
+	char	*cleaned_path;
+	char	buf[4096];
+
+	if (path[0] == '/')
+		absolute = ft_strdup(path);
+	else
+	{
+		cwd = ft_strdup(getcwd(buf, 4096));
+		cleaned_path = clean_path(cwd);
+		absolute = ft_strjoin(cleaned_path, path);
+		free(cleaned_path);
+	}
+	return (absolute);
 }
 
 /*
@@ -115,8 +145,7 @@ char	*search_path(char *exec_name)
 		i++;
 	}
 	free_split(tmp);
-	test = scan_dir("./", exec_name);
-	if (test != NULL)
-		return (test);
+	if (can_exec(exec_name))
+		return (convert_in_absolute(exec_name));
 	return (NULL);
 }

@@ -27,10 +27,10 @@ OBJECTS_BONUS		:= $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES_BONUS:.$(SRCEXT
 #Flags, Libraries and Includes
 cflags.release		:= -Wall -Werror -Wextra
 cflags.valgrind		:= -Wall -Werror -Wextra -DDEBUG -ggdb
-cflags.debug		:= -DDEBUG -ggdb -fsanitize=address -fno-omit-frame-pointer
+cflags.debug		:= -Wall -Werror -Wextra -DDEBUG -ggdb -fsanitize=address -fno-omit-frame-pointer
 CFLAGS			:= $(cflags.$(BUILD))
 
-lib.release		:=  -Llibftprintf -lftprintf -ltermcap
+lib.release		:=  -Llibftprintf -lftprintf
 
 lib.debug		:= $(lib.release) -fsanitize=address -fno-omit-frame-pointer
 LIB			:= $(lib.$(BUILD))
@@ -115,7 +115,7 @@ $(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
 	@rm -f $(BUILDDIR)/$*.$(DEPEXT).tmp
 
 libft:
-	@make -s -C libftprintf
+	@make bonus -s -C libftprintf
 
 
 norm:

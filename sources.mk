@@ -30,6 +30,8 @@ SOURCES		+=                                   		\
 
 SOURCES		+=                                   		\
 		srcs/exec/exec_utils.c                      	\
+		srcs/exec/redirections.c                    	\
+		srcs/exec/redirections_utils.c              	\
 		srcs/exec/search_path.c                     	\
 
 

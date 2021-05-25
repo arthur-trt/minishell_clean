@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/25 13:43:30 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/25 15:20:45 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char		**argv_exec_creator(t_list *cmds)
 	t_list	*tmp;
 	int		i;
 
+	i = 0;
 	tmp = cmds;
 	while (tmp)
 	{
@@ -136,3 +137,4 @@ char		**env_exec_creator(void)
 	envp[i] = NULL;
 	return (envp);
 }
+
