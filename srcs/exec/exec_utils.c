@@ -6,11 +6,11 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/24 18:04:11 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:43:30 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/minishell.h"
+#include "../../inc/minishell.h"
 
 extern t_glob *g_glob;
 
@@ -25,21 +25,21 @@ int			is_builtin(t_list *cmds)
 
 	r = 0;
 	if (!(ft_strcmp("echo", cmds->content)))
-		r = ft_echo;
+		r = ft_echo(cmds);
 	else if (!(ft_strcmp("pwd", cmds->content)))
-		r = ft_pwd;
+		r = ft_pwd();
 	else if (!(ft_strcmp("env", cmds->content)))
-		r = ft_env;
+		r = ft_env();
 	else if (!(ft_strcmp("export", cmds->content)))
-		r = ft_export;
+		r = ft_export(cmds);
 	else if (!(ft_strcmp("unset", cmds->content)))
-		r = ft_unset;
+		r = ft_unset(cmds);
 	//if (!(ft_strcmp("exit", cmds->content)))
 		// r = ft_exit;
 	// if (!(ft_strcmp("cd", cmds->content)))
 		// r = ft_cd;
 	else
-		r = exec_path()
+		r = exec_path(cmds);
 	if (r != 0)
 		ft_putstr_fd("Error executing builtin.", 2);
 	return (r);
@@ -84,6 +84,7 @@ char		**argv_exec_creator(t_list *cmds)
 	t_list	*tmp;
 	int		i;
 
+	tmp = cmds;
 	while (tmp)
 	{
 		i++;
@@ -113,7 +114,7 @@ char		**env_exec_creator(void)
 	t_env	*tmp;
 	int		i;
 
-	i = 0;
+	i = 1;
 	tmp = g_glob->env;
 	while (tmp)
 	{
@@ -131,6 +132,7 @@ char		**env_exec_creator(void)
 		i++;
 		tmp = tmp->next;
 	}
+
 	envp[i] = NULL;
 	return (envp);
 }

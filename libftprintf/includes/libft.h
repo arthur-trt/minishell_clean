@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:06:08 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 14:28:24 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/25 10:48:48 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_strrev(char *str);
 int					ft_strncmp(const char *s1, const char *s2, size_t len);
+int					ft_strcmp(const char *s1, const char *s2);
 int					ft_atoi(const char *str);
 
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));

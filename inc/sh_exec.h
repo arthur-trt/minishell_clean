@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 18:59:31 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:55:49 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ char	*search_path(char *exec_name);
 int		is_builtin(t_list *cmds);
 char	**argv_exec_creator(t_list *cmds);
 char	**env_exec_creator(void);
+int			exec_path(t_list *cmds);
 
 #endif

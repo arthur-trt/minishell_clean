@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+         #
+#    By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/09 12:00:57 by atrouill          #+#    #+#              #
-#    Updated: 2020/06/11 16:02:56 by atrouill         ###   ########.fr        #
+#    Updated: 2021/05/25 10:50:32 by jcueille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,8 @@ SRCS			= \
 				treat_conv			\
 				treat_flags			\
 				treat_precision		\
-				utils
+				utils				\
+				ft_strcmp
 
 SRCS_BONUS		= $(SRCS) \
 				ft_lstadd_back_bonus			\

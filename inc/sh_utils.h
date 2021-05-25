@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 19:01:27 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/25 11:12:33 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	free_split(char **array);
 void	c_handler(int sigld);
 void	d_handler(int sigld);
 
-void		ft_prompt(void);
+void	ft_prompt(void);
 
+void	*ft_malloc(size_t size);
 #endif

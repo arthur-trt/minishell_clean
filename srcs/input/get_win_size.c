@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_win_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 15:04:55 by atrouill          #+#    #+#             */
-/*   Updated: 2021/04/19 19:09:31 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/25 11:04:27 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <termio.h>
+#include <termios.h>
+#include <sys/ioctl.h>
 
 /*
 **	Allows you to obtain the size of the terminal window in number of characters

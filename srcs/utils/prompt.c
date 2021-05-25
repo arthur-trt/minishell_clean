@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 20:27:21 by jcueille          #+#    #+#             */
-/*   Updated: 2021/04/16 17:05:48 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/25 10:37:19 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <sys/wait.h>
 #include <stdbool.h>
 #include <strings.h>
-#include "../../libft/libft.h"
+#include "../../libftprintf/includes/libftprintf.h"
 
 static char	*ft_trim_home(char *cwd)
 {

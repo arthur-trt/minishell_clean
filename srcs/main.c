@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 19:02:12 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:43:24 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int			exec_path(t_list *cmds)
 		ft_putstr_fd("Error: path or executable name incorrect.\n", 2);
 		return (-1);
 	}
+	printf("PATH IS %s\n", path);
 	if (!(env = env_exec_creator()) || !(args = argv_exec_creator(cmds)))
 	{	
 		ft_putstr_fd("Error: malloc failed.\n", 2);
@@ -139,6 +140,7 @@ int			ft_exec(t_lexer *lexed)
 	int		fdpipe[2];
 	int		ret;
 
+	fdtemp = 0;
 	tmp = lexed;
 	while (tmp)
 	{
@@ -148,7 +150,7 @@ int			ft_exec(t_lexer *lexed)
 		ft_redirection_check(cmds, &fdin, &fdtemp);
 		dup2(fdin, 0);
 		close(fdin);		
-		if (tmp->next->token == T_SEMICOLON || tmp->next == NULL)
+		if ((tmp->next && tmp->next->token == T_SEMICOLON) || tmp->next == NULL)
 		{	
 			if (fdtemp)
 				fdout = fdtemp;
@@ -190,7 +192,8 @@ int			ft_reader(void)
 
 	tmp = NULL;
 	ft_prompt();
-	get_next_line(1, &tmp);
+	get_next_line(0, &tmp);
+	//tmp = ft_strdup("pwd");
 	lexed = lexer(tmp);
 	ft_exec(lexed);
 	return (0);
