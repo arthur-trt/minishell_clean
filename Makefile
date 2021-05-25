@@ -8,7 +8,7 @@ endif
 TARGET			:= minishell
 TARGET_BONUS		:= minishell-bonus
 
-BUILD			:= debug
+BUILD			:= release
 
 include sources.mk
 
@@ -115,7 +115,7 @@ $(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
 	@rm -f $(BUILDDIR)/$*.$(DEPEXT).tmp
 
 libft:
-	@make bonus -s -C libftprintf
+	@make -s -C libftprintf
 
 
 norm:

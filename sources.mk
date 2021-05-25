@@ -47,6 +47,7 @@ SOURCES		+=                                   		\
 		srcs/input/move_cursor_lines_bonus.c        	\
 		srcs/input/move_cursor_words_bonus.c        	\
 		srcs/input/outfun.c                         	\
+		srcs/input/prompt.c                         	\
 		srcs/input/set_term_mode.c                  	\
 		srcs/input/special_key_bonus.c              	\
 
