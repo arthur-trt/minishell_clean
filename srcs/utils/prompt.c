@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 20:27:21 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/25 10:37:19 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/26 16:38:42 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <strings.h>
 #include "../../libftprintf/includes/libftprintf.h"
 
-static char	*ft_trim_home(char *cwd)
+/*static char	*ft_trim_home(char *cwd)
 {
     int		i;
     char	*path;
@@ -50,3 +50,4 @@ void		ft_prompt(void)
     ft_putstr_fd(" > \e[0m", 1);
     free (path);
 }
+*/
