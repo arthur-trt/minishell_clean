@@ -6,15 +6,12 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/16 13:20:15 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/26 09:53:15 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_INPUT_H
 # define SH_INPUT_H
-
-# include <term.h>
-# include <curses.h>
 
 # include "minishell.h"
 

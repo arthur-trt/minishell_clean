@@ -6,12 +6,11 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 15:04:55 by atrouill          #+#    #+#             */
-/*   Updated: 2021/04/19 19:09:31 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/26 09:53:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <termio.h>
 
 /*
 **	Allows you to obtain the size of the terminal window in number of characters

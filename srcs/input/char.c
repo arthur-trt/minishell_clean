@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 19:31:34 by atrouill          #+#    #+#             */
-/*   Updated: 2021/04/24 13:27:24 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/26 11:59:54 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	delete_char(t_line *input)
 		return (false);
 	input->lenght--;
 	tputs(tgetstr("ce", NULL), 0, &outfun);
-	ft_putstr_fd(input->line + input->cursor, 0);
+	outfun_str(input->line + input->cursor);
 	set_cursor_pos(*input);
 	return (true);
 }
@@ -73,7 +73,7 @@ bool	delete_char_after(t_line *input)
 		input->lenght - input->cursor + 1);
 	input->lenght--;
 	tputs(tgetstr("ce", NULL), 0, &outfun);
-	ft_putstr_fd(input->line + input->cursor, 0);
+	outfun_str(input->line + input->cursor);
 	set_cursor_pos(*input);
 	return (true);
 }

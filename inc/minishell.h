@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/24 13:19:27 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/26 09:54:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <curses.h>
+# include <term.h>
+
+# ifdef __APPLE__
+#  include <termios.h>
+#  include <sys/ioctl.h>
+# else
+#  include <termio.h>
+# endif
 
 # include "sh_utils.h"
 # include "sh_lexer.h"
