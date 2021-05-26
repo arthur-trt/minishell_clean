@@ -30,6 +30,7 @@
 #  include <sys/ioctl.h>
 # else
 #  include <termio.h>
+#  include <sys/wait.h>
 # endif
 
 # include "sh_utils.h"

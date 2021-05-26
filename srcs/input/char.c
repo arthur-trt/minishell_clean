@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 19:31:34 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/26 11:59:54 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/26 14:22:10 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	insert_char(t_line *input, int c)
 	input->lenght++;
 	input->cursor++;
 	tputs(tgetstr("im", NULL), 1, &outfun);
-	outfun(c);
+	ft_putchar_fd(c, 0);
 	tputs(tgetstr("ei", NULL), 1, &outfun);
 	return (true);
 }
@@ -46,14 +46,14 @@ bool	delete_char(t_line *input)
 {
 	if (input->cursor == 0)
 		return (false);
-	ft_memmove(input->line + input->cursor - 1, input->line + input->cursor,
-		input->lenght - input->cursor + 1);
 	move_cursor_left(input);
 	if (input->cursor == input->lenght)
 		return (false);
+	ft_memmove(input->line + input->cursor, input->line + input->cursor + 1,
+		input->lenght - input->cursor + 1);
 	input->lenght--;
-	tputs(tgetstr("ce", NULL), 0, &outfun);
-	outfun_str(input->line + input->cursor);
+	tputs(tgetstr("cd", NULL), 0, &outfun);
+	ft_putstr_fd(input->line + input->cursor, 0);
 	set_cursor_pos(*input);
 	return (true);
 }
@@ -69,11 +69,11 @@ bool	delete_char_after(t_line *input)
 {
 	if (input->lenght + 1 >= MAX_CMD_LINE)
 		return (false);
-	ft_memmove(input->line + input->cursor - 1, input->line + input->cursor,
+	ft_memmove(input->line + input->cursor, input->line + input->cursor + 1,
 		input->lenght - input->cursor + 1);
 	input->lenght--;
-	tputs(tgetstr("ce", NULL), 0, &outfun);
-	outfun_str(input->line + input->cursor);
+	tputs(tgetstr("cd", NULL), 0, &outfun);
+	ft_putstr_fd(input->line + input->cursor, 0);
 	set_cursor_pos(*input);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:02:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/16 13:21:01 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/26 14:43:59 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	input_loop(t_line *input, t_hist **hist)
 	while (true)
 	{
 		key_code = get_key();
+		input->win_size = get_win_size();
 		special_keys(input, key_code, hist);
 		special_bonus_keys(input, key_code);
 		if (ft_isprint(key_code))
@@ -58,11 +59,7 @@ static void	input_loop(t_line *input, t_hist **hist)
 			insert_char(input, key_code);
 		}
 		if (key_code == '\n')
-		{
-			input->cursor = 0;
-			set_cursor_pos(*input);
 			break ;
-		}
 	}
 }
 
@@ -83,8 +80,8 @@ char	*input(t_hist **history)
 	set_term_raw_mode();
 	ft_prompt();
 	input.cursor_pos = get_current_cursor_position();
-	input.win_size = get_win_size();
 	input_loop(&input, &tmp_hist);
+	move_cursor_to_end(&input);
 	append_history(input.line, history);
 	set_term_default_mode();
 	return (ft_strdup(input.line));
