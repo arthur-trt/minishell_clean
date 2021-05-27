@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/15 12:50:48 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/27 18:00:42 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,7 @@ t_list	*ft_parse(char *s)
 	t_list	*command;
 	char	*res;
 	int		i;
-	int		r;
 
-	r = 0;
 	i = -1;
 	res = NULL;
 	command = NULL;

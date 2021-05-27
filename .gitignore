@@ -4,3 +4,4 @@ obj/*
 .sh_history
 .vscode
 bin/*
+debug_*

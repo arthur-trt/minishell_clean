@@ -6,47 +6,37 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 15:01:12 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/26 14:52:36 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/27 19:01:56 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//static void debug_write(t_size pos, t_line input, size_t cursor)
-//{
-//	int	fd;
-
-//	fd = open("./debug_print", O_WRONLY | O_APPEND, 0644);
-//	if (fd == -1)
-//	{
-//		ft_putstr_fd("fuck", 2);
-//		exit (EXIT_FAILURE);
-//	}
-//	dprintf(fd, "\n\nNEW COMMAND :\n");
-//	dprintf(fd, "\t(col)\t(row)\n");
-//	dprintf(fd, "pos :\t%zu\t%zu\n", pos.col, pos.row);
-//	dprintf(fd, "win :\t%zu\t%zu\n", input.win_size.col, input.win_size.row);
-//	dprintf(fd, "cursor : %zu\n", cursor);
-//	close(fd);
-//}
-
-static void debug_write(size_t xpos, size_t ypos, t_line input, size_t cursor)
+#ifdef DEBUG
+static void	debug_write(t_size pos, t_line input)
 {
 	int	fd;
 
-	fd = open("./debug_print", O_WRONLY | O_APPEND, 0644);
-	if (fd == -1)
+	fd = open("./debug_print", O_CREAT | O_WRONLY | O_APPEND, 0644);
+	if (fd != -1)
 	{
-		ft_putstr_fd("fuck", 2);
-		exit (EXIT_FAILURE);
+		dprintf(fd, "start:\t%zu\t%zu\n",
+			input.cursor_pos.col, input.cursor_pos.row);
+		dprintf(fd, "pos :\t%zu\t%zu\n", pos.row, pos.col);
+		dprintf(fd, "win :\t%zu\t%zu\n",
+			input.win_size.col, input.win_size.row);
+		dprintf(fd, "cursor : %zu\n", input.cursor);
+		close(fd);
 	}
-	dprintf(fd, "\n\nNEW COMMAND :\n");
-	dprintf(fd, "\t(col)\t(row)\n");
-	dprintf(fd, "pos :\t%zu\t%zu\n", xpos, ypos);
-	dprintf(fd, "win :\t%zu\t%zu\n", input.win_size.col, input.win_size.row);
-	dprintf(fd, "cursor : %zu\n", cursor);
-	close(fd);
 }
+#else
+
+static void	debug_write(t_size pos, t_line input)
+{
+	(void)pos;
+	(void)input;
+}
+#endif
 
 /*
 **	Allows you to obtain the current position of the cursor in the terminal.
@@ -80,34 +70,18 @@ t_size	get_current_cursor_position(void)
 **
 **	@param input Structure containing information about the typed line
 */
-//void	set_cursor_pos(t_line input)
-//{
-//	t_size	pos;
-
-//	pos.col = input.cursor_pos.col + input.cursor % input.win_size.col;
-//	pos.row = input.cursor_pos.row + input.cursor / input.win_size.col;
-//	if (pos.col > input.win_size.col)
-//	{
-//		pos.col %= input.win_size.col;
-//		if (pos.row + 1 <= input.win_size.row)
-//			pos.row++;
-//	}
-//	debug_write(pos, input, input.cursor);
-//	tputs(tgoto(tgetstr("cm", NULL), pos.col - 1, pos.row - 1), 0, &outfun);
-//}
-
-void	set_cursor_pos(t_line line)
+void	set_cursor_pos(t_line input)
 {
-	size_t	xpos;
-	size_t	ypos;
+	t_size	pos;
 
-	xpos = line.cursor_pos.col + line.cursor % line.win_size.col;
-	ypos = line.cursor_pos.row + line.cursor / line.win_size.col;
-	if (xpos > line.win_size.col)
+	pos.col = input.cursor_pos.col + input.cursor % input.win_size.col;
+	pos.row = input.cursor_pos.row + input.cursor / input.win_size.col;
+	if (pos.col > input.win_size.col)
 	{
-		xpos %= line.win_size.col;
-		ypos++;
+		pos.col %= input.win_size.col;
+		if (pos.row + 1 <= input.win_size.row)
+			pos.row++;
 	}
-	debug_write(xpos, ypos, line, line.cursor);
-	tputs(tgoto(tgetstr("cm", NULL), xpos - 1, ypos - 1), 0, &outfun);
+	debug_write(pos, input);
+	tputs(tgoto(tgetstr("cm", NULL), pos.col - 1, pos.row - 1), 0, &outfun);
 }

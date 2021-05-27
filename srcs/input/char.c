@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 19:31:34 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/26 14:22:10 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/27 17:58:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool	delete_char(t_line *input)
 	if (input->cursor == 0)
 		return (false);
 	move_cursor_left(input);
-	if (input->cursor == input->lenght)
+	if ((size_t)input->cursor == input->lenght)
 		return (false);
 	ft_memmove(input->line + input->cursor, input->line + input->cursor + 1,
 		input->lenght - input->cursor + 1);

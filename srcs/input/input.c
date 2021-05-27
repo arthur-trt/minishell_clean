@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:02:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/26 14:43:59 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/27 18:52:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ static void	input_loop(t_line *input, t_hist **hist)
 	{
 		key_code = get_key();
 		input->win_size = get_win_size();
+		if (input->cursor_pos.row + (input->cursor_pos.col + input->cursor)
+			/ input->win_size.col > input->win_size.row)
+			input->cursor_pos.row--;
 		special_keys(input, key_code, hist);
 		special_bonus_keys(input, key_code);
 		if (ft_isprint(key_code))
