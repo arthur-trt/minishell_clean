@@ -6,37 +6,11 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 15:01:12 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/27 19:01:56 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:18:23 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-#ifdef DEBUG
-static void	debug_write(t_size pos, t_line input)
-{
-	int	fd;
-
-	fd = open("./debug_print", O_CREAT | O_WRONLY | O_APPEND, 0644);
-	if (fd != -1)
-	{
-		dprintf(fd, "start:\t%zu\t%zu\n",
-			input.cursor_pos.col, input.cursor_pos.row);
-		dprintf(fd, "pos :\t%zu\t%zu\n", pos.row, pos.col);
-		dprintf(fd, "win :\t%zu\t%zu\n",
-			input.win_size.col, input.win_size.row);
-		dprintf(fd, "cursor : %zu\n", input.cursor);
-		close(fd);
-	}
-}
-#else
-
-static void	debug_write(t_size pos, t_line input)
-{
-	(void)pos;
-	(void)input;
-}
-#endif
 
 /*
 **	Allows you to obtain the current position of the cursor in the terminal.
@@ -82,6 +56,5 @@ void	set_cursor_pos(t_line input)
 		if (pos.row + 1 <= input.win_size.row)
 			pos.row++;
 	}
-	debug_write(pos, input);
 	tputs(tgoto(tgetstr("cm", NULL), pos.col - 1, pos.row - 1), 0, &outfun);
 }

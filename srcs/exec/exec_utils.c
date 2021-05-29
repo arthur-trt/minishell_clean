@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/26 11:46:13 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/29 16:53:37 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,21 @@ int			is_builtin(t_list *cmds)
 		r = ft_unset(cmds);
 	//if (!(ft_strcmp("exit", cmds->content)))
 		// r = ft_exit;
-	// if (!(ft_strcmp("cd", cmds->content)))
-		// r = ft_cd;
 	else
 		r = exec_path(cmds);
 	if (r != 0)
+		ft_putstr_fd("Error executing builtin.\n", 2);
+	return (r);
+}
+
+int			is_builtin_no_forks(t_list *cmds)
+{
+	int	r;
+
+	r = 15;
+	if (!(ft_strcmp("cd", cmds->content)))
+		r = ft_cd(cmds);
+	if (r != 0 && r != 15)
 		ft_putstr_fd("Error executing builtin.\n", 2);
 	return (r);
 }

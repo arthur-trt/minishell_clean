@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/26 10:16:52 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/29 16:52:21 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 char	*search_path(char *exec_name);
 int		is_builtin(t_list *cmds);
+int			is_builtin_no_forks(t_list *cmds);
 char	**argv_exec_creator(t_list *cmds);
 char	**env_exec_creator(void);
 int		exec_path(t_list *cmds);

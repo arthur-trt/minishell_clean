@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/27 19:02:34 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:09:43 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ void	history_nav_up(t_line *input, t_hist **hist);
 void	history_nav_down(t_line *input, t_hist **hist);
 t_hist	*construct_hist(void);
 bool	backup_history(t_hist *hist);
+char	*history_path();
 
 #endif

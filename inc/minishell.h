@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/26 09:54:50 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/29 17:48:05 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <fcntl.h>
 # include <curses.h>
 # include <term.h>
+# include <errno.h>
+# include <string.h>
 
 # ifdef __APPLE__
 #  include <termios.h>
@@ -56,6 +58,7 @@ typedef struct s_glob
 	int				ret;
 	int				save_out;
 	int				save_in;
+	char			*path;
 }					t_glob;
 
 #endif

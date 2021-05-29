@@ -9,6 +9,7 @@ SOURCES		+=                                   		\
 ## SRCS/BUILTINS ##
 
 SOURCES		+=                                   		\
+		srcs/builtins/ft_cd.c                       	\
 		srcs/builtins/ft_echo.c                     	\
 		srcs/builtins/ft_env.c                      	\
 		srcs/builtins/ft_export.c                   	\
@@ -62,6 +63,7 @@ SOURCES		+=                                   		\
 		srcs/input/history/backup_history.c         	\
 		srcs/input/history/construct_history.c      	\
 		srcs/input/history/free_history.c           	\
+		srcs/input/history/history_path.c           	\
 		srcs/input/history/nav_history.c            	\
 		srcs/input/history/print_history.c          	\
 

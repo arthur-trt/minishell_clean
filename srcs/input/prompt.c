@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:19:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/27 18:56:25 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/29 17:56:34 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*construct_path(char *cwd)
 	{
 		path_tmp = ft_substr(path, ft_strlen(home),
 				ft_strlen(path) - ft_strlen(home));
-		path = realloc(path, sizeof(char) * (1 + ft_strlen(path_tmp) + 1));
+		path = ft_realloc(path, sizeof(char) * (1 + ft_strlen(path_tmp) + 1));
 		ft_bzero(path, (1 + ft_strlen(path_tmp) + 1));
 		path[0] = '~';
 		ft_strlcat(path, path_tmp, (1 + ft_strlen(path_tmp) + 1));

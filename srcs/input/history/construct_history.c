@@ -12,6 +12,8 @@
 
 #include "minishell.h"
 
+extern t_glob	*g_glob;
+
 /*
 **	Retrieves the old history from the file and saves it in the linked list
 **
@@ -24,7 +26,7 @@ t_hist	*construct_hist(void)
 	t_hist		*hist;
 
 	hist = NULL;
-	fd = open(HISTORY_PATH, O_RDONLY);
+	fd = open(g_glob->path, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
 	while (get_next_line(fd, &line))

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/26 10:16:01 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:16:53 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		main(void)
 	g_glob = NULL;
   	if(ft_init_gobal())
 		return (EXIT_FAILURE);
+	history_path();
 	hist = construct_hist();
 	print_env();
 	minishell(&hist);
