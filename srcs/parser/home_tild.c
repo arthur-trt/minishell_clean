@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_utils.h                                         :+:      :+:    :+:   */
+/*   home_tild.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/28 14:51:46 by jcueille         ###   ########.fr       */
+/*   Created: 2021/05/29 17:03:50 by jcueille          #+#    #+#             */
+/*   Updated: 2021/05/30 15:00:35 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_UTILS_H
-# define SH_UTILS_H
+#include "sh_parser.h"
+#include "../libftprintf/includes/libftprintf.h"
 
-# include "minishell.h"
+char	*home_tild(char *res)
+{
+	char	*tmp;
+	char	*tmp_bis;
+	char	*name;
 
-char	*ft_clean_str(char *str);
-char	*ft_str_malloc(size_t size);
-char	*ft_clean_str(char *str);
-
-void	free_split(char **array);
-int		free_list(t_list *lst);
-
-void	c_handler(int sigld);
-void	d_handler(int sigld);
-
-#endif
+	name = ft_strdup("HOME");
+	tmp_bis = NULL;
+	tmp_bis = ft_search_value(name);
+	if (!(tmp_bis))
+		return (res);
+	if (res)
+		tmp = ft_strjoin(res, tmp_bis);
+	else
+	{
+		free(res);
+		return (tmp_bis);
+	}
+	free(res);
+	return (tmp);
+}

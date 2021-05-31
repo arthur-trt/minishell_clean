@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 15:53:58 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/15 12:52:29 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/30 15:05:56 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_double_error(int r, t_list *command, char *res)
 	ft_listclear(&command);
 	if (r == -3)
 	{
-		printf("DOUBLE QUOTES NOT CLOSED\n");
+		printf("Double quotes not closed.\n");
 		return (-2);
 	}
 	printf("There's been a malloc error.\n");

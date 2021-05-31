@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_utils.h                                         :+:      :+:    :+:   */
+/*   free_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/28 14:51:46 by jcueille         ###   ########.fr       */
+/*   Created: 2021/05/28 14:45:00 by jcueille          #+#    #+#             */
+/*   Updated: 2021/05/29 15:06:05 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_UTILS_H
-# define SH_UTILS_H
+#include "../../inc/minishell.h"
 
-# include "minishell.h"
+int	free_list(t_list *lst)
+{
+	t_list *tmp;
 
-char	*ft_clean_str(char *str);
-char	*ft_str_malloc(size_t size);
-char	*ft_clean_str(char *str);
-
-void	free_split(char **array);
-int		free_list(t_list *lst);
-
-void	c_handler(int sigld);
-void	d_handler(int sigld);
-
-#endif
+	while (lst)
+	{
+		tmp = lst->next;
+		if (lst->content)
+			free(lst->content);
+		
+		free(lst);
+		lst = tmp;
+	}
+	lst = NULL;
+	tmp = NULL;
+	return (0);
+}

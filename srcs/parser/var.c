@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:15:15 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/15 13:46:00 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/30 15:00:01 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ char	*ft_search_value(char *name)
 			res = ft_strdup(tmp->value);
 		tmp = tmp->next;
 	}
-	free(name);
+	if (name)
+		free(name);
 	if (res)
 		res = ft_remove_spaces(res);
 	return (res);
@@ -138,7 +139,7 @@ char	*ft_search_var(char *s, int *inc, int *i)
 		return (NULL);
 	name = ft_substr(s, j, *i - j);
 	res = ft_search_value(name);
-	if (s[*i] == '"')
+	if (s[*i] == '"' || s[*i] == '\0' || s[*i] == '\'' )
 		(*i)--;
 	return (res);
 }

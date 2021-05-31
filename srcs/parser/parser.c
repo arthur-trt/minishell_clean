@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/15 12:50:48 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/30 15:05:31 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 	}
 	else if (s[*i] == '\'')
 		*res = ft_apply(s, i, &ft_single, *res);
-	else if (s[*i] == '$')
+	else if (s[*i] == '$' )
 		*res = ft_apply_var(s, i, *res);
+	else if (s[*i] == '~' )
+		*res = home_tild(*res);
 	else
 		*res = ft_apply(s, i, &ft_string, *res);
 	if (!(*res))
@@ -86,10 +88,10 @@ t_list	*ft_parse(char *s)
 	int		r;
 
 	r = 0;
-	i = -1;
+	i = 0;
 	res = NULL;
 	command = NULL;
-	while (s[++i])
+	while (s[i])
 	{
 		if (s[i] != ' ')
 		{
@@ -99,6 +101,7 @@ t_list	*ft_parse(char *s)
 		else if (s[i] == ' ')
 			if (ft_empty_buffer(&res, &command))
 				ft_parse_error(command);
+		i++;
 	}
 	if (res)
 		if (ft_empty_buffer(&res, &command))

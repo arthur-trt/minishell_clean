@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/26 10:14:22 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/30 15:05:07 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int			ft_exec(t_lexer *lexed)
 		g_glob->save_in = dup(0);
 		g_glob->save_out = dup(1);
 		cmds = ft_parse(tmp->cmd);
+		printf_list(cmds);
 		ft_redirection_check(cmds, &fdin, &fdtemp);
 		dup2(fdin, 0);
 		close(fdin);
@@ -84,5 +85,6 @@ int			ft_exec(t_lexer *lexed)
 		waitpid(ret, NULL, 0);
 		tmp = tmp->next;
 	}
+	free_list(cmds);
 	return (0);
 }

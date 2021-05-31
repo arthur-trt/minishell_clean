@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/26 11:46:13 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/30 15:04:49 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,20 @@ extern t_glob *g_glob;
 int			is_builtin(t_list *cmds)
 {
 	int		r;
+	t_list	*tmp;
 
 	r = 0;
+	tmp = copycmds(cmds);
 	if (!(ft_strcmp("echo", cmds->content)))
-		r = ft_echo(cmds);
+		r = ft_echo(tmp);
 	else if (!(ft_strcmp("pwd", cmds->content)))
 		r = ft_pwd();
 	else if (!(ft_strcmp("env", cmds->content)))
 		r = ft_env();
 	else if (!(ft_strcmp("export", cmds->content)))
-		r = ft_export(cmds);
+		r = ft_export(tmp);
 	else if (!(ft_strcmp("unset", cmds->content)))
-		r = ft_unset(cmds);
+		r = ft_unset(tmp);
 	//if (!(ft_strcmp("exit", cmds->content)))
 		// r = ft_exit;
 	// if (!(ft_strcmp("cd", cmds->content)))
@@ -42,6 +44,7 @@ int			is_builtin(t_list *cmds)
 		r = exec_path(cmds);
 	if (r != 0)
 		ft_putstr_fd("Error executing builtin.\n", 2);
+	free_list(tmp);
 	return (r);
 }
 
@@ -74,6 +77,26 @@ char		*env_concat(t_env *tmp)
 	return (res);
 }
 
+
+int			word_checker(t_list *tmp, char **s)
+{
+	int		i;
+
+	i = 0;
+	while (tmp->content[i])
+	{
+		if (ft_ischarset(tmp->content[i], "<>"))
+		{
+			if (i == 0)
+				*s = NULL;//ft_strdup("");
+			*s = ft_substr(tmp->content, 0, i - 1);
+			return (1);
+		}
+		i++;
+	}
+	*s = tmp->content;
+	return (0);
+}
 /*
 *** Puts all the args in a single char** to send to execve
 *** @return a char** containing all the arguments
@@ -97,7 +120,11 @@ char		**argv_exec_creator(t_list *cmds)
 	tmp = cmds;
 	while (tmp)
 	{
-		res[i] = tmp->content;
+		if (word_checker(tmp, &res[i]))
+		{
+			i++;
+			break ;
+		}
 		i++;
 		tmp = tmp->next;
 	}

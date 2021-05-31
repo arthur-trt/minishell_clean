@@ -8419,3 +8419,2740 @@ NEW COMMAND :
 pos :	55	43
 win :	178	42
 cursor : 187
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	34	18
+win :	130	18
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	16	18
+win :	130	18
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	53	18
+win :	130	18
+cursor : 21
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	34	18
+win :	130	18
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	18
+win :	130	18
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	18
+win :	130	18
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	18
+win :	130	18
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	18
+win :	130	18
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	18
+win :	130	18
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	18
+win :	130	18
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	18
+win :	130	18
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	18
+win :	130	18
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	18
+win :	130	18
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	18
+win :	130	18
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	35	18
+win :	130	18
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	35	18
+win :	130	18
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	34	18
+win :	130	18
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	34	18
+win :	130	18
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	18
+win :	130	18
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	18
+win :	130	18
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	18
+win :	130	18
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	18
+win :	130	18
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	18
+win :	130	18
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	18
+win :	130	18
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	18
+win :	130	18
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	18
+win :	130	18
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	18
+win :	130	18
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	18
+win :	130	18
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	23	18
+win :	130	18
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	18
+win :	130	18
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	23	18
+win :	130	18
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	18
+win :	130	18
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	35	22
+win :	130	22
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	35	22
+win :	130	22
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	34	22
+win :	130	22
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	34	22
+win :	130	22
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	22
+win :	130	22
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	22
+win :	130	22
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	22
+win :	130	22
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	22
+win :	130	22
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	22
+win :	130	22
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	22
+win :	130	22
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	22
+win :	130	22
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	48	13
+win :	130	13
+cursor : 16
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	92	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	92	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	96	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	96	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	95	13
+win :	130	13
+cursor : 63
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	98	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	96	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	52	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	51	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	50	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	49	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	49	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	52	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	51	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	59	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	58	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	57	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	56	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	56	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	59	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	96	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	51	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	59	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	58	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	57	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	56	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	56	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	59	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	47	13
+win :	130	13
+cursor : 15
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	48	13
+win :	130	13
+cursor : 16
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	48	13
+win :	130	13
+cursor : 16
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	13
+win :	130	13
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	13
+win :	130	13
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	101	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	101	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	101	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	73	13
+win :	130	13
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	73	13
+win :	130	13
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	72	13
+win :	130	13
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	72	13
+win :	130	13
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	71	13
+win :	130	13
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	71	13
+win :	130	13
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	70	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	70	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	86	13
+win :	130	13
+cursor : 16
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	49	13
+win :	130	13
+cursor : 17
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	101	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	47	13
+win :	130	13
+cursor : 15
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	13
+win :	130	13
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	13
+win :	130	13
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	104	13
+win :	130	13
+cursor : 17
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	48	13
+win :	130	13
+cursor : 16
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	47	13
+win :	130	13
+cursor : 15
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	15	14
+win :	130	13
+cursor : 16
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	47	13
+win :	130	13
+cursor : 15
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	47	13
+win :	130	13
+cursor : 15
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	7	14
+win :	130	13
+cursor : 15
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	35	13
+win :	130	13
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	35	13
+win :	130	13
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	34	13
+win :	130	13
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	34	13
+win :	130	13
+cursor : 2
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	13
+win :	130	13
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	33	13
+win :	130	13
+cursor : 1
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	13
+win :	130	13
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	13
+win :	130	13
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	35	13
+win :	130	13
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	35	13
+win :	130	13
+cursor : 3
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	13
+win :	130	13
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	13
+win :	130	13
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	118	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	118	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	115	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	115	13
+win :	130	13
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	118	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	117	13
+win :	130	13
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	128	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	128	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	127	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	127	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	6	14
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	93	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	6	14
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	6	14
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	69	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	6	14
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	13
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	122	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	122	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	6	14
+win :	130	13
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	13
+win :	130	13
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	13
+win :	130	13
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	13
+win :	130	13
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	13
+win :	130	13
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	13
+win :	130	13
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	13
+win :	130	13
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	25
+win :	130	25
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	25
+win :	130	25
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	25
+win :	130	25
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	25
+win :	130	25
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	25
+win :	130	25
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	25
+win :	130	25
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	25
+win :	130	25
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	25
+win :	130	25
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	25
+win :	130	25
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	25
+win :	130	25
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	25
+win :	130	25
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	25
+win :	130	25
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	25
+win :	130	25
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	25
+win :	130	25
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	25
+win :	130	25
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	25
+win :	130	25
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	25
+win :	130	25
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	25
+win :	130	25
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	25
+win :	130	25
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	25
+win :	130	25
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	74	20
+win :	130	20
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	20
+win :	130	20
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	20
+win :	130	20
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	20
+win :	130	20
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	20
+win :	130	20
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	20
+win :	130	20
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	20
+win :	130	20
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	29	20
+win :	130	20
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	13	20
+win :	130	20
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	20
+win :	130	10
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	20
+win :	130	10
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	20
+win :	130	10
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	20
+win :	130	10
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	20
+win :	130	10
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	10
+win :	130	10
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	21	12
+win :	130	12
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	12
+win :	130	12
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	12
+win :	130	12
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	12
+win :	130	12
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	12
+win :	130	12
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	12
+win :	130	12
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	12
+win :	130	12
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	12
+win :	130	12
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	12
+win :	130	12
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	12
+win :	130	12
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	12
+win :	130	12
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	12
+win :	130	12
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	12
+win :	130	12
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	12
+win :	130	12
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	12
+win :	130	12
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	12
+win :	130	12
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	12
+win :	130	12
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	12
+win :	130	12
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	12
+win :	130	12
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	12
+win :	130	12
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	12
+win :	130	12
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	12
+win :	130	12
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	12
+win :	130	12
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	12
+win :	130	12
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	12
+win :	130	12
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	12
+win :	130	12
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	12
+win :	130	12
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	46	12
+win :	130	12
+cursor : 14
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	32	12
+win :	130	12
+cursor : 0
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	45	12
+win :	130	12
+cursor : 13
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	44	12
+win :	130	12
+cursor : 12
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	43	12
+win :	130	12
+cursor : 11
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	42	12
+win :	130	12
+cursor : 10
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	41	12
+win :	130	12
+cursor : 9
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	40	12
+win :	130	12
+cursor : 8
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	39	12
+win :	130	12
+cursor : 7
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	38	12
+win :	130	12
+cursor : 6
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	12
+win :	130	12
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	36	12
+win :	130	12
+cursor : 4
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	37	12
+win :	130	12
+cursor : 5
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	49	12
+win :	130	12
+cursor : 17
+
+
+NEW COMMAND :
+	(col)	(row)
+pos :	4	3
+win :	130	12
+cursor : 4
