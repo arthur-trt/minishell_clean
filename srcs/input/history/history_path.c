@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 17:46:41 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/29 18:16:38 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/31 20:43:26 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	*history_path()
 	char	cwd_buffer[4096];
 	char	*path;
 	char	*base;
+	char	*tmp;
 
 	base = search_env("HOME");
 	if (base == NULL)
@@ -53,7 +54,9 @@ char	*history_path()
 		ft_bzero(cwd_buffer, MAX_CMD_LINE);
 		base = getcwd(cwd_buffer, MAX_CMD_LINE);
 	}
-	path = ft_strjoin(clean_path(base), HISTORY_PATH);
+	tmp = clean_path(base);
+	path = ft_strjoin(tmp, HISTORY_PATH);
+	free(tmp);
 	g_glob->path = path;
 	return (path);
 }
