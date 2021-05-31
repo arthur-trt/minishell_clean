@@ -10,8 +10,7 @@ SOURCES		+=                                   		\
 ## SRCS/BUILTINS ##
 
 SOURCES		+=                                   		\
-		srcs/builtins/ft_unset.c                    	\
-		srcs/builtins/ft_pwd.c                      	\
+		srcs/builtins/ft_cd.c                       	\
 		srcs/builtins/ft_echo.c                     	\
 		srcs/builtins/ft_export.c                   	\
 		srcs/builtins/ft_env.c                      	\
@@ -39,7 +38,12 @@ SOURCES		+=                                   		\
 		srcs/input/history/nav_history.c            	\
 		srcs/input/history/backup_history.c         	\
 		srcs/input/history/free_history.c           	\
+<<<<<<< HEAD
 		srcs/input/history/add_elem_history.c       	\
+=======
+		srcs/input/history/history_path.c           	\
+		srcs/input/history/nav_history.c            	\
+>>>>>>> 6d8865b03f398405a354e9ab002e56a5d20c1360
 		srcs/input/history/print_history.c          	\
 
 

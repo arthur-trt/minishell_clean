@@ -6,7 +6,11 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/05/30 15:05:31 by jcueille         ###   ########.fr       */
+=======
+/*   Updated: 2021/05/27 18:00:42 by atrouill         ###   ########.fr       */
+>>>>>>> 6d8865b03f398405a354e9ab002e56a5d20c1360
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +89,7 @@ t_list	*ft_parse(char *s)
 	t_list	*command;
 	char	*res;
 	int		i;
-	int		r;
 
-	r = 0;
 	i = 0;
 	res = NULL;
 	command = NULL;

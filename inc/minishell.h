@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/30 13:31:07 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/31 16:15:50 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <fcntl.h>
 # include <curses.h>
 # include <term.h>
+# include <errno.h>
+# include <string.h>
 
 # ifdef __APPLE__
 #  include <termios.h>
@@ -56,6 +58,7 @@ typedef struct s_glob
 	int				ret;
 	int				save_out;
 	int				save_in;
+	char			*path;
 }					t_glob;
 
 void printf_list(t_list *lst);

@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/30 15:05:07 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/31 16:12:13 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,20 @@ int			ft_exec(t_lexer *lexed)
 		}
 		dup2(fdout,1);
 		close(fdout);
-		ret=fork();
-		if(ret==0)
+		if (is_builtin_no_forks(cmds) == 15)
 		{
-			is_builtin(cmds);
-			exit(1);
+			ret=fork();
+			if(ret==0)
+			{
+				is_builtin(cmds);
+				exit(1);
+			}
+			dup2(g_glob->save_in, 0);
+			dup2(g_glob->save_out, 1);
+			close(g_glob->save_in);
+			close(g_glob->save_out);
+			waitpid(ret, NULL, 0);
 		}
-		dup2(g_glob->save_in, 0);
-		dup2(g_glob->save_out, 1);
-		close(g_glob->save_in);
-		close(g_glob->save_out);
-		waitpid(ret, NULL, 0);
 		tmp = tmp->next;
 	}
 	free_list(cmds);

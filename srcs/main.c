@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/30 19:44:06 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/31 16:15:10 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		main(void)
 	g_glob = NULL;
   	if(ft_init_gobal())
 		return (EXIT_FAILURE);
+	history_path();
 	hist = construct_hist();
 	print_env();
 	minishell(&hist);

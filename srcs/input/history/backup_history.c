@@ -6,11 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 16:31:29 by atrouill          #+#    #+#             */
-/*   Updated: 2021/04/26 16:58:31 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:17:55 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern t_glob	*g_glob;
 
 static t_hist	*last_elem(t_hist *hist)
 {
@@ -35,7 +37,7 @@ bool	backup_history(t_hist *hist)
 
 	if (hist == NULL)
 		return (false);
-	fd = open(HISTORY_PATH, O_WRONLY | O_CREAT, 0644);
+	fd = open(g_glob->path, O_WRONLY | O_CREAT, 0644);
 	if (fd == -1)
 		return (false);
 	last = last_elem(hist);
