@@ -29,19 +29,18 @@ int			ft_less(t_list *tmp, int *i, int *fdin)
 
 	filename = NULL;
 
-	printf("i is after: %d\n", *i);
-	printf("tmp->content after: %s\n", tmp->content);
 	while (tmp && !(filename))
 	{
 		if ((filename = get_file_name(tmp->content, i)))
 			break ;
-		i = 0;
+		*i = 0;
 		tmp = tmp->next;
 	}
 	if (filename)
 	{
 		if (!(*fdin = open(filename, O_RDONLY)))
 			printf("error opening file\n");
+		printf("fdin is %d\n", *fdin);
 		free(filename);
 		return (0);
 	}
@@ -58,6 +57,7 @@ int			ft_less(t_list *tmp, int *i, int *fdin)
 */
 int			ft_more(t_list *tmp, int *i, int *fdout)
 {
+	printf("Entering ft_more\n");
 	char	*filename;
 	int		append;
 
@@ -84,9 +84,13 @@ int			ft_more(t_list *tmp, int *i, int *fdout)
 	if (filename)
 	{
 		if (append == 0)
-			*fdout = open(filename, O_RDWR | O_CREAT | O_TRUNC);
+		{
+			*fdout = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0644);
+			printf("fdout is : %d\n", *fdout);
+			
+		}
 		else
-			*fdout = open(filename, O_RDWR | O_APPEND | O_CREAT);
+			*fdout = open(filename, O_RDWR | O_APPEND | O_CREAT, 0644);
 		free(filename);
 		return (0);
 	}

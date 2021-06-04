@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/31 16:12:13 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/04 12:05:39 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			exec_path(t_list *cmds)
 	if (!(path = search_path(cmds->content)))
 	{
 		ft_putstr_fd("Error: path or executable name incorrect.\n", 2);
-		return (-1);
+		return (127);
 	}
 	printf("PATH IS %s\n", path);
 	if (!(env = env_exec_creator()) || !(args = argv_exec_creator(cmds)))
@@ -47,22 +47,40 @@ int			ft_exec(t_lexer *lexed)
 	int		ret;
 
 	fdtemp = 0;
+	fdin = 0;
+	fdout = 0;
 	tmp = lexed;
 	while (tmp)
 	{
 		g_glob->save_in = dup(0);
 		g_glob->save_out = dup(1);
+
+		// printf("save_out %d save_in %d\n", g_glob->save_out, g_glob->save_in);
+		
 		cmds = ft_parse(tmp->cmd);
-		printf_list(cmds);
+		// printf_list(cmds);
 		ft_redirection_check(cmds, &fdin, &fdtemp);
+
+		// printf("save_out2 %d save_in %d\n", g_glob->save_out, g_glob->save_in);
+		// printf("fdin3 is %d\n", fdin);
+
 		dup2(fdin, 0);
+
+		// printf("save_out3 %d save_in %d\n", g_glob->save_out, g_glob->save_in);
+		// printf("fdin4 is %d and fdout is %d\n", fdin, fdout);
+
 		close(fdin);
+
+		// printf("fdin5 is %d and fdout is %d\n", fdin, fdout);
+		// printf("save_out3 %d\n", g_glob->save_out);
 		if ((tmp->next && tmp->next->token == T_SEMICOLON) || tmp->next == NULL)
 		{
 			if (fdtemp)
 				fdout = fdtemp;
 			else
 				fdout = dup(g_glob->save_out);
+			// printf("fdin6 is %d and fdout is %d\n", fdin, fdout);
+			// printf("save_out5 %d save_in %d\n", g_glob->save_out, g_glob->save_in);
 		}
 		else
 		{

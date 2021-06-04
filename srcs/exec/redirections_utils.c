@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/30 20:41:03 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/02 15:08:27 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static int	ft_redirect(t_list *tmp, int *i, int *fdin, int *fdout)
 */
 int			ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 {
+	printf("Entering redirection_check\n");
 	t_list	*tmp;
 	int		i;
 
@@ -93,6 +94,7 @@ int			ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 			if (ft_ischarset(tmp->content[i], "<>"))
 			{
 				ft_redirect(tmp, &i, fdin, fdout);
+				// printf("fdin2 is: %d\n", *fdin);
 				return (0);
 			}
 			i++;

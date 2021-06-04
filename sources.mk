@@ -57,6 +57,7 @@ SOURCES		+=                                   		\
 ## SRCS/EXEC ##
 
 SOURCES		+=                                   		\
+		srcs/exec/exec_utils2.c                     	\
 		srcs/exec/redirections.c                    	\
 		srcs/exec/copycmds.c                        	\
 		srcs/exec/exec.c                            	\

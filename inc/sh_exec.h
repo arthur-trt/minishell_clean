@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/31 16:15:26 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/04 11:51:55 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 char	*search_path(char *exec_name);
 int		is_builtin(t_list *cmds);
-int			is_builtin_no_forks(t_list *cmds);
+int		is_builtin_no_forks(t_list *cmds);
 char	**argv_exec_creator(t_list *cmds);
 char	**env_exec_creator(void);
 int		exec_path(t_list *cmds);
@@ -33,4 +33,5 @@ int		ft_exec(t_lexer *lexed);
 int		ft_ischarset(char c, char *charset);
 t_list	*copycmds(t_list *lst);
 int		word_checker(t_list *tmp, char **s);
+int		word_checker_bis(t_list *tmp, char **s);
 #endif

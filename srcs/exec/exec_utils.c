@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/31 16:11:44 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/04 12:05:54 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ int			is_builtin(t_list *cmds)
 		// r = ft_exit;
 	else
 		r = exec_path(cmds);
-	if (r != 0)
+	if (r < 0)
 		ft_putstr_fd("Error executing builtin.\n", 2);
 	free_list(tmp);
+	g_glob->ret = r;
 	return (r);
 }
 
@@ -97,9 +98,11 @@ int			word_checker(t_list *tmp, char **s)
 	{
 		if (ft_ischarset(tmp->content[i], "<>"))
 		{
+
 			if (i == 0)
-				*s = NULL;//ft_strdup("");
-			*s = ft_substr(tmp->content, 0, i - 1);
+				*s = ft_strdup("");
+			else
+				*s = ft_substr(tmp->content, 0, i - 1);
 			return (1);
 		}
 		i++;
@@ -130,7 +133,7 @@ char		**argv_exec_creator(t_list *cmds)
 	tmp = cmds;
 	while (tmp)
 	{
-		if (word_checker(tmp, &res[i]))
+		if (word_checker_bis(tmp, &res[i]))
 		{
 			i++;
 			break ;
