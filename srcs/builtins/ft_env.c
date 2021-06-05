@@ -28,5 +28,5 @@ int			ft_env(void)
 		ft_putstr_fd("\n", 1);
 		env = env->next;
 	}
-	return (0);
+	exit(0);
 }

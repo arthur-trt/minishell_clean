@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:38:23 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/26 10:11:20 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/04 16:22:49 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	ft_echo(t_list *cmd)
 	}
 	if (!(flag))
 		ft_putstr_fd("\n", 1);
-	return (0);
+	//return (0);
+	exit(0);
 }

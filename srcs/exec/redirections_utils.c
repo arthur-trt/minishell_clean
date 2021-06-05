@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/02 15:08:27 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/04 16:59:43 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ static int	ft_redirect(t_list *tmp, int *i, int *fdin, int *fdout)
 		r = ft_reverse();
 	else if (tmp->content[*i] == '<')
 		r = ft_less(tmp, i, fdin);
+	else if (tmp->content[*i] == '>' && tmp->content[*i + 1] == '>')
+		r = ft_append(tmp, i, fdout);
 	else if (tmp->content[*i] == '>')
 		r = ft_more(tmp, i, fdout);
 	return (r);
@@ -81,7 +83,6 @@ static int	ft_redirect(t_list *tmp, int *i, int *fdin, int *fdout)
 */
 int			ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 {
-	printf("Entering redirection_check\n");
 	t_list	*tmp;
 	int		i;
 
@@ -93,9 +94,9 @@ int			ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 		{
 			if (ft_ischarset(tmp->content[i], "<>"))
 			{
-				ft_redirect(tmp, &i, fdin, fdout);
+				return (ft_redirect(tmp, &i, fdin, fdout));
 				// printf("fdin2 is: %d\n", *fdin);
-				return (0);
+				//return (0);
 			}
 			i++;
 		}
@@ -106,7 +107,8 @@ int			ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 
 int	fd_opener(t_list *cmds, int *fdin, int *fdout)
 {
-	ft_redirection_check(cmds, fdin, fdout);
+	if (ft_redirection_check(cmds, fdin, fdout))
+		return (-1);
 	if (!(*fdout))
 		*fdout = dup(g_glob->save_out);
 	if (!(*fdin))

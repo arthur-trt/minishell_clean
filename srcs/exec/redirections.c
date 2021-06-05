@@ -40,7 +40,6 @@ int			ft_less(t_list *tmp, int *i, int *fdin)
 	{
 		if (!(*fdin = open(filename, O_RDONLY)))
 			printf("error opening file\n");
-		printf("fdin is %d\n", *fdin);
 		free(filename);
 		return (0);
 	}
@@ -57,16 +56,8 @@ int			ft_less(t_list *tmp, int *i, int *fdin)
 */
 int			ft_more(t_list *tmp, int *i, int *fdout)
 {
-	printf("Entering ft_more\n");
 	char	*filename;
-	int		append;
 
-	append = 0;
-	if (tmp->content[(*i) + 1] == '>')
-	{
-		(*i)++;
-		append++;
-	}
 	if (tmp->content[(*i) + 1])
 		(*i)++;
 	else
@@ -83,14 +74,7 @@ int			ft_more(t_list *tmp, int *i, int *fdout)
 	}
 	if (filename)
 	{
-		if (append == 0)
-		{
-			*fdout = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0644);
-			printf("fdout is : %d\n", *fdout);
-			
-		}
-		else
-			*fdout = open(filename, O_RDWR | O_APPEND | O_CREAT, 0644);
+		*fdout = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0644);
 		free(filename);
 		return (0);
 	}
@@ -101,4 +85,41 @@ int			ft_more(t_list *tmp, int *i, int *fdout)
 int			ft_reverse()
 {
 	return (0);
+}
+
+int			ft_append(t_list *tmp, int *i, int *fdout)
+{
+	char	*filename;
+	struct stat file_check;
+
+	(*i)++;
+	if (tmp->content[(*i) + 1])
+		(*i)++;
+	else
+	{
+		*i = 0;
+		tmp = tmp->next;
+	}
+	filename = NULL;
+	while (tmp && !(filename))
+	{
+		if ((filename = get_file_name(tmp->content, i)))
+			break ;
+		if (stat(filename, &file_check) == -1) 
+		{
+        free(filename);
+		ft_putstr_fd("File doesn't exist\n", 2);
+        exit(EXIT_FAILURE);
+		}
+		tmp = tmp->next;
+	}
+	if (filename)
+	{
+		*fdout = open(filename, O_RDWR | O_APPEND | O_CREAT, 0644);		
+		
+		free(filename);
+		return (0);
+	}
+	ft_putstr_fd("Error: filename not specified after redirection\n", 2);
+	return (-1);
 }

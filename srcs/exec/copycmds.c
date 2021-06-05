@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 13:53:23 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/01 21:58:31 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/04 12:39:27 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ t_list		*copycmds(t_list *lst)
 	s = NULL;
 	r = 0;
 	res = NULL;
-	//printf("entering copycmds\n");
 	while (tmp)
 	{
 		r = word_checker(tmp, &s);
-
-		// s = ft_strdup(tmp->content);
 		if (!(res))
 			res = ft_lstnew(s);
 		else

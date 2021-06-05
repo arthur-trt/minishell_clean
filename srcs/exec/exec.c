@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/04 12:05:39 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/04 16:22:01 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ int			ft_exec(t_lexer *lexed)
 	int		fdtemp;
 	int		fdpipe[2];
 	int		ret;
+	int		status;
 
 	fdtemp = 0;
+	status = 0;
 	fdin = 0;
 	fdout = 0;
 	tmp = lexed;
@@ -54,33 +56,16 @@ int			ft_exec(t_lexer *lexed)
 	{
 		g_glob->save_in = dup(0);
 		g_glob->save_out = dup(1);
-
-		// printf("save_out %d save_in %d\n", g_glob->save_out, g_glob->save_in);
-		
 		cmds = ft_parse(tmp->cmd);
-		// printf_list(cmds);
 		ft_redirection_check(cmds, &fdin, &fdtemp);
-
-		// printf("save_out2 %d save_in %d\n", g_glob->save_out, g_glob->save_in);
-		// printf("fdin3 is %d\n", fdin);
-
 		dup2(fdin, 0);
-
-		// printf("save_out3 %d save_in %d\n", g_glob->save_out, g_glob->save_in);
-		// printf("fdin4 is %d and fdout is %d\n", fdin, fdout);
-
 		close(fdin);
-
-		// printf("fdin5 is %d and fdout is %d\n", fdin, fdout);
-		// printf("save_out3 %d\n", g_glob->save_out);
 		if ((tmp->next && tmp->next->token == T_SEMICOLON) || tmp->next == NULL)
 		{
 			if (fdtemp)
 				fdout = fdtemp;
 			else
 				fdout = dup(g_glob->save_out);
-			// printf("fdin6 is %d and fdout is %d\n", fdin, fdout);
-			// printf("save_out5 %d save_in %d\n", g_glob->save_out, g_glob->save_in);
 		}
 		else
 		{
@@ -95,17 +80,21 @@ int			ft_exec(t_lexer *lexed)
 			ret=fork();
 			if(ret==0)
 			{
-				is_builtin(cmds);
+				g_glob->ret = is_builtin(cmds);
 				exit(1);
 			}
 			dup2(g_glob->save_in, 0);
 			dup2(g_glob->save_out, 1);
 			close(g_glob->save_in);
 			close(g_glob->save_out);
-			waitpid(ret, NULL, 0);
+			waitpid(ret, &status, 0);
+			g_glob->ret = 0;
+			if (WIFEXITED(status))
+				g_glob->ret = status;
+			printf("status is %d\n", status);
 		}
 		tmp = tmp->next;
+		free_list(cmds);
 	}
-	free_list(cmds);
 	return (0);
 }

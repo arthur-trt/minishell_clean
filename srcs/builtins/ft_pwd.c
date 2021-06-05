@@ -24,5 +24,5 @@ int			ft_pwd(void)
 		return (-1);
 	}
 	ft_putstr_fd(cwd, 1);
-	return (0);
+	exit(0);
 }

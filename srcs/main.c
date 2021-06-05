@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/31 20:39:56 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/05 13:40:08 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ int		minishell(t_hist **hist)
 {
 	t_lexer	*lexed;
 	char	*input_user;
-	(void)hist;
 	while (true)
 	{
 		input_user = input(hist);
-		//input_user = ft_strdup("echo lol > lol");
 		if (ft_strcmp(input_user, "exit") == 0)
 			break ;
 		lexed = lexer(input_user);

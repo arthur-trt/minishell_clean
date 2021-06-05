@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/04 12:05:54 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/04 16:04:08 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			is_builtin(t_list *cmds)
 	if (r < 0)
 		ft_putstr_fd("Error executing builtin.\n", 2);
 	free_list(tmp);
-	g_glob->ret = r;
+	printf("r is %d\n", r);
 	return (r);
 }
 
