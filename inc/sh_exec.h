@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/04 11:51:55 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/05 16:02:42 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		ft_redirection_check(t_list *cmds, int *fdin, int *fdout);
 int		ft_reverse();
 int		ft_less(t_list *tmp, int *i, int *fdin);
 int		ft_more(t_list *tmp, int *i, int *fdout);
+int		ft_append(t_list *tmp, int *i, int *fdout);
 char	*get_file_name(char *s, int *i);
 int		ft_exec(t_lexer *lexed);
 int		ft_ischarset(char c, char *charset);

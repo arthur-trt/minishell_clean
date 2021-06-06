@@ -105,16 +105,16 @@ int			ft_append(t_list *tmp, int *i, int *fdout)
 	{
 		if ((filename = get_file_name(tmp->content, i)))
 			break ;
+		tmp = tmp->next;
+	}
+	if (filename)
+	{
 		if (stat(filename, &file_check) == -1) 
 		{
         free(filename);
 		ft_putstr_fd("File doesn't exist\n", 2);
         exit(EXIT_FAILURE);
 		}
-		tmp = tmp->next;
-	}
-	if (filename)
-	{
 		*fdout = open(filename, O_RDWR | O_APPEND | O_CREAT, 0644);		
 		
 		free(filename);
