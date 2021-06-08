@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/31 16:15:50 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/07 14:08:29 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_glob
 	int				ret;
 	int				save_out;
 	int				save_in;
+	int				prog;
+	int				pid;
 	char			*path;
 }					t_glob;
 

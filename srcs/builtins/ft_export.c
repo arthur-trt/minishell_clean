@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:38:43 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/04 16:39:26 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/08 00:56:38 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			ft_addmaillon(char *key, char *value)
 {
 	t_env	*env;
 
-	if (!(env = malloc(sizeof(t_env *))))
+	if (!(env = malloc(sizeof(t_env))))
 		return (-1);
 	env->key = key;
 	env->value = value;

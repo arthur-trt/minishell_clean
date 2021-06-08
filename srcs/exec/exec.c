@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/04 16:22:01 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/07 14:19:35 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,9 @@ int			ft_exec(t_lexer *lexed)
 		close(fdout);
 		if (is_builtin_no_forks(cmds) == 15)
 		{
-			ret=fork();
-			if(ret==0)
+			ret = fork();
+			g_glob->prog = 1;
+			if(ret == 0)
 			{
 				g_glob->ret = is_builtin(cmds);
 				exit(1);
@@ -91,7 +92,7 @@ int			ft_exec(t_lexer *lexed)
 			g_glob->ret = 0;
 			if (WIFEXITED(status))
 				g_glob->ret = status;
-			printf("status is %d\n", status);
+			g_glob->prog = 0;
 		}
 		tmp = tmp->next;
 		free_list(cmds);

@@ -49,6 +49,7 @@ SOURCES		+=                                   		\
 
 SOURCES		+=                                   		\
 		srcs/utils/free_list.c                      	\
+		srcs/utils/signals.c                        	\
 		srcs/utils/ft_clean_str.c                   	\
 		srcs/utils/free_split.c                     	\
 		srcs/utils/ft_str_malloc.c                  	\

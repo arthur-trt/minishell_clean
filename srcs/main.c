@@ -6,12 +6,12 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/05 13:40:08 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/07 15:15:09 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <string.h>
+#include <signal.h>
 
 t_glob	*g_glob;
 
@@ -19,6 +19,7 @@ int		minishell(t_hist **hist)
 {
 	t_lexer	*lexed;
 	char	*input_user;
+	g_glob->prog = 0;
 	while (true)
 	{
 		input_user = input(hist);
@@ -38,8 +39,10 @@ int		main(void)
 {
 	t_hist	*hist;
 
+	signal(SIGQUIT, c_handler);
+	signal(SIGINT, d_handler);
 	g_glob = NULL;
-  	if(ft_init_gobal())
+  	if (ft_init_gobal())
 		return (EXIT_FAILURE);
 	hist = construct_hist();
 	print_env();
@@ -49,5 +52,4 @@ int		main(void)
 	free_history(&hist);
 	free_glob();
 	return (EXIT_SUCCESS);
-
 }
