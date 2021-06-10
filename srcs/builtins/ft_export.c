@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:38:43 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/08 00:56:38 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/08 13:47:46 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,5 @@ int			ft_export(t_list *cmd)
 	}
 	else
 		ft_env();
-	exit(0);
+	return(0);
 }

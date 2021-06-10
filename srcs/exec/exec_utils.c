@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/04 16:04:08 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/10 11:57:29 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int			is_builtin(t_list *cmds)
 		r = ft_pwd();
 	else if (!(ft_strcmp("env", cmds->content)))
 		r = ft_env();
-	else if (!(ft_strcmp("export", cmds->content)))
-		r = ft_export(tmp);
-	else if (!(ft_strcmp("unset", cmds->content)))
-		r = ft_unset(tmp);
+
 	//if (!(ft_strcmp("exit", cmds->content)))
 		// r = ft_exit;
 	else
@@ -50,12 +47,19 @@ int			is_builtin(t_list *cmds)
 int			is_builtin_no_forks(t_list *cmds)
 {
 	int	r;
+	t_list	*tmp;
 
+	tmp = copycmds(cmds);
 	r = 15;
 	if (!(ft_strcmp("cd", cmds->content)))
 		r = ft_cd(cmds);
+	else if (!(ft_strcmp("export", cmds->content)))
+		r = ft_export(tmp);
+	else if (!(ft_strcmp("unset", cmds->content)))
+		r = ft_unset(tmp);
 	if (r != 0 && r != 15)
 		ft_putstr_fd("Error executing builtin.\n", 2);
+	free_list(tmp);
 	return (r);
 }
 
@@ -107,7 +111,9 @@ int			word_checker(t_list *tmp, char **s)
 		}
 		i++;
 	}
-	*s = tmp->content;
+	//if (j)
+	//	*s = ft_strdup
+	*s = ft_strdup(tmp->content);
 	return (0);
 }
 /*

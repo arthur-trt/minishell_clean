@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 13:07:52 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/04 16:39:42 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/08 13:48:11 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,5 @@ int			ft_unset(t_list *cmd)
 		ft_unset_launcher(tmp->content);
 		tmp = tmp->next;
 	}
-	exit(0);
+	return(0);
 }

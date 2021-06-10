@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:45:00 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/29 15:06:05 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/08 22:06:11 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int	free_list(t_list *lst)
 	{
 		tmp = lst->next;
 		if (lst->content)
+		{
 			free(lst->content);
-		
+			lst->content = NULL;
+		}
 		free(lst);
 		lst = tmp;
 	}

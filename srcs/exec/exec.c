@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/07 14:19:35 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/10 11:56:16 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,19 @@ int			ft_exec(t_lexer *lexed)
 				g_glob->ret = is_builtin(cmds);
 				exit(1);
 			}
-			dup2(g_glob->save_in, 0);
-			dup2(g_glob->save_out, 1);
-			close(g_glob->save_in);
-			close(g_glob->save_out);
 			waitpid(ret, &status, 0);
 			g_glob->ret = 0;
 			if (WIFEXITED(status))
 				g_glob->ret = status;
 			g_glob->prog = 0;
 		}
+		dup2(g_glob->save_in, 0);
+		dup2(g_glob->save_out, 1);
+		close(g_glob->save_in);
+		close(g_glob->save_out);
 		tmp = tmp->next;
-		free_list(cmds);
+		if (cmds)
+			free_list(cmds);
 	}
 	return (0);
 }
