@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/09 14:57:49 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/10 14:20:33 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int		main(void)
 {
 	t_hist	*hist;
 
-	signal(SIGQUIT, c_handler);
-	signal(SIGINT, d_handler);
+	signal(SIGQUIT, d_handler);
+	signal(SIGINT, c_handler);
 	g_glob = NULL;
   	if (ft_init_gobal())
 		return (EXIT_FAILURE);

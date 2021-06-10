@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/10 11:56:16 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/10 12:20:50 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int			ft_exec(t_lexer *lexed)
 	int		fdout;
 	int		fdtemp;
 	int		fdpipe[2];
-	int		ret;
 	int		status;
 
 	fdtemp = 0;
@@ -57,7 +56,7 @@ int			ft_exec(t_lexer *lexed)
 		g_glob->save_in = dup(0);
 		g_glob->save_out = dup(1);
 		cmds = ft_parse(tmp->cmd);
-		ft_redirection_check(cmds, &fdin, &fdtemp);
+		fd_opener(cmds, &fdin, &fdtemp);
 		dup2(fdin, 0);
 		close(fdin);
 		if ((tmp->next && tmp->next->token == T_SEMICOLON) || tmp->next == NULL)
@@ -77,14 +76,14 @@ int			ft_exec(t_lexer *lexed)
 		close(fdout);
 		if (is_builtin_no_forks(cmds) == 15)
 		{
-			ret = fork();
+			g_glob->pid = fork();
 			g_glob->prog = 1;
-			if(ret == 0)
+			if(g_glob->pid == 0)
 			{
 				g_glob->ret = is_builtin(cmds);
 				exit(1);
 			}
-			waitpid(ret, &status, 0);
+			waitpid(g_glob->pid, &status, 0);
 			g_glob->ret = 0;
 			if (WIFEXITED(status))
 				g_glob->ret = status;
