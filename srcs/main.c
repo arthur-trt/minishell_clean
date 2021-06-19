@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/10 14:20:33 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/19 14:29:25 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 t_glob	*g_glob;
 
-int		minishell(t_hist **hist)
+int	minishell(t_hist **hist)
 {
 	t_lexer	*lexed;
 	char	*input_user;
+
 	g_glob->prog = 0;
 	while (true)
 	{
@@ -35,14 +36,14 @@ int		minishell(t_hist **hist)
 	return (EXIT_SUCCESS);
 }
 
-int		main(void)
+int	main(void)
 {
 	t_hist	*hist;
 
 	signal(SIGQUIT, d_handler);
 	signal(SIGINT, c_handler);
 	g_glob = NULL;
-  	if (ft_init_gobal())
+	if (ft_init_gobal())
 		return (EXIT_FAILURE);
 	hist = construct_hist();
 	print_env();
