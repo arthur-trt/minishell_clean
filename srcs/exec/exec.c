@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/10 12:20:50 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/20 19:44:04 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 extern t_glob	*g_glob;
 
-int			exec_path(t_list *cmds)
+int	exec_path(t_list *cmds)
 {
 	char	*path;
 	char	**env;
@@ -36,66 +36,75 @@ int			exec_path(t_list *cmds)
 	return (0);
 }
 
-int			ft_exec(t_lexer *lexed)
+static t_exec	*exec_init(t_lexer *lexed)
 {
-	t_list	*cmds;
-	t_lexer	*tmp;
-	int		fdin;
-	int		fdout;
-	int		fdtemp;
-	int		fdpipe[2];
-	int		status;
+	t_exec	*exec;
 
-	fdtemp = 0;
-	status = 0;
-	fdin = 0;
-	fdout = 0;
-	tmp = lexed;
-	while (tmp)
+	exec = malloc(sizeof(*exec));
+	exec->fdtemp = 0;
+	exec->status = 0;
+	exec->fdin = 0;
+	exec->fdout = 0;
+	exec->tmp = lexed;
+	return (exec);
+}
+
+int	exec2()
+{
+
+	return (0);
+}
+
+int	ft_exec(t_lexer *lexed)
+{
+	t_exec	*exec;
+
+	exec = exec_init(lexed);
+	while (exec->tmp)
 	{
 		g_glob->save_in = dup(0);
 		g_glob->save_out = dup(1);
-		cmds = ft_parse(tmp->cmd);
-		fd_opener(cmds, &fdin, &fdtemp);
-		dup2(fdin, 0);
-		close(fdin);
-		if ((tmp->next && tmp->next->token == T_SEMICOLON) || tmp->next == NULL)
+		exec->cmds = ft_parse(exec->tmp->cmd);
+		fd_opener(exec->cmds, &exec->fdin, &exec->fdtemp);
+		dup2(exec->fdin, 0);
+		close(exec->fdin);
+		if ((exec->tmp->next && exec->tmp->next->token == T_SEMICOLON) || exec->tmp->next == NULL)
 		{
-			if (fdtemp)
-				fdout = fdtemp;
+			if (exec->fdtemp)
+				exec->fdout = exec->fdtemp;
 			else
-				fdout = dup(g_glob->save_out);
+				exec->fdout = dup(g_glob->save_out);
 		}
 		else
 		{
-			pipe(fdpipe);
-			fdout=fdpipe[1];
-			fdin=fdpipe[0];
+			pipe(exec->fdpipe);
+			exec->fdout = exec->fdpipe[1];
+			exec->fdin = exec->fdpipe[0];
 		}
-		dup2(fdout,1);
-		close(fdout);
-		if (is_builtin_no_forks(cmds) == 15)
+		dup2(exec->fdout, 1);
+		close(exec->fdout);
+		if (is_builtin_no_forks(exec->cmds) == 15)
 		{
 			g_glob->pid = fork();
 			g_glob->prog = 1;
-			if(g_glob->pid == 0)
+			if (g_glob->pid == 0)
 			{
-				g_glob->ret = is_builtin(cmds);
+				g_glob->ret = is_builtin(exec->cmds);
 				exit(1);
 			}
-			waitpid(g_glob->pid, &status, 0);
+			waitpid(g_glob->pid, &exec->status, 0);
 			g_glob->ret = 0;
-			if (WIFEXITED(status))
-				g_glob->ret = status;
+			if (WIFEXITED(exec->status))
+				g_glob->ret = exec->status;
 			g_glob->prog = 0;
 		}
 		dup2(g_glob->save_in, 0);
 		dup2(g_glob->save_out, 1);
 		close(g_glob->save_in);
 		close(g_glob->save_out);
-		tmp = tmp->next;
-		if (cmds)
-			free_list(cmds);
+		exec->tmp = exec->tmp->next;
+		if (exec->cmds)
+			free_list(exec->cmds);
 	}
 	return (0);
 }

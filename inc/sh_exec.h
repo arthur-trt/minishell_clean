@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/10 12:22:05 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/19 14:35:39 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 # include "minishell.h"
 
 # include <dirent.h>
+
+typedef struct s_exec
+{
+	t_list	*cmds;
+	t_lexer	*tmp;
+	int		fdin;
+	int		fdout;
+	int		fdtemp;
+	int		fdpipe[2];
+	int		status;
+
+}	t_exec;
 
 char	*search_path(char *exec_name);
 int		is_builtin(t_list *cmds);

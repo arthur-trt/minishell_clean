@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:02:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/09 00:27:52 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/20 19:41:14 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ static void	special_keys(t_line *input, int key_code, t_hist **hist)
 		history_nav_down(input, hist);
 }
 
-#ifndef BONUS
-void	special_bonus_keys(t_line *input, int key_code)
-{
-	(void)input;
-	(void)key_code;
-}
-#endif
+// #ifndef BONUS
+// void	special_bonus_keys(t_line *input, int key_code)
+// {
+	// (void)input;
+	// (void)key_code;
+// }
+// #endif
 
 static void	input_loop(t_line *input, t_hist **hist)
 {
