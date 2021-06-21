@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 16:21:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/29 18:22:51 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/21 09:10:21 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static char	*construct_path(t_list *cmd)
 		home = search_env("HOME");
 		if (home == NULL)
 		{
-			ft_putstr_fd("minishell: cd: HOME not set", 2);
+			ft_putstr_fd("minishell: cd: HOME not set\n", 2);
 			return (NULL);
 		}
 		path = ft_strdup(home);
@@ -90,6 +90,8 @@ int	ft_cd(t_list *cmd)
 {
 	char	*path;
 	char	*pwd;
+	char	buf[4096];
+	char	*cwd;
 
 	path = construct_path(cmd);
 	if (path == NULL)
@@ -103,9 +105,9 @@ int	ft_cd(t_list *cmd)
 	}
 	else
 	{
-		printf("PWD : %s\nOLDPWD : %s\n", path, pwd);
-		ft_modify_value("PWD", path);
+		cwd = getcwd(buf, 4096);
 		ft_modify_value("OLDPWD", pwd);
+		ft_modify_value("PWD", cwd);
 	}
 	free(path);
 	return (0);
