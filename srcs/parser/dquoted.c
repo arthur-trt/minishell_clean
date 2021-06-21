@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dquoted.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:24:11 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/15 12:47:50 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/21 17:14:26 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,9 @@ int	ft_quoted_str(char *s, int *i, t_list **list, int *len)
 int	ft_dollar(char *s, int *i, t_list **list, int *len)
 {
 	char	*res;
-	int		inc;
 	t_list	*tmp;
 
-	inc = 0;
-	res = ft_search_var(s, &inc, i);
+	res = ft_search_var(s, i);
 	if (res == NULL)
 		return (0);
 	tmp = ft_lstnew(res);

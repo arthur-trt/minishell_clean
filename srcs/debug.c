@@ -1,8 +1,8 @@
 #include "../inc/minishell.h"
 
-void printf_list(t_list *lst)
+void	printf_list(t_list *lst)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = lst;
 	while (tmp)

@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/19 14:35:39 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/21 17:15:26 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**env_exec_creator(void);
 int		exec_path(t_list *cmds);
 
 int		fd_opener(t_list *cmds, int *fdin, int *fdout);
-int		ft_reverse();
+int		ft_reverse(void);
 int		ft_less(t_list *tmp, int *i, int *fdin);
 int		ft_more(t_list *tmp, int *i, int *fdout);
 int		ft_append(t_list *tmp, int *i, int *fdout);

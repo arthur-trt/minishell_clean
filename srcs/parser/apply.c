@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:31:33 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/15 12:39:11 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/21 17:14:11 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,29 @@ int	ft_apply_double(char *s, int *i,
 	return (r);
 }
 
+int	ischarset(char c, char *s)
+{
+	while (*s)
+	{
+		if (*s == c)
+			return (1);
+		s++;
+	}
+	return (0);
+}
+
+char	*remove_bad_var(char *s, int *i, char *res)
+{
+	int		k;
+
+	k = *i;
+	while (s[++k] && !(ischarset(s[k], "$\"\'~\\ ")))
+		(*i)++;
+	if (res)
+		return (res);
+	return (NULL);
+}
+
 /*
 **	Applies a function  for variable expansion
 **
@@ -80,16 +103,19 @@ int	ft_apply_double(char *s, int *i,
 **	combine with the f's return value
 **	@return tmp a string containing the parsed text
 */
-char	*ft_apply_var(char *s, int *i, char *res)
+char	*ft_apply_var(char *s, int *i, char *res, int *r)
 {
 	char	*tmp;
 	char	*tmp_bis;
-	int		inc;
 
 	tmp_bis = NULL;
-	tmp_bis = ft_search_var(s, &inc, i);
+	tmp_bis = ft_search_var(s, i);
 	if (!(tmp_bis))
-		return (res);
+	{
+		tmp = remove_bad_var(s, i, res);
+		*r = 2;
+		return (tmp);
+	}
 	if (res)
 		tmp = ft_strjoin(res, tmp_bis);
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_input.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/29 18:09:43 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/20 19:55:41 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ void	history_nav_up(t_line *input, t_hist **hist);
 void	history_nav_down(t_line *input, t_hist **hist);
 t_hist	*construct_hist(void);
 bool	backup_history(t_hist *hist);
-char	*history_path();
+char	*history_path(void);
 
 #endif

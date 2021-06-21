@@ -6,20 +6,20 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/10 11:57:29 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/20 20:21:47 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob *g_glob;
+extern t_glob	*g_glob;
 
 /*
 ***	Checks if the command is a builtin
 ***
 *** @param the cmds linked list containing the command
 */
-int			is_builtin(t_list *cmds)
+int	is_builtin(t_list *cmds)
 {
 	int		r;
 	t_list	*tmp;
@@ -32,9 +32,6 @@ int			is_builtin(t_list *cmds)
 		r = ft_pwd();
 	else if (!(ft_strcmp("env", cmds->content)))
 		r = ft_env();
-
-	//if (!(ft_strcmp("exit", cmds->content)))
-		// r = ft_exit;
 	else
 		r = exec_path(cmds);
 	if (r < 0)
@@ -44,9 +41,9 @@ int			is_builtin(t_list *cmds)
 	return (r);
 }
 
-int			is_builtin_no_forks(t_list *cmds)
+int	is_builtin_no_forks(t_list *cmds)
 {
-	int	r;
+	int		r;
 	t_list	*tmp;
 
 	tmp = copycmds(cmds);
@@ -63,7 +60,7 @@ int			is_builtin_no_forks(t_list *cmds)
 	return (r);
 }
 
-char		*env_concat(t_env *tmp)
+char	*env_concat(t_env *tmp)
 {
 	char	*res;
 	int		i;
@@ -71,7 +68,8 @@ char		*env_concat(t_env *tmp)
 
 	i = ft_strlen(tmp->key);
 	j = ft_strlen(tmp->value);
-	if (!(res = malloc(j + i + 2)))
+	res = malloc(j + i + 2);
+	if (!(res))
 		return (NULL);
 	i = -1;
 	j = 0;
@@ -80,8 +78,7 @@ char		*env_concat(t_env *tmp)
 		res[j] = tmp->key[i];
 		j++;
 	}
-	res[j] = '=';
-	j++;
+	res[++j] = '=';
 	i = -1;
 	while (tmp->value[++i])
 	{
@@ -92,8 +89,7 @@ char		*env_concat(t_env *tmp)
 	return (res);
 }
 
-
-int			word_checker(t_list *tmp, char **s)
+int	word_checker(t_list *tmp, char **s)
 {
 	int		i;
 
@@ -102,7 +98,6 @@ int			word_checker(t_list *tmp, char **s)
 	{
 		if (ft_ischarset(tmp->content[i], "<>"))
 		{
-
 			if (i == 0)
 				*s = ft_strdup("");
 			else
@@ -111,16 +106,15 @@ int			word_checker(t_list *tmp, char **s)
 		}
 		i++;
 	}
-	//if (j)
-	//	*s = ft_strdup
 	*s = ft_strdup(tmp->content);
 	return (0);
 }
+
 /*
 *** Puts all the args in a single char** to send to execve
 *** @return a char** containing all the arguments
 */
-char		**argv_exec_creator(t_list *cmds)
+char	**argv_exec_creator(t_list *cmds)
 {
 	char	**res;
 	t_list	*tmp;
@@ -133,53 +127,18 @@ char		**argv_exec_creator(t_list *cmds)
 		i++;
 		tmp = tmp->next;
 	}
-	if (!(res = malloc(sizeof(char*) * (i + 1))))
+	res = malloc(sizeof(char *) * (i + 1));
+	if (!(res))
 		return (NULL);
-	i = 0;
+	i = -1;
 	tmp = cmds;
 	while (tmp)
 	{
-		if (word_checker_bis(tmp, &res[i]))
-		{
-			i++;
+		if (word_checker_bis(tmp, &res[++i]))
 			break ;
-		}
 		i++;
 		tmp = tmp->next;
 	}
 	res[i] = NULL;
 	return (res);
-}
-
-/*
-*** Creates a char** environment for the execve function
-*** @return a char** containing the environment
-*/
-char		**env_exec_creator(void)
-{
-	char	**envp;
-	t_env	*tmp;
-	int		i;
-
-	i = 1;
-	tmp = g_glob->env;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	tmp = g_glob->env;
-	if (!(envp = malloc(sizeof(char *) * i + 1)))
-		return (NULL);
-	i = 0;
-	while (tmp)
-	{
-		if (!(envp[i] = env_concat(tmp)))
-			return (NULL);
-		i++;
-		tmp = tmp->next;
-	}
-
-	envp[i] = NULL;
-	return (envp);
 }

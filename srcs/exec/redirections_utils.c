@@ -6,17 +6,17 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/04 16:59:43 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/20 20:31:23 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob *g_glob;
+extern t_glob	*g_glob;
 
-int			ft_ischarset(char c, char *charset)
+int	ft_ischarset(char c, char *charset)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (charset[i])
@@ -34,16 +34,17 @@ int			ft_ischarset(char c, char *charset)
 *** @param int*i our current position on the string
 *** @return The char *filename if present or NULL if no filename is specified.
 */
-char		*get_file_name(char *s, int *i)
+char	*get_file_name(char *s, int *i)
 {
-	int 	j;
+	int		j;
 	char	*filename;
 
 	filename = NULL;
 	while (s[*i] == ' ')
 		(*i)++;
 	j = *i;
-	while (s[j] && (ft_isalnum(s[j]) || s[j] == '_' || s[j] == '-' || s[j] == '.'))
+	while (s[j] && (ft_isalnum(s[j]) || s[j] == '_'
+			|| s[j] == '-' || s[j] == '.'))
 		j++;
 	if (*i != j)
 		filename = ft_substr(s, *i, j - *i);
@@ -52,7 +53,8 @@ char		*get_file_name(char *s, int *i)
 
 /*
 *** Launches the proper function according to which type of redirection is found
-*** @param t_list*tmp the link containing the string on which redirection has been found
+*** @param t_list*tmp the link containing the string 
+***	on which redirection has been found
 *** @param int*i The position where the redirection happens
 *** @param int*fdin our input fd
 *** @param int*fdout our output fd
@@ -63,9 +65,7 @@ static int	ft_redirect(t_list *tmp, int *i, int *fdin, int *fdout)
 	int		r;
 
 	r = 0;
-	if ((char)tmp->content[*i] == '<' && tmp->content[*i] == '>' )
-		r = ft_reverse();
-	else if (tmp->content[*i] == '<')
+	if (tmp->content[*i] == '<')
 		r = ft_less(tmp, i, fdin);
 	else if (tmp->content[*i] == '>' && tmp->content[*i + 1] == '>')
 		r = ft_append(tmp, i, fdout);
@@ -81,7 +81,7 @@ static int	ft_redirect(t_list *tmp, int *i, int *fdin, int *fdout)
 *** @param int*fdout our outpud fd we'll modify if > or >> is found
 *** @return 0 on success. < 0 if failure.
 */
-int			ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
+int	ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 {
 	t_list	*tmp;
 	int		i;
@@ -93,11 +93,7 @@ int			ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 		while (tmp->content[i])
 		{
 			if (ft_ischarset(tmp->content[i], "<>"))
-			{
 				return (ft_redirect(tmp, &i, fdin, fdout));
-				// printf("fdin2 is: %d\n", *fdin);
-				//return (0);
-			}
 			i++;
 		}
 		tmp = tmp->next;

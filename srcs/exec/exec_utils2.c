@@ -6,13 +6,15 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 11:42:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/04 11:51:42 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/20 20:13:20 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int			word_checker_bis(t_list *tmp, char **s)
+extern t_glob	*g_glob;
+
+int	word_checker_bis(t_list *tmp, char **s)
 {
 	int		i;
 
@@ -21,7 +23,6 @@ int			word_checker_bis(t_list *tmp, char **s)
 	{
 		if (ft_ischarset(tmp->content[i], "<>"))
 		{
-
 			if (i == 0)
 				*s = NULL;
 			else
@@ -32,4 +33,37 @@ int			word_checker_bis(t_list *tmp, char **s)
 	}
 	*s = tmp->content;
 	return (0);
+}
+
+/*
+*** Creates a char** environment for the execve function
+*** @return a char** containing the environment
+*/
+char	**env_exec_creator(void)
+{
+	char	**envp;
+	t_env	*tmp;
+	int		i;
+
+	i = 1;
+	tmp = g_glob->env;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	tmp = g_glob->env;
+	envp = malloc(sizeof(char *) * i + 1);
+	if (!(envp))
+		return (NULL);
+	i = -1;
+	while (tmp)
+	{
+		envp[++i] = env_concat(tmp);
+		if (!(envp[i]))
+			return (NULL);
+		tmp = tmp->next;
+	}
+	envp[i] = NULL;
+	return (envp);
 }
