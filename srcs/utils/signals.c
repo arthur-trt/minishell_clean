@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 14:54:07 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/10 14:25:27 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/21 11:32:23 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	c_handler(int sigld)
 	g_glob->ret = 130;
 	if (g_glob->prog == 0)
 	{
+		set_term_default_mode();
 		ft_putendl_fd("", 1);
 		ft_prompt();
 	}
@@ -29,6 +30,7 @@ void	c_handler(int sigld)
 void	d_handler(int sigld)
 {
 	(void)sigld;
+	set_term_default_mode();
 	if (g_glob->prog == 1)
 	{
 		g_glob->ret = 131;
@@ -36,5 +38,5 @@ void	d_handler(int sigld)
 		ft_putendl_fd("Quit (core dumped)", 1);
 	}
 	else
-		ft_putstr_fd("\b \b\b \b", 1);
+		ft_putstr_fd("\b\b \b\b", 1);
 }
