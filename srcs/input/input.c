@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:02:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/20 19:41:14 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/21 11:32:57 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ static void	special_keys(t_line *input, int key_code, t_hist **hist)
 		history_nav_up(input, hist);
 	if (key_code == KEY_DOWN)
 		history_nav_down(input, hist);
+	if (input->lenght == 0 && key_code == KEY_EOF)
+	{
+		set_term_default_mode();
+		exit(0);
+	}
 }
 
 // #ifndef BONUS
