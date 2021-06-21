@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:04:05 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 13:57:02 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/21 09:49:11 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static int	convert_code(char *key)
 		return (KEY_CTRL_UP);
 	if (ft_memcmp(KEY_CODE_CTRL_DOWN, key, 6) == 0)
 		return (KEY_CTRL_DOWN);
+	if (ft_memcmp(KEY_CODE_EOF, key, 4) == 0)
+		return (KEY_EOF);
 	return (key[0]);
 }
 
