@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/20 20:21:47 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/30 21:48:25 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,9 +136,9 @@ char	**argv_exec_creator(t_list *cmds)
 	{
 		if (word_checker_bis(tmp, &res[++i]))
 			break ;
-		i++;
 		tmp = tmp->next;
 	}
+	i++;
 	res[i] = NULL;
 	return (res);
 }
