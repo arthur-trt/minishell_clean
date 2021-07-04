@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 17:46:41 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/31 20:43:26 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/21 17:26:45 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*clean_path(char *path)
 	char			*tmp;
 
 	len = ft_strlen(path);
-	if (path[len -1] != '/')
+	if (path[len - 1] != '/')
 	{
 		tmp = ft_strjoin(path, "/");
 		return (tmp);
@@ -41,7 +41,7 @@ static char	*clean_path(char *path)
 **
 **	@return path defined
 */
-char	*history_path()
+char	*history_path(void)
 {
 	char	cwd_buffer[4096];
 	char	*path;

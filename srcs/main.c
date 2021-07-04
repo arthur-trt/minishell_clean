@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/19 14:29:25 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/21 19:33:22 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	main(void)
 	if (ft_init_gobal())
 		return (EXIT_FAILURE);
 	hist = construct_hist();
-	print_env();
 	minishell(&hist);
 	printf("\n");
 	backup_history(hist);

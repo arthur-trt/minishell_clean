@@ -6,13 +6,13 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 13:07:52 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/08 13:48:11 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/20 20:05:40 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob *g_glob;
+extern t_glob	*g_glob;
 
 static int	ft_delfirst_maillon(t_env *env)
 {
@@ -23,7 +23,7 @@ static int	ft_delfirst_maillon(t_env *env)
 	return (0);
 }
 
-int			ft_del_maillon(t_env *env, t_env *buff)
+int	ft_del_maillon(t_env *env, t_env *buff)
 {
 	t_env	*tmp;
 
@@ -36,7 +36,7 @@ int			ft_del_maillon(t_env *env, t_env *buff)
 	return (0);
 }
 
-int			ft_unset_launcher(char *s)
+int	ft_unset_launcher(char *s)
 {
 	t_env	*tmp;
 	t_env	*tmp2;
@@ -62,9 +62,9 @@ int			ft_unset_launcher(char *s)
 	return (0);
 }
 
-int		ft_check_varname(char *s)
+int	ft_check_varname(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!(ft_isalpha(s[0]) && s[0] != '_'))
@@ -72,7 +72,7 @@ int		ft_check_varname(char *s)
 		if (s[0] == '-')
 			printf("Error: bad option: %s\n", s);
 		else
-				printf("Error: bad variable name: %s\n", s);
+			printf("Error: bad variable name: %s\n", s);
 		return (-1);
 	}
 	while (s[++i])
@@ -86,7 +86,7 @@ int		ft_check_varname(char *s)
 	return (0);
 }
 
-int			ft_unset(t_list *cmd)
+int	ft_unset(t_list *cmd)
 {
 	t_list	*tmp;
 	int		r;
@@ -94,10 +94,11 @@ int			ft_unset(t_list *cmd)
 	tmp = cmd->next;
 	while (tmp)
 	{
-		if ((r = ft_check_varname(cmd->content)))
+		r = ft_check_varname(cmd->content);
+		if (r)
 			return (r);
 		ft_unset_launcher(tmp->content);
 		tmp = tmp->next;
 	}
-	return(0);
+	return (0);
 }

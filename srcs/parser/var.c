@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:15:15 by jcueille          #+#    #+#             */
-/*   Updated: 2021/05/30 15:00:01 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/21 14:59:56 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ char	*ft_search_value(char *name)
 **	@param	i the position of the current character on s
 **	@return res the value of the variable or NULL if the variable doesn't exist
 */
-char	*ft_search_var(char *s, int *inc, int *i)
+char	*ft_search_var(char *s, int *i)
 {
 	int		j;
 	char	*name;
@@ -127,19 +127,19 @@ char	*ft_search_var(char *s, int *inc, int *i)
 	{
 		if (!(ft_bracket_check(s, *i)))
 			return (NULL);
-		(*inc) = 1;
 		(*i)++;
 	}
 	j = *i;
 	if (s[*i] == '?')
 		return (ft_itoa(g_glob->ret));
-	while (s[*i] && s[*i] != ' ' && s[*i] != '}' && s[*i] != '\"')
+	while (s[*i] && s[*i] != ' ' && s[*i] != '}'
+		&& s[*i] != '\"' && s[*i] != '$')
 		(*i)++;
 	if (*i - j == 0)
 		return (NULL);
 	name = ft_substr(s, j, *i - j);
 	res = ft_search_value(name);
-	if (s[*i] == '"' || s[*i] == '\0' || s[*i] == '\'' )
+	if (s[*i] == '"' || s[*i] == '\0' || s[*i] == '\'' || s[*i] == '$')
 		(*i)--;
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:38:23 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/04 16:22:49 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/20 19:56:09 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ int	ft_echo(t_list *cmd)
 	{
 		ft_putstr_fd(tmp->content, 1);
 		tmp = tmp->next;
-		if(tmp)
+		if (tmp)
 			ft_putstr_fd(" ", 1);
 	}
 	if (!(flag))
 		ft_putstr_fd("\n", 1);
-	//return (0);
 	exit(0);
 }

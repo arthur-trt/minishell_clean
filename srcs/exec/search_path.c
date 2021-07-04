@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:16:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/25 14:41:41 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/21 17:25:59 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*clean_path(char *path)
 	char			*tmp;
 
 	len = ft_strlen(path);
-	if (path[len -1] != '/')
+	if (path[len - 1] != '/')
 	{
 		tmp = ft_strjoin(path, "/");
 		free(path);

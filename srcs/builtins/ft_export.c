@@ -6,15 +6,15 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:38:43 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/08 13:47:46 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/20 20:02:42 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob *g_glob;
+extern t_glob	*g_glob;
 
-int			ft_get_value(char *s, int *i, char **value)
+int	ft_get_value(char *s, int *i, char **value)
 {
 	int	k;
 
@@ -25,12 +25,13 @@ int			ft_get_value(char *s, int *i, char **value)
 		while (s[*i])
 			(*i)++;
 	}
-	if (!(*value = ft_substr(s, k, *i - k)))
+	*value = ft_substr(s, k, *i - k);
+	if (!(*value))
 		return (-1);
 	return (0);
 }
 
-int			ft_get_keyvalue(char *s, char **key, char **value)
+int	ft_get_keyvalue(char *s, char **key, char **value)
 {
 	int	i;
 
@@ -45,19 +46,21 @@ int			ft_get_keyvalue(char *s, char **key, char **value)
 	}
 	if (s[i] == '=')
 	{
-		if (!(*key = ft_substr(s, 0, i)))
+		*key = ft_substr(s, 0, i);
+		if (!(*key))
 			return (-1);
-		if(ft_get_value(s, &i, value))
+		if (ft_get_value(s, &i, value))
 			return (-1);
 	}
 	return (0);
 }
 
-int			ft_addmaillon(char *key, char *value)
+int	ft_addmaillon(char *key, char *value)
 {
 	t_env	*env;
 
-	if (!(env = malloc(sizeof(t_env))))
+	env = malloc(sizeof(t_env));
+	if (!(env))
 		return (-1);
 	env->key = key;
 	env->value = value;
@@ -66,31 +69,29 @@ int			ft_addmaillon(char *key, char *value)
 	return (0);
 }
 
-int			ft_export(t_list *cmd)
+int	ft_export(t_list *cmd)
 {
 	t_list	*tmp;
 	char	*key;
 	char	*value;
-	int		r;
 
 	tmp = NULL;
 	if (cmd != NULL)
 		tmp = cmd->next;
-	r = 0;
 	if (tmp)
 	{
 		while (tmp)
 		{
-			if ((r = ft_get_keyvalue(tmp->content, &key, &value)))
-				return (r);
-			if (key && (r = ft_check_varname(key)))
-				return (r);
-			if ((r = ft_addmaillon(key, value)))
-				return (r);
+			if (ft_get_keyvalue(tmp->content, &key, &value))
+				return (-1);
+			if (key && ft_check_varname(key))
+				return (-2);
+			if (ft_addmaillon(key, value))
+				return (-3);
 			tmp = tmp->next;
 		}
 	}
 	else
 		ft_env();
-	return(0);
+	return (0);
 }

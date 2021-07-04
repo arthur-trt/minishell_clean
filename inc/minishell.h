@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/29 10:43:31 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/04 23:25:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_glob
 	t_line			*input;
 }					t_glob;
 
-void printf_list(t_list *lst);
+void	printf_list(t_list *lst);
+char	*env_concat(t_env *tmp);
 
 #endif
