@@ -6,11 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:02:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/21 11:32:57 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/29 11:19:06 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern t_glob	*g_glob;
 
 static void	init_struct(t_line *input)
 {
@@ -57,6 +59,12 @@ static void	input_loop(t_line *input, t_hist **hist)
 	{
 		key_code = get_key();
 		input->win_size = get_win_size();
+		if (g_glob->c == 1)
+		{
+			ft_bzero(input->line, MAX_CMD_LINE);
+			g_glob->c = 0;
+			break ;
+		}
 		if (input->cursor_pos.row + (input->cursor_pos.col + input->cursor)
 			/ input->win_size.col > input->win_size.row)
 			input->cursor_pos.row--;

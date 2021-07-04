@@ -1,38 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 14:54:07 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/29 13:06:50 by atrouill         ###   ########.fr       */
+/*   Created: 2021/06/21 09:51:26 by atrouill          #+#    #+#             */
+/*   Updated: 2021/06/21 10:33:09 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include <signal.h>
+#include <stdlib.h>
 
-extern t_glob	*g_glob;
-
-void	c_handler(int sigld)
-{
-	(void)sigld;
-	g_glob->ret = 130;
-	if (g_glob->prog == 0)
-	{
-		g_glob->c = 1;
-	}
-}
-
-void	d_handler(int sigld)
-{
-	(void)sigld;
-	set_term_default_mode();
-	if (g_glob->prog == 1)
-	{
-		g_glob->ret = 131;
-		kill(g_glob->pid, SIGQUIT);
-		ft_putendl_fd("Quit (core dumped)", 1);
-	}
-}

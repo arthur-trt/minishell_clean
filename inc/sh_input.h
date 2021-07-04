@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/21 09:49:02 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/21 16:02:04 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@
 # define KEY_CODE_CTRL_RIGHT	"\x1b\x5b\x31\x3b\x35\x43"
 # define KEY_CODE_CTRL_UP		"\x1b\x5b\x31\x3b\x35\x41"
 # define KEY_CODE_CTRL_DOWN		"\x1b\x5b\x31\x3b\x35\x42"
+# define KEY_CODE_EXIT_TEST		"\x1b\xff\xff\0"
 
 # define KEY_CTRL_LEFT			1000
 # define KEY_CTRL_RIGHT			1001
 # define KEY_CTRL_UP			1002
 # define KEY_CTRL_DOWN			1003
 # define KEY_EOF				1004
+# define KEY_CTRL_C				1005
 
 # define HISTORY_PATH			"./.sh_history"
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/10 13:53:39 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/29 10:43:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ typedef struct s_glob
 	int				prog;
 	int				pid;
 	int				d;
+	int				c;
 	char			*path;
+	t_line			*input;
 }					t_glob;
 
 void printf_list(t_list *lst);

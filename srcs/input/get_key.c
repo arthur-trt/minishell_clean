@@ -6,11 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:04:05 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/21 09:49:11 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/06/29 12:44:17 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern t_glob	*g_glob;
 
 /*
 **	Convert the received keycodes into the code contained in the library
@@ -46,6 +48,8 @@ static int	convert_code(char *key)
 		return (KEY_CTRL_DOWN);
 	if (ft_memcmp(KEY_CODE_EOF, key, 4) == 0)
 		return (KEY_EOF);
+	if (ft_memcmp(KEY_CODE_EXIT_TEST, key, 4) == 0)
+		return (KEY_CTRL_C);
 	return (key[0]);
 }
 
@@ -59,20 +63,25 @@ int	get_key(void)
 {
 	char	*key_pressed;
 	int		key;
+	int		ret;
 
-	key_pressed = ft_str_malloc(6);
-	if (key_pressed == NULL)
-		return (-1);
-	read(0, key_pressed, 1);
-	if (*key_pressed == '\x1b')
+	key = '\n';
+	if (g_glob->c == 0)
 	{
-		read(0, (key_pressed + 1), 3);
+		key_pressed = ft_str_malloc(6);
+		if (key_pressed == NULL)
+			return (-1);
+		ret = read(0, key_pressed, 1);
+		if (*key_pressed == '\x1b')
+		{
+			read(0, (key_pressed + 1), 3);
+		}
+		if (key_pressed[3] == '\x3b')
+		{
+			read(0, (key_pressed + 4), 3);
+		}
+		key = convert_code(key_pressed);
+		free(key_pressed);
 	}
-	if (key_pressed[3] == '\x3b')
-	{
-		read(0, (key_pressed + 4), 3);
-	}
-	key = convert_code(key_pressed);
-	free(key_pressed);
 	return (key);
 }

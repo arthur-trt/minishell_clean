@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/10 11:57:29 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:03:09 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,22 @@ int			is_builtin(t_list *cmds)
 
 	r = 0;
 	tmp = copycmds(cmds);
-	if (!(ft_strcmp("echo", cmds->content)))
-		r = ft_echo(tmp);
-	else if (!(ft_strcmp("pwd", cmds->content)))
-		r = ft_pwd();
-	else if (!(ft_strcmp("env", cmds->content)))
-		r = ft_env();
+	if (cmds != NULL && cmds->content != NULL)
+	{
+		if (!(ft_strcmp("echo", cmds->content)))
+			r = ft_echo(tmp);
+		else if (!(ft_strcmp("pwd", cmds->content)))
+			r = ft_pwd();
+		else if (!(ft_strcmp("env", cmds->content)))
+			r = ft_env();
 
-	//if (!(ft_strcmp("exit", cmds->content)))
-		// r = ft_exit;
-	else
-		r = exec_path(cmds);
-	if (r < 0)
-		ft_putstr_fd("Error executing builtin.\n", 2);
+		//if (!(ft_strcmp("exit", cmds->content)))
+			// r = ft_exit;
+		else
+			r = exec_path(cmds);
+		if (r < 0)
+			ft_putstr_fd("Error executing builtin.\n", 2);
+	}
 	free_list(tmp);
 	printf("r is %d\n", r);
 	return (r);
@@ -51,14 +54,17 @@ int			is_builtin_no_forks(t_list *cmds)
 
 	tmp = copycmds(cmds);
 	r = 15;
-	if (!(ft_strcmp("cd", cmds->content)))
-		r = ft_cd(cmds);
-	else if (!(ft_strcmp("export", cmds->content)))
-		r = ft_export(tmp);
-	else if (!(ft_strcmp("unset", cmds->content)))
-		r = ft_unset(tmp);
-	if (r != 0 && r != 15)
-		ft_putstr_fd("Error executing builtin.\n", 2);
+	if (cmds != NULL && cmds->content != NULL)
+	{
+		if (!(ft_strcmp("cd", cmds->content)))
+			r = ft_cd(cmds);
+		else if (!(ft_strcmp("export", cmds->content)))
+			r = ft_export(tmp);
+		else if (!(ft_strcmp("unset", cmds->content)))
+			r = ft_unset(tmp);
+		if (r != 0 && r != 15)
+			ft_putstr_fd("Error executing builtin.\n", 2);
+	}
 	free_list(tmp);
 	return (r);
 }

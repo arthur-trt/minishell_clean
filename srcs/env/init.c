@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:48:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/10 13:53:24 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/06/29 10:43:55 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	ft_init_gobal(void)
 		ft_empty_env();
 	g_glob->ret = 0;
 	g_glob->d = 0;
+	g_glob->c = 0;
 	history_path();
 	return (0);
 }
