@@ -12,6 +12,7 @@ SOURCES		+=                                   		\
 SOURCES		+=                                   		\
 		srcs/input/cursor_pos.c                     	\
 		srcs/input/get_win_size.c                   	\
+		srcs/input/signal.c                         	\
 		srcs/input/set_term_mode.c                  	\
 		srcs/input/char.c                           	\
 		srcs/input/get_key.c                        	\

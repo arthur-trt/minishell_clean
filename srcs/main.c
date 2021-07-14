@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/21 19:33:22 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/07/07 10:08:09 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,14 @@ int	minishell(t_hist **hist)
 int	main(void)
 {
 	t_hist	*hist;
+	//struct sigaction sa;
 
 	signal(SIGQUIT, d_handler);
 	signal(SIGINT, c_handler);
+    //sa.sa_flags = 0;
+    //sa.sa_handler = c_handler;
+    //sigfillset(&sa.sa_mask);
+    //sigaction(SIGINT, &sa, NULL);
 	g_glob = NULL;
 	if (ft_init_gobal())
 		return (EXIT_FAILURE);

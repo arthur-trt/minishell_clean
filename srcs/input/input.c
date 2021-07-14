@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:02:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/29 11:19:06 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/07 09:17:54 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,18 @@ static void	input_loop(t_line *input, t_hist **hist)
 */
 char	*input(t_hist **history)
 {
-	t_line				input;
 	t_hist				*tmp_hist;
 
+	g_glob->in_input = true;
 	tmp_hist = (*history);
-	init_struct(&input);
+	init_struct(&g_glob->input);
 	set_term_raw_mode();
 	ft_prompt();
-	input.cursor_pos = get_current_cursor_position();
-	input_loop(&input, &tmp_hist);
-	move_cursor_to_end(&input);
-	append_history(input.line, history);
+	g_glob->input.cursor_pos = get_current_cursor_position();
+	input_loop(&g_glob->input, &tmp_hist);
+	move_cursor_to_end(&g_glob->input);
+	append_history(g_glob->input.line, history);
 	set_term_default_mode();
-	return (ft_strdup(input.line));
+	g_glob->in_input = false;
+	return (ft_strdup(g_glob->input.line));
 }
