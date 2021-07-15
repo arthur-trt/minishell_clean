@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:02:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/07 09:17:54 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/15 13:35:59 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ char	*input(t_hist **history)
 	move_cursor_to_end(&g_glob->input);
 	append_history(g_glob->input.line, history);
 	set_term_default_mode();
+	ft_putchar_fd('\n', 0);
 	g_glob->in_input = false;
 	return (ft_strdup(g_glob->input.line));
 }
