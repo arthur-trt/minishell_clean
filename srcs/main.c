@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/07 10:08:09 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/15 13:32:41 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	minishell(t_hist **hist)
 		if (ft_strcmp(input_user, "exit") == 0)
 			break ;
 		lexed = lexer(input_user);
-		print_lexer(lexed);
+		//print_lexer(lexed);
 		ft_exec(lexed);
 		free_lexer(&lexed);
 		free(input_user);
