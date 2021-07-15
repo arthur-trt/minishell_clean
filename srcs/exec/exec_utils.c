@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/04 23:35:16 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/15 13:15:57 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*env_concat(t_env *tmp)
 		res[j] = tmp->key[i];
 		j++;
 	}
-	res[++j] = '=';
+	res[j++] = '=';
 	i = -1;
 	while (tmp->value[++i])
 	{
