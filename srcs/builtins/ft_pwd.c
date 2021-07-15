@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 20:40:56 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/21 17:17:23 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/07/15 13:37:08 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	ft_pwd(void)
 		return (-1);
 	}
 	ft_putstr_fd(cwd, 1);
+	ft_putchar_fd('\n', 1);
 	exit(0);
 }
