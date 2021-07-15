@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:38:43 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/20 20:02:42 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/07/15 15:33:29 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,16 @@ int	ft_addmaillon(char *key, char *value)
 {
 	t_env	*env;
 
-	env = malloc(sizeof(t_env));
-	if (!(env))
-		return (-1);
-	env->key = key;
-	env->value = value;
-	env->next = g_glob->env;
-	g_glob->env = env;
+	if (key)
+	{
+		env = malloc(sizeof(t_env));
+		if (!(env))
+			return (-1);
+		env->key = key;
+		env->value = value;
+		env->next = g_glob->env;
+		g_glob->env = env;
+	}
 	return (0);
 }
 
