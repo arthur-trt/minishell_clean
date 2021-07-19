@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:48:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/29 10:43:55 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/15 15:00:14 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	ft_empty_env(void)
 
 	cwd = getcwd(buf, 4096);
 	add_env("PWD", cwd);
-	add_env("SHLVL", ft_strdup("0"));
+	add_env("SHLVL","0");
 	return (0);
 }
 
@@ -94,7 +94,7 @@ int	ft_init_gobal(void)
 
 	g_glob = malloc(sizeof(t_glob));
 	g_glob->env = NULL;
-	if (environ)
+	if (*environ)
 		construct_env(environ);
 	else
 		ft_empty_env();

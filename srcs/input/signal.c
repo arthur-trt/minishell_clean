@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_key.c                                       :+:      :+:    :+:   */
+/*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 15:42:56 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/15 13:44:35 by atrouill         ###   ########.fr       */
+/*   Created: 2021/07/07 09:11:57 by atrouill          #+#    #+#             */
+/*   Updated: 2021/07/08 13:53:05 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,19 @@
 
 extern t_glob	*g_glob;
 
-/*
-**	Search for the value of a key in the environment
-**
-**	@param Key whose value must be sought
-**
-**	@return The value if found, NULL otherwise
-*/
-char	*search_env(char *key)
-{
-	t_env	tmp;
+//static void	init_struct(t_line *input)
+//{
+//	input->cursor_pos.row = 0;
+//	input->cursor_pos.col = 0;
+//	input->cursor = 0;
+//	input->win_size.row = 0;
+//	input->win_size.col = 0;
+//	input->lenght = 0;
+//	input->hist_pos = 0;
+//	ft_bzero(input->line, MAX_CMD_LINE);
+//}
 
-	if (g_glob->env != NULL)
-	{
-		tmp = *(g_glob->env);
-		while (tmp.next != NULL)
-		{
-			if (!ft_strncmp(tmp.key, key, ft_strlen(key)))
-			{
-				return (tmp.value);
-			}
-			tmp = *(tmp.next);
-		}
-	}
-	return (NULL);
+void	sigint_input(void)
+{
+	ft_bzero(g_glob->input.line, MAX_CMD_LINE);
 }

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/13 13:08:50 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/19 10:07:55 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,18 @@ int	is_builtin(t_list *cmds)
 	if (!(ft_strcmp("echo", cmds->content)))
 		r = ft_echo(tmp);
 	else if (!(ft_strcmp("pwd", cmds->content)))
-		r = ft_pwd();
-	else if (!(ft_strcmp("env", cmds->content)))
-		r = ft_env();
-	else
-		r = exec_path(cmds);
-	if (r < 0)
-		ft_putstr_fd("Error executing builtin.\n", 2);
+		else if (!(ft_strcmp("pwd", cmds->content)))
+			r = ft_pwd();
+		else if (!(ft_strcmp("env", cmds->content)))
+			r = ft_env();
+		else
+			r = exec_path(cmds);
+		if (r < 0)
+			ft_putstr_fd("Error executing builtin.\n", 2);
+	}
 	free_list(tmp);
 	return (r);
 }
-
 int	is_builtin_no_forks(t_list *cmds)
 {
 	int		r;
@@ -80,7 +81,7 @@ char	*env_concat(t_env *tmp)
 		res[j] = tmp->key[i];
 		j++;
 	}
-	res[++j] = '=';
+	res[j++] = '=';
 	i = -1;
 	while (tmp->value[++i])
 	{

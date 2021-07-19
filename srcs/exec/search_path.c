@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:16:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/21 17:25:59 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/07/15 13:49:11 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,21 +131,24 @@ char	*search_path(char *exec_name)
 	char			*test;
 
 	path = search_env("PATH");
-	tmp = ft_split(path, ':');
-	i = 0;
-	while (tmp[i] != NULL)
+	if (path != NULL)
 	{
-		tmp[i] = clean_path(tmp[i]);
-		test = scan_dir(tmp[i], exec_name);
-		if (test != NULL)
+		tmp = ft_split(path, ':');
+		i = 0;
+		while (tmp[i] != NULL)
 		{
-			free_split(tmp);
-			return (test);
+			tmp[i] = clean_path(tmp[i]);
+			test = scan_dir(tmp[i], exec_name);
+			if (test != NULL)
+			{
+				free_split(tmp);
+				return (test);
+			}
+			i++;
 		}
-		i++;
+		free_split(tmp);
+		if (can_exec(exec_name))
+			return (convert_in_absolute(exec_name));
 	}
-	free_split(tmp);
-	if (can_exec(exec_name))
-		return (convert_in_absolute(exec_name));
 	return (NULL);
 }
