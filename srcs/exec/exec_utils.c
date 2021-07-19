@@ -6,11 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/06/29 13:03:09 by atrouill         ###   ########.fr       */
-=======
-/*   Updated: 2021/07/04 20:10:16 by jcueille         ###   ########.fr       */
->>>>>>> 179301fc48394cce4392c826ceb48eca8eef0a99
+/*   Updated: 2021/07/13 13:08:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +26,6 @@ int	is_builtin(t_list *cmds)
 
 	r = 0;
 	tmp = copycmds(cmds);
-<<<<<<< HEAD
-	if (cmds != NULL && cmds->content != NULL)
-	{
-		if (!(ft_strcmp("echo", cmds->content)))
-			r = ft_echo(tmp);
-		else if (!(ft_strcmp("pwd", cmds->content)))
-			r = ft_pwd();
-		else if (!(ft_strcmp("env", cmds->content)))
-			r = ft_env();
-
-		//if (!(ft_strcmp("exit", cmds->content)))
-			// r = ft_exit;
-		else
-			r = exec_path(cmds);
-		if (r < 0)
-			ft_putstr_fd("Error executing builtin.\n", 2);
-	}
-=======
 	if (!(ft_strcmp("echo", cmds->content)))
 		r = ft_echo(tmp);
 	else if (!(ft_strcmp("pwd", cmds->content)))
@@ -58,7 +36,6 @@ int	is_builtin(t_list *cmds)
 		r = exec_path(cmds);
 	if (r < 0)
 		ft_putstr_fd("Error executing builtin.\n", 2);
->>>>>>> 179301fc48394cce4392c826ceb48eca8eef0a99
 	free_list(tmp);
 	return (r);
 }
