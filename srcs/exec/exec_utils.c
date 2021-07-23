@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/19 10:07:55 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/23 11:55:33 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ int	is_builtin(t_list *cmds)
 
 	r = 0;
 	tmp = copycmds(cmds);
-	if (!(ft_strcmp("echo", cmds->content)))
-		r = ft_echo(tmp);
-	else if (!(ft_strcmp("pwd", cmds->content)))
+	if (cmds != NULL && cmds->content != NULL)
+	{
+		if (!(ft_strcmp("echo", cmds->content)))
+			r = ft_echo(tmp);
 		else if (!(ft_strcmp("pwd", cmds->content)))
 			r = ft_pwd();
 		else if (!(ft_strcmp("env", cmds->content)))
@@ -81,7 +82,7 @@ char	*env_concat(t_env *tmp)
 		res[j] = tmp->key[i];
 		j++;
 	}
-	res[j++] = '=';
+	res[j] = '=';
 	i = -1;
 	while (tmp->value[++i])
 	{

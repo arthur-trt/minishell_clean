@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/20 20:31:23 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/07/23 11:54:57 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*get_file_name(char *s, int *i)
 
 /*
 *** Launches the proper function according to which type of redirection is found
-*** @param t_list*tmp the link containing the string 
+*** @param t_list*tmp the link containing the string
 ***	on which redirection has been found
 *** @param int*i The position where the redirection happens
 *** @param int*fdin our input fd
