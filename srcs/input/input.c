@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/26 16:22:16 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/26 16:42:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 t_list	*input_heredocs(char *delimiter)
 {
 	t_list	*heredocs;
+	char	*tmp;
 
-	heredocs = ft_lstnew(readline("> "));
-	while (ft_strcmp(new->content, delimiter) != 0)
+	tmp = readline("> ");
+	ft_lstadd_back(&heredocs, ft_lstnew(tmp));
+	while (ft_strcmp(tmp, delimiter) != 0)
 	{
-		ft_lstadd_back(&heredocs, readline("> "));
+		tmp = readline("> ");
+		ft_lstadd_back(&heredocs, ft_lstnew(tmp));
 	}
 	return (heredocs);
 }
