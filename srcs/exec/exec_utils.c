@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/23 15:22:33 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/26 11:30:02 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	is_builtin(t_list *cmds)
 	free_list(tmp);
 	return (r);
 }
+
 int	is_builtin_no_forks(t_list *cmds)
 {
 	int		r;

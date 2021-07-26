@@ -5,102 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 14:02:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/15 13:35:59 by atrouill         ###   ########.fr       */
+/*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
+/*   Updated: 2021/07/26 16:22:16 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob	*g_glob;
-
-static void	init_struct(t_line *input)
+t_list	*input_heredocs(char *delimiter)
 {
-	input->cursor_pos.row = 0;
-	input->cursor_pos.col = 0;
-	input->cursor = 0;
-	input->win_size.row = 0;
-	input->win_size.col = 0;
-	input->lenght = 0;
-	input->hist_pos = 0;
-	ft_bzero(input->line, MAX_CMD_LINE);
-}
+	t_list	*heredocs;
 
-static void	special_keys(t_line *input, int key_code, t_hist **hist)
-{
-	if (key_code == KEY_LEFT)
-		move_cursor_left(input);
-	if (key_code == KEY_RIGHT)
-		move_cursor_right(input);
-	if (key_code == KEY_UP)
-		history_nav_up(input, hist);
-	if (key_code == KEY_DOWN)
-		history_nav_down(input, hist);
-	if (input->lenght == 0 && key_code == KEY_EOF)
+	heredocs = ft_lstnew(readline("> "));
+	while (ft_strcmp(new->content, delimiter) != 0)
 	{
-		set_term_default_mode();
-		exit(0);
+		ft_lstadd_back(&heredocs, readline("> "));
 	}
+	return (heredocs);
 }
 
-// #ifndef BONUS
-// void	special_bonus_keys(t_line *input, int key_code)
-// {
-	// (void)input;
-	// (void)key_code;
-// }
-// #endif
-
-static void	input_loop(t_line *input, t_hist **hist)
+char	*input(void)
 {
-	int	key_code;
+	char		*prompt;
+	static char	*line_read = (char *) NULL;
 
-	while (true)
+	if (line_read)
+		line_read = (char *) NULL;
+	prompt = ft_prompt();
+	line_read = readline (prompt);
+	free(prompt);
+	if (line_read && *line_read)
+		add_history (line_read);
+	if (line_read == NULL)
 	{
-		key_code = get_key();
-		input->win_size = get_win_size();
-		if (g_glob->c == 1)
-		{
-			ft_bzero(input->line, MAX_CMD_LINE);
-			g_glob->c = 0;
-			break ;
-		}
-		if (input->cursor_pos.row + (input->cursor_pos.col + input->cursor)
-			/ input->win_size.col > input->win_size.row)
-			input->cursor_pos.row--;
-		special_keys(input, key_code, hist);
-		special_bonus_keys(input, key_code);
-		if (ft_isprint(key_code))
-		{
-			insert_char(input, key_code);
-		}
-		if (key_code == '\n')
-			break ;
+		ft_putstr_fd("exit", 0);
+		line_read = ft_strdup("exit");
 	}
-}
-
-/*
-**	Main function of the input. Read from the standard input
-**
-**	@param history Linked list representing the history
-**
-**	@return String of what the user typed
-*/
-char	*input(t_hist **history)
-{
-	t_hist				*tmp_hist;
-
-	g_glob->in_input = true;
-	tmp_hist = (*history);
-	init_struct(&g_glob->input);
-	set_term_raw_mode();
-	ft_prompt();
-	g_glob->input.cursor_pos = get_current_cursor_position();
-	input_loop(&g_glob->input, &tmp_hist);
-	move_cursor_to_end(&g_glob->input);
-	append_history(g_glob->input.line, history);
-	set_term_default_mode();
-	ft_putchar_fd('\n', 0);
-	g_glob->in_input = false;
-	return (ft_strdup(g_glob->input.line));
+	return (line_read);
 }

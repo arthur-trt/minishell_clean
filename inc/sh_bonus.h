@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 13:11:48 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/26 09:53:06 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/26 14:40:14 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 
 # include "minishell.h"
 
-void	special_bonus_keys(t_line *input, int key_code);
 
 #endif

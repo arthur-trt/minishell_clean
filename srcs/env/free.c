@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 16:48:56 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/31 20:24:43 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/26 15:05:07 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	free_glob(void)
 	}
 	if (g_glob)
 	{
-		free(g_glob->path);
 		free(g_glob);
 		g_glob = NULL;
 	}

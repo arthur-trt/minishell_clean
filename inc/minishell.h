@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/07 09:09:45 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/26 14:38:36 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct s_glob
 	int				c;
 	bool			in_input;
 	char			*path;
-	t_line			input;
 }					t_glob;
 
 void	printf_list(t_list *lst);
