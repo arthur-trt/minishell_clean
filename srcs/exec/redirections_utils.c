@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/26 16:36:27 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/28 13:14:00 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ static int	ft_redirect(t_list *tmp, int *i, int *fdin, int *fdout)
 	int		r;
 
 	r = 0;
-	if (tmp->content[*i] == '<')
+	if (tmp->content[*i] == '<' && tmp->content[*i + 1] == '<')
+		input_heredocs("EOF");
+	else if (tmp->content[*i] == '<')
 		r = ft_less(tmp, i, fdin);
 	else if (tmp->content[*i] == '>' && tmp->content[*i + 1] == '>')
 		r = ft_append(tmp, i, fdout);
 	else if (tmp->content[*i] == '>')
 		r = ft_more(tmp, i, fdout);
-	else if (tmp->content[*i] == '<' && tmp->content[*i + 1] == '<')
-		input_heredocs("EOF");
 	return (r);
 }
 
@@ -87,6 +87,7 @@ int	ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 {
 	t_list	*tmp;
 	int		i;
+	int		ret;
 
 	tmp = cmds;
 	while (tmp)
@@ -95,7 +96,11 @@ int	ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 		while (tmp->content[i])
 		{
 			if (ft_ischarset(tmp->content[i], "<>"))
-				return (ft_redirect(tmp, &i, fdin, fdout));
+			{
+				ret = ft_redirect(tmp, &i, fdin, fdout);
+				if (ret != 0)
+					return (ret);
+			}
 			i++;
 		}
 		tmp = tmp->next;
