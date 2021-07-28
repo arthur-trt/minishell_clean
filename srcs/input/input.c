@@ -6,11 +6,36 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/28 12:58:43 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/28 15:49:13 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	*ft_realloc2(void *ptr, int size, int newsize)
+{
+	char	*str;
+	char	*new;
+	int		i;
+
+	str = (char *)ptr;
+	new = (char *)malloc(sizeof(char) * newsize + 1);
+	if (!(new))
+	{
+		if (ptr && size != 0)
+			free(ptr);
+		return (NULL);
+	}
+	i = -1;
+	while (++i < size)
+		*(new + i) = *(str + i);
+	while (i < newsize)
+		*(new + i++) = '\0';
+	if (ptr && size != 0)
+		free(ptr);
+	return (new);
+}
+
 
 char	*input_heredocs(char *delimiter)
 {
@@ -18,16 +43,16 @@ char	*input_heredocs(char *delimiter)
 	char	*tmp;
 	size_t	len;
 
-	tmp = readline("heredocs> ");
+	tmp = readline("heredoc> ");
 	heredocs = ft_strdup(tmp);
-	while (ft_strcmp(tmp, delimiter) != 0)
+	while (tmp && ft_strcmp(tmp, delimiter) != 0)
 	{
 		free(tmp);
-		tmp = readline("heredocs> ");
-		if (ft_strcmp(tmp, delimiter) != 0)
+		tmp = readline("heredoc> ");
+		if (tmp && ft_strcmp(tmp, delimiter) != 0)
 		{
 			len = ft_strlen(heredocs) + ft_strlen(tmp) + 2;
-			heredocs = ft_realloc(heredocs, len);
+			heredocs = ft_realloc2(heredocs, ft_strlen(heredocs), len);
 			ft_strlcat(heredocs, "\n", len);
 			ft_strlcat(heredocs, tmp, len);
 		}
