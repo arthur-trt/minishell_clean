@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/26 16:22:26 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/28 12:50:07 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 */
 char	*input(void);
 char	*ft_prompt(void);
-t_list	*input_heredocs(char *delimiter);
+char	*input_heredocs(char *delimiter);
 
 
 #endif
