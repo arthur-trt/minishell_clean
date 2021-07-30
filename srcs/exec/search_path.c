@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:16:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/15 13:49:11 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/07/30 11:06:42 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,5 +150,7 @@ char	*search_path(char *exec_name)
 		if (can_exec(exec_name))
 			return (convert_in_absolute(exec_name));
 	}
+	if (can_exec(exec_name))
+			return (convert_in_absolute(exec_name));
 	return (NULL);
 }
