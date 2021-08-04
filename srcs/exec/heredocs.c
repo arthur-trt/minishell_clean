@@ -6,11 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 10:56:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/28 15:46:39 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/04 15:00:52 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern t_glob	*g_glob;
 
 static char	*find_delimiter(t_list *cmds)
 {
@@ -35,11 +37,18 @@ static char	*find_delimiter(t_list *cmds)
 	return (0);
 }
 
-t_list	*heredocs(t_list *cmds)
+int		heredocs(t_list *cmds)
 {
-	char	*arg;
+	char	*hd;
+	int		fd[2];
 
-	arg = input_heredocs(find_delimiter(cmds));
-	cmds->content = arg;
-	return (NULL);
+	hd = input_heredocs(find_delimiter(cmds));
+	pipe(fd);
+	dup2(fd[0], 0);
+	ft_putstr_fd(((char *)hd), fd[1]);
+	free(hd);
+	close(fd[0]);
+	close(fd[1]);
+	g_glob->heredocs = false;
+	return (0);
 }

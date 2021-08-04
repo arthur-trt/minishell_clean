@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 15:58:32 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/28 14:15:34 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/04 13:59:47 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	ft_listclear(t_list **lst);
 void	ft_remove_char(char *s, int i);
 char	*ft_search_value(char *name);
 char	*home_tild(char *res);
-t_list	*heredocs(t_list *cmds);
+
 
 #endif

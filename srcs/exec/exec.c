@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/21 11:27:59 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/04 15:03:05 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	exec_path(t_list *cmds)
 	}
 	env = env_exec_creator();
 	args = argv_exec_creator(cmds);
+	if (g_glob->heredocs)
+		heredocs(cmds);
 	if (!(env) || !(args))
 	{
 		ft_putstr_fd("Error: malloc failed.\n", 2);
@@ -94,6 +96,7 @@ int	ft_exec(t_lexer *lexed)
 	exec = exec_init(lexed);
 	while (exec->tmp)
 	{
+		g_glob->heredocs = false;
 		g_glob->save_in = dup(0);
 		g_glob->save_out = dup(1);
 		exec->cmds = ft_parse(exec->tmp->cmd);
