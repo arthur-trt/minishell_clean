@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/04 14:29:55 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:02:52 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,15 @@ static int	ft_redirect(t_list *tmp, int *i, int *fdin, int *fdout)
 	else if (tmp->content[*i] == '>' && tmp->content[*i + 1] == '>')
 		r = ft_append(tmp, i, fdout);
 	else if (tmp->content[*i] == '>')
+	{
 		r = ft_more(tmp, i, fdout);
+		if (g_glob->heredocs)
+		{
+			g_glob->tmp_fdout = *fdout;
+			*fdout = 0;
+		}
+
+	}
 	return (r);
 }
 

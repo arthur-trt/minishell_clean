@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/04 11:52:06 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:00:04 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_glob
 	int				d;
 	int				c;
 	bool			heredocs;
+	int				tmp_fdout;
 	char			*path;
 	char			*heredocs_content;
 }					t_glob;

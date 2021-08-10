@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 10:56:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/04 15:00:52 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:18:49 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ int		heredocs(t_list *cmds)
 	int		fd[2];
 
 	hd = input_heredocs(find_delimiter(cmds));
+	if (g_glob->tmp_fdout != 0)
+	{
+		dup2(g_glob->tmp_fdout, 1);
+		close(g_glob->tmp_fdout);
+	}
 	pipe(fd);
 	dup2(fd[0], 0);
 	ft_putstr_fd(((char *)hd), fd[1]);

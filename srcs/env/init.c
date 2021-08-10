@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:48:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/30 11:21:06 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:01:46 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int	ft_init_gobal(void)
 	g_glob->d = 0;
 	g_glob->c = 0;
 	g_glob->heredocs = false;
+	g_glob->tmp_fdout = 0;
 	return (0);
 }
