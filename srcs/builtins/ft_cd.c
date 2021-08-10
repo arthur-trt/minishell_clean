@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 16:21:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/21 09:10:21 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:39:54 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	ft_cd(t_list *cmd)
 	if (path == NULL)
 		return (1);
 	pwd = search_env("PWD");
-	printf("path : %s\n", path);
 	if (chdir(path) == -1)
 	{
 		ft_putstr_fd("minishell: cd: ", 2);
