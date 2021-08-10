@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/04 14:12:05 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/10 17:05:55 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	is_builtin_no_forks(t_list *cmds)
 			r = ft_export(tmp);
 		else if (!(ft_strcmp("unset", cmds->content)))
 			r = ft_unset(tmp);
-		if (r != 0 && r != 15)
-			ft_putstr_fd("Error executing builtin.\n", 2);
+		if (r != 15)
+			g_glob->ret = r;
 	}
 	free_list(tmp);
 	return (r);
