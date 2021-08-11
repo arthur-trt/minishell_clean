@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 16:21:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/10 17:22:03 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/11 12:57:37 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,26 @@ static char	*construct_path(t_list *cmd)
 		else
 			path = ft_strdup(search_env("PWD"));
 	}
+	else if (cmd->next->next != NULL)
+	{
+		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
+		return (NULL);
+	}
 	else
 	{
 		path = convert_in_absolute(cmd->next->content);
 	}
 	return (path);
 
+}
+
+static int	path_not_found(t_list *cmd)
+{
+	ft_putstr_fd("minishell: cd: ", 2);
+	ft_putstr_fd(cmd->next->content, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putendl_fd(strerror(errno), 2);
+	return (1);
 }
 
 int	ft_cd(t_list *cmd)
@@ -102,8 +116,8 @@ int	ft_cd(t_list *cmd)
 	pwd = search_env("PWD");
 	if (chdir(path) == -1)
 	{
-		ft_putstr_fd("minishell: cd: ", 2);
-		ft_putendl_fd(strerror(errno), 2);
+		free(path);
+		return(path_not_found(cmd));
 	}
 	else
 	{
