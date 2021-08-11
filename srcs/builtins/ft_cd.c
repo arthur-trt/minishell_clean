@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 16:21:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/10 16:39:54 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/10 17:22:03 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ static char	*construct_path(t_list *cmd)
 			ft_putstr_fd("minishell: cd: HOME not set\n", 2);
 			return (NULL);
 		}
-		path = ft_strdup(home);
+		if (home[0] != '\0')
+			path = ft_strdup(home);
+		else
+			path = ft_strdup(search_env("PWD"));
 	}
 	else
 	{
