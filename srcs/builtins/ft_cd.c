@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 16:21:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/11 12:57:37 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/11 16:31:01 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ static char	*construct_path(t_list *cmd)
 	char	*path;
 	char	*home;
 
-	if (cmd->next == NULL)
+	if (ft_strcmp(cmd->next->content, "-") == 0)
+		path = ft_strdup(search_env("OLDPWD"));
+	else if (cmd->next == NULL)
 	{
 		home = search_env("HOME");
 		if (home == NULL)
@@ -87,9 +89,7 @@ static char	*construct_path(t_list *cmd)
 		return (NULL);
 	}
 	else
-	{
 		path = convert_in_absolute(cmd->next->content);
-	}
 	return (path);
 
 }
