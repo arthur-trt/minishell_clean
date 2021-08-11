@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 16:21:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/11 16:31:01 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/11 16:34:47 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*clean_path(char *path)
 	char			*tmp;
 
 	len = ft_strlen(path);
-	if (path[len -1] != '/')
+	if (path[len - 1] != '/')
 	{
 		tmp = ft_strjoin(path, "/");
 		free(path);
@@ -72,14 +72,13 @@ static char	*construct_path(t_list *cmd)
 		path = ft_strdup(search_env("OLDPWD"));
 	else if (cmd->next == NULL)
 	{
-		home = search_env("HOME");
-		if (home == NULL)
+		if (search_env("HOME") == NULL)
 		{
 			ft_putstr_fd("minishell: cd: HOME not set\n", 2);
 			return (NULL);
 		}
-		if (home[0] != '\0')
-			path = ft_strdup(home);
+		if (ft_strcmp(search_env("HOME"), "") != 0)
+			path = ft_strdup(search_env("HOME"));
 		else
 			path = ft_strdup(search_env("PWD"));
 	}
@@ -91,7 +90,6 @@ static char	*construct_path(t_list *cmd)
 	else
 		path = convert_in_absolute(cmd->next->content);
 	return (path);
-
 }
 
 static int	path_not_found(t_list *cmd)
@@ -117,7 +115,7 @@ int	ft_cd(t_list *cmd)
 	if (chdir(path) == -1)
 	{
 		free(path);
-		return(path_not_found(cmd));
+		return (path_not_found(cmd));
 	}
 	else
 	{
