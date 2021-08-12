@@ -18,7 +18,6 @@ SOURCES		+=                                 		\
 
 SOURCES		+=                                 		\
 		srcs/exec/exec_utils.c                    	\
-		srcs/exec/heredocs_exec.c                 	\
 		srcs/exec/search_path.c                   	\
 		srcs/exec/exec_utils2.c                   	\
 		srcs/exec/exec.c                          	\
