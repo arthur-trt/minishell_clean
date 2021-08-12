@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:15:15 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/10 17:03:24 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/12 12:58:42 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,14 +131,14 @@ char	*ft_search_var(char *s, int *i)
 	j = *i;
 	if (s[*i] == '?')
 		return (ft_itoa(g_glob->ret));
-	while (s[*i] && s[*i] != ' ' && s[*i] != '}'
-		&& s[*i] != '\"' && s[*i] != '$' && s[*i] != '/')
+	while (s[*i] && s[*i] != ' ' && s[*i] != '}' && s[*i] != '\"'
+		&& s[*i] != '$' && s[*i] != '/' && s[*i] != '=')
 		(*i)++;
 	if (*i - j == 0)
 		return (NULL);
 	res = ft_search_value(ft_substr(s, j, *i - j));
 	if (s[*i] == '"' || s[*i] == '\0' || s[*i] == '\'' || s[*i] == '$'
-		|| s[*i] == '/')
+		|| s[*i] == '/' || s[*i] == '=')
 		(*i)--;
 	return (res);
 }
