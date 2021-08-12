@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/04 15:03:05 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/12 12:11:49 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	exec2(t_exec *exec)
 		waitpid(g_glob->pid, &exec->status, 0);
 		g_glob->ret = 0;
 		if (WIFEXITED(exec->status))
-			g_glob->ret = exec->status;
+			g_glob->ret = WEXITSTATUS(exec->status);
 		g_glob->prog = 0;
 	}
 	dup2(g_glob->save_in, 0);
