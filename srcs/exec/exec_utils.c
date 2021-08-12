@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/10 17:05:55 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/12 11:50:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int	is_builtin(t_list *cmds)
 			r = ft_env();
 		else
 			r = exec_path(cmds);
-		if (r < 0)
-			ft_putstr_fd("Error executing builtin.\n", 2);
 	}
 	free_list(tmp);
 	return (r);
