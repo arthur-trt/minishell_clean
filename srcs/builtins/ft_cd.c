@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 16:21:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/11 16:34:47 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/12 11:14:16 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,18 @@ static char	*convert_in_absolute(char *path)
 
 	if (path[0] == '/')
 		absolute = ft_strdup(path);
-	else
+	else if (getcwd(buf, 4096) != NULL)
 	{
 		cwd = ft_strdup(getcwd(buf, 4096));
 		cleaned_path = clean_path(cwd);
 		absolute = ft_strjoin(cleaned_path, path);
 		free(cleaned_path);
+	}
+	else
+	{
+		absolute = ft_strjoin(search_env("PWD"), path);
+		ft_putstr_fd("cd: error retrieving current directory: getcwd: ", 2);
+		ft_putendl_fd(strerror(errno), 2);
 	}
 	return (absolute);
 }
@@ -66,7 +72,6 @@ static char	*convert_in_absolute(char *path)
 static char	*construct_path(t_list *cmd)
 {
 	char	*path;
-	char	*home;
 
 	if (ft_strcmp(cmd->next->content, "-") == 0)
 		path = ft_strdup(search_env("OLDPWD"));
