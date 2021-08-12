@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/10 16:00:04 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/12 11:59:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_glob
 	int				save_out;
 	int				save_in;
 	int				prog;
-	int				pid;
+	pid_t			pid;
 	int				d;
 	int				c;
 	bool			heredocs;
