@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/12 12:11:49 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/12 12:41:53 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ int	exec2(t_exec *exec)
 		g_glob->prog = 1;
 		if (g_glob->pid == 0)
 		{
-			g_glob->ret = is_builtin(exec->cmds);
-			exit(1);
+			exit(is_builtin(exec->cmds));
 		}
 		waitpid(g_glob->pid, &exec->status, 0);
 		g_glob->ret = 0;
