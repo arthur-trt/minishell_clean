@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 11:42:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/23 11:55:06 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:37:40 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	word_checker_bis(t_list *tmp, char **s)
 	int		i;
 
 	i = 0;
-	while (tmp->content[i])
+	while ((char)&tmp->content[i])
 	{
-		if (ft_ischarset(tmp->content[i], "<>"))
+		if (ft_ischarset((char)&tmp->content[i], "<>"))
 		{
 			if (i == 0)
 				*s = NULL;

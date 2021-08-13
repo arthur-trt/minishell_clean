@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 16:11:08 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/23 11:55:47 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:38:18 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_more(t_list *tmp, int *i, int *fdout)
 {
 	char	*filename;
 
-	if (tmp->content[(*i) + 1])
+	if ((char)&tmp->content[(*i) + 1])
 		(*i)++;
 	else
 	{
@@ -101,7 +101,7 @@ int	ft_append(t_list *tmp, int *i, int *fdout)
 	struct stat	file_check;
 
 	(*i)++;
-	if (tmp->content[(*i) + 1])
+	if ((char)&tmp->content[(*i) + 1])
 		(*i)++;
 	else
 	{

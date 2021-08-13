@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:38:23 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/12 12:11:15 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:40:08 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static int	is_valid_arg(t_list **tmp)
 	while ((*tmp))
 	{
 		i = 1;
-		if ((*tmp)->content[0] == '-')
+		if ((char)&(*tmp)->content[0] == '-')
 		{
-			while ((*tmp)->content[i] == 'n')
+			while ((char)&(*tmp)->content[i] == 'n')
 				i++;
-			if ((*tmp)->content[i] == '\0')
+			if ((char)&(*tmp)->content[i] == '\0')
 				flag = 1;
 			else
 				return (flag);

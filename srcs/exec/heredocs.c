@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 10:56:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/10 16:18:49 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:37:39 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static char	*find_delimiter(t_list *cmds)
 	while (tmp)
 	{
 		i = 0;
-		while (tmp->content[i])
+		while ((char)&tmp->content[i])
 		{
-			if (ft_ischarset(tmp->content[i], "<>"))
+			if (ft_ischarset((char)&tmp->content[i], "<>"))
 			{
 				tmp = tmp->next;
 				return (tmp->content);

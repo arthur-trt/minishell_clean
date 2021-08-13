@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/10 16:02:52 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:39:20 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ static int	ft_redirect(t_list *tmp, int *i, int *fdin, int *fdout)
 	int		r;
 
 	r = 0;
-	if (tmp->content[*i] == '<' && tmp->content[*i + 1] == '<')
+	if ((char)&tmp->content[*i] == '<' && (char)&tmp->content[*i + 1] == '<')
 	{
 		g_glob->heredocs = true;
-		if (tmp->content[(*i) + 1])
+		if ((char)&tmp->content[(*i) + 1])
 			(*i)++;
 	}
-	else if (tmp->content[*i] == '<')
+	else if ((char)&tmp->content[*i] == '<')
 		r = ft_less(tmp, i, fdin);
-	else if (tmp->content[*i] == '>' && tmp->content[*i + 1] == '>')
+	else if ((char)&tmp->content[*i] == '>' && (char)&tmp->content[*i + 1] == '>')
 		r = ft_append(tmp, i, fdout);
-	else if (tmp->content[*i] == '>')
+	else if ((char)&tmp->content[*i] == '>')
 	{
 		r = ft_more(tmp, i, fdout);
 		if (g_glob->heredocs)
@@ -105,9 +105,9 @@ int	ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 	while (tmp)
 	{
 		i = 0;
-		while (tmp->content[i])
+		while ((char)&tmp->content[i])
 		{
-			if (ft_ischarset(tmp->content[i], "<>"))
+			if (ft_ischarset((char)&tmp->content[i], "<>"))
 			{
 				ret = ft_redirect(tmp, &i, fdin, fdout);
 				if (ret != 0)
