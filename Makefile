@@ -30,12 +30,17 @@ cflags.valgrind		:= -Wall -Werror -Wextra -DDEBUG -ggdb
 cflags.debug		:= -Wall -Werror -Wextra -DDEBUG -ggdb -fsanitize=address -fno-omit-frame-pointer
 CFLAGS			:= $(cflags.$(BUILD))
 
-lib.release		:=  -Llibftprintf -lftprintf -lreadline -ltermcap
+ifeq ($(shell uname -s), Darwin)
+	lib.release		:=  -L libftprintf -lftprintf -L/Users/$(USER)/.brew/opt/readline/lib -lreadline -ltermcap
+	INC				:= -I$(INCDIR) -I/Users/$(USER)/.brew/opt/readline/include -I/usr/local/include
+else
+	lib.release		:= -Llibftprintf -lftprintf -lreadline -ltermcap
+	INC				:= -I$(INCDIR) -I/usr/local/include
+endif
 
 lib.debug		:= $(lib.release) -fsanitize=address -fno-omit-frame-pointer
 LIB			:= $(lib.$(BUILD))
 
-INC			:= -I$(INCDIR) -I/usr/local/include
 INCDEP			:= -I$(INCDIR)
 
 # Colors
