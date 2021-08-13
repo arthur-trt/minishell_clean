@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 09:57:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/03/08 11:31:34 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:38:24 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	*tmp;
 
 	if (lst)
+	{
 		while (*lst)
 		{
 			tmp = (*lst)->next;
 			ft_lstdelone(*lst, del);
 			(*lst) = tmp;
 		}
+	}
 }

@@ -6,12 +6,20 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:20:03 by atrouill          #+#    #+#             */
-/*   Updated: 2020/05/19 13:02:46 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 20:18:58 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
+/*
+**	Reverses the argument string in place, i.e., it swaps the ith character
+**	from the beginning with the ith character from the end.
+**
+**	@param str String to reverse
+**
+**	@return Return it's argument
+*/
 char	*ft_strrev(char *str)
 {
 	int		i;

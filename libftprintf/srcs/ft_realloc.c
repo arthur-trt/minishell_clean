@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:45:55 by atrouill          #+#    #+#             */
-/*   Updated: 2021/04/21 11:53:55 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:49:24 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ void	*ft_realloc(void *ptr, size_t size)
 
 	if (!size && ptr)
 	{
-		if (!(newptr = (char *)malloc(1)))
+		newptr = (char *)malloc(1);
+		if (!(newptr))
 			return (NULL);
 		ft_memdel(&ptr);
 		return (newptr);
 	}
-	if (!(newptr = (char *)malloc(size)))
+	newptr = (char *)malloc(size);
+	if (!(newptr))
 		return (NULL);
 	if (ptr)
 	{

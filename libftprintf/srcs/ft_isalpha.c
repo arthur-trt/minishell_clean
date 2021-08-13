@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:24:04 by atrouill          #+#    #+#             */
-/*   Updated: 2021/03/08 11:18:41 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:33:37 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 bool	ft_isalpha(int c)
 {
 	if ((!((c >= 'A' && c <= 'Z')
-			|| (c >= 'a' && c <= 'z'))))
+				|| (c >= 'a' && c <= 'z'))))
 		return (false);
 	return (true);
 }

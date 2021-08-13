@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:52:29 by atrouill          #+#    #+#             */
-/*   Updated: 2021/04/21 11:58:13 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:58:45 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	j;
 
 	len = ft_strlen(s1) + ft_strlen(s2);
-	if (!(res = malloc(sizeof(char) * (len + 1))))
+	res = malloc(sizeof(char) * (len + 1));
+	if (!(res))
 		return (NULL);
 	i = 0;
 	j = 0;

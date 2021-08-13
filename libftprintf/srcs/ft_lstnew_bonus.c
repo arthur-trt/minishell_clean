@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:14:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/03/08 11:47:52 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:44:30 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 **
 **	@param content Pointer to the content to add in the element
 **
-**	@return Pointer on the new element 
+**	@return Pointer on the new element
 */
 t_list	*ft_lstnew(void *content)
 {
-	t_list *res;
+	t_list	*res;
 
-	if (!(res = malloc(sizeof(t_list))))
+	res = malloc(sizeof(t_list));
+	if (!(res))
 		return (NULL);
 	res->content = content;
 	res->next = NULL;

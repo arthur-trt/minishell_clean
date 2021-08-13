@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 12:59:29 by atrouill          #+#    #+#             */
-/*   Updated: 2021/03/08 11:17:59 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:32:37 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@
 */
 void	*ft_calloc(size_t count, size_t size)
 {
-	void *ret;
+	void	*ret;
 
-	if (!(ret = malloc(count * size)))
+	ret = malloc(count * size);
+	if (!(ret))
 		return (NULL);
 	return (ft_memset(ret, 0, count * size));
 }

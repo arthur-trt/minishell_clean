@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 10:27:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/03/08 11:38:11 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:38:38 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 
 	tmp = lst;
 	if (lst)
+	{
 		while (tmp)
 		{
 			f(tmp->content);
 			tmp = tmp->next;
 		}
+	}
 }

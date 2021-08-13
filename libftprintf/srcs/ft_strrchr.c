@@ -6,12 +6,21 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:48:35 by atrouill          #+#    #+#             */
-/*   Updated: 2020/04/06 18:12:46 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 20:17:29 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
+/*
+**	returns a pointer to the last occurrence of the character c in the string s.
+**
+**	@param s String s, where to search
+**	@param c Char to find
+**
+**	@return Pointer to the corresponding character
+**	or NULL if the character was not found.
+*/
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*s0;

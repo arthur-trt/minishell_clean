@@ -6,14 +6,15 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:56:58 by atrouill          #+#    #+#             */
-/*   Updated: 2021/03/08 13:16:55 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:44:47 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
 /*
-**	Copy bytes from src to dst, until c occurs in src or until n element have been copied
+**	Copy bytes from src to dst, until c occurs in src or until n element
+**	have been copied
 **
 **	@param dst Pointer to destination string
 **	@param src Pointer to source string

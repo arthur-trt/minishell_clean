@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:06:08 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/23 11:56:07 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:27:38 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	char			*content;
 	struct s_list	*next;

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:22:56 by atrouill          #+#    #+#             */
-/*   Updated: 2021/04/21 11:40:25 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:45:08 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 */
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char *dst0;
-	unsigned char *src0;
+	unsigned char	*dst0;
+	unsigned char	*src0;
 
 	dst0 = (unsigned char *)dst;
 	src0 = (unsigned char *)src;

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:21:12 by atrouill          #+#    #+#             */
-/*   Updated: 2021/03/08 11:08:25 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:32:15 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static char	*ft_clean_str(const char *str)
 	int		i;
 
 	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' ||
-			str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
 		i++;
 	return ((char *)(str + i));
 }
@@ -30,7 +30,7 @@ static char	*ft_clean_str(const char *str)
 **
 **	@return int representation of the string
 */
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int				neg;
 	int				i;

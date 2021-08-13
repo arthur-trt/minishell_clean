@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 13:24:52 by atrouill          #+#    #+#             */
-/*   Updated: 2021/04/21 11:56:37 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:52:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ char	*ft_strdup(const char *s1)
 
 	len = ft_strlen(s1);
 	i = 0;
-	if (!(s2 = malloc(sizeof(char) * (len + 1))))
+	s2 = malloc(sizeof(char) * (len + 1));
+	if (!(s2))
 		return (NULL);
 	while (i <= len)
 	{
