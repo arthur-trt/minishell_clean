@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_path.c                                      :+:      :+:    :+:   */
+/*   ft_cd_cdpath.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 13:16:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/13 15:39:20 by atrouill         ###   ########.fr       */
+/*   Created: 2021/08/13 14:43:27 by atrouill          #+#    #+#             */
+/*   Updated: 2021/08/13 15:50:28 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 **
 **	@return True if user can exec, or false if not
 */
-static bool	can_exec(char *path)
+static bool	is_dir(char *path)
 {
 	struct stat		f_stat;
 
 	if (stat(path, &f_stat) == 0)
 	{
-		if (f_stat.st_mode & S_IXUSR)
+		if (S_ISDIR(f_stat.st_mode))
 			return (true);
 	}
 	return (false);
@@ -39,7 +39,7 @@ static bool	can_exec(char *path)
 **
 **	@return A clean path to the executable
 */
-static char	*scan_dir(char *path, char *exec_name)
+static char	*scan_dir(char *path, char *dir)
 {
 	DIR				*folder;
 	struct dirent	*entry;
@@ -51,47 +51,21 @@ static char	*scan_dir(char *path, char *exec_name)
 		entry = readdir(folder);
 		while (entry != NULL)
 		{
-			if (ft_strcmp(exec_name, entry->d_name) == 0)
-			{
-				final_path = ft_strjoin(path, exec_name);
-				if (can_exec(final_path) == true)
+		//	if (ft_strcmp(dir, entry->d_name) == 0)
+		//	{
+				final_path = ft_strjoin(path, dir);
+				if (is_dir(final_path) == true)
 				{
 					free(folder);
 					return (final_path);
 				}
-			}
+				free(final_path);
+		//	}
 			entry = readdir(folder);
 		}
 		free(folder);
 	}
 	return (NULL);
-}
-
-/*
-**	See if the input path is absolute or relative.
-**	If absolute, returned as is. If relative, replaced by the absolute path.
-**
-**	@param path Path to be checked
-**
-**	@return Absolute path
-*/
-static char	*convert_in_absolute(char *path)
-{
-	char	*absolute;
-	char	*cwd;
-	char	*cleaned_path;
-	char	buf[4096];
-
-	if (path[0] == '/')
-		absolute = ft_strdup(path);
-	else
-	{
-		cwd = ft_strdup(getcwd(buf, 4096));
-		cleaned_path = clean_path(cwd);
-		absolute = ft_strjoin(cleaned_path, path);
-		free(cleaned_path);
-	}
-	return (absolute);
 }
 
 /*
@@ -101,14 +75,14 @@ static char	*convert_in_absolute(char *path)
 **
 **	@return Return path + exec_name
 */
-char	*search_path(char *exec_name)
+char	*search_cdpath(char *dir)
 {
 	char			*path;
 	int				i;
 	char			**tmp;
 	char			*test;
 
-	path = search_env("PATH");
+	path = search_env("CDPATH");
 	if (path != NULL)
 	{
 		tmp = ft_split(path, ':');
@@ -116,7 +90,7 @@ char	*search_path(char *exec_name)
 		while (tmp[i] != NULL)
 		{
 			tmp[i] = clean_path(tmp[i]);
-			test = scan_dir(tmp[i], exec_name);
+			test = scan_dir(tmp[i], dir);
 			if (test != NULL)
 			{
 				free_split(tmp);
@@ -125,10 +99,6 @@ char	*search_path(char *exec_name)
 			i++;
 		}
 		free_split(tmp);
-		if (can_exec(exec_name))
-			return (convert_in_absolute(exec_name));
 	}
-	if (can_exec(exec_name))
-			return (convert_in_absolute(exec_name));
 	return (NULL);
 }

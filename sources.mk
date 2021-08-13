@@ -32,6 +32,7 @@ SOURCES		+=                                 		\
 SOURCES		+=                                 		\
 		srcs/builtins/ft_env.c                    	\
 		srcs/builtins/ft_pwd.c                    	\
+		srcs/builtins/ft_cd_cdpath.c              	\
 		srcs/builtins/ft_cd.c                     	\
 		srcs/builtins/ft_export.c                 	\
 		srcs/builtins/ft_unset.c                  	\
@@ -46,6 +47,7 @@ SOURCES		+=                                 		\
 		srcs/utils/free_list.c                    	\
 		srcs/utils/signals.c                      	\
 		srcs/utils/free_split.c                   	\
+		srcs/utils/clean_path.c                   	\
 		srcs/utils/ft_str_malloc.c                	\
 
 

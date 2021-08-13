@@ -5,35 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 16:21:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/12 11:14:16 by atrouill         ###   ########.fr       */
+/*   Created: 2021/08/13 12:36:40 by atrouill          #+#    #+#             */
+/*   Updated: 2021/08/13 15:52:36 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob	*g_glob;
-
-/*
-**	Check if path is correct, with ending slash
-**
-**	@param path Path to check (will be freed)
-**
-**	@return Clean path
-*/
-static char	*clean_path(char *path)
+static int	change_dir(char *path, char *user_entry)
 {
-	int				len;
-	char			*tmp;
+	char	*pwd;
+	char	buf[4096];
+	char	*cwd;
 
-	len = ft_strlen(path);
-	if (path[len - 1] != '/')
+	pwd = search_env("PWD");
+	if (path == NULL || chdir(path) == -1)
 	{
-		tmp = ft_strjoin(path, "/");
+		ft_putstr_fd("minishell: cd: ", 2);
+		ft_putstr_fd(user_entry, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putendl_fd(strerror(errno), 2);
 		free(path);
-		return (tmp);
+		return (1);
 	}
-	return (path);
+	else
+	{
+		cwd = getcwd(buf, 4096);
+		ft_modify_value("OLDPWD", pwd);
+		ft_modify_value("PWD", cwd);
+	}
+	free(path);
+	return (0);
 }
 
 /*
@@ -73,61 +75,50 @@ static char	*construct_path(t_list *cmd)
 {
 	char	*path;
 
-	if (ft_strcmp(cmd->next->content, "-") == 0)
-		path = ft_strdup(search_env("OLDPWD"));
-	else if (cmd->next == NULL)
-	{
-		if (search_env("HOME") == NULL)
-		{
-			ft_putstr_fd("minishell: cd: HOME not set\n", 2);
-			return (NULL);
-		}
-		if (ft_strcmp(search_env("HOME"), "") != 0)
-			path = ft_strdup(search_env("HOME"));
-		else
-			path = ft_strdup(search_env("PWD"));
-	}
-	else if (cmd->next->next != NULL)
-	{
-		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
-		return (NULL);
-	}
+	path = NULL;
+	if ((cmd->next->content[0] != '.'
+		&& cmd->next->content[0] != '/')
+		&& search_env("CDPATH") != NULL)
+		path = search_cdpath(cmd->next->content);
 	else
 		path = convert_in_absolute(cmd->next->content);
 	return (path);
 }
 
-static int	path_not_found(t_list *cmd)
+static char	*cd_env(char *env)
 {
-	ft_putstr_fd("minishell: cd: ", 2);
-	ft_putstr_fd(cmd->next->content, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putendl_fd(strerror(errno), 2);
-	return (1);
+	char	*path;
+
+	if (search_env(env) == NULL)
+	{
+		ft_putstr_fd("minishell: cd: ", 2);
+		ft_putstr_fd(env, 2);
+		ft_putstr_fd(" not set\n", 2);
+		return (NULL);
+	}
+	if (ft_strcmp(search_env(env), "") != 0)
+		path = ft_strdup(search_env(env));
+	else
+		path = ft_strdup(search_env("PWD"));
+	return (path);
 }
 
 int	ft_cd(t_list *cmd)
 {
 	char	*path;
-	char	*pwd;
-	char	buf[4096];
-	char	*cwd;
 
-	path = construct_path(cmd);
-	if (path == NULL)
+	if (cmd->next && cmd->next->next != NULL)
+	{
+		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
 		return (1);
-	pwd = search_env("PWD");
-	if (chdir(path) == -1)
-	{
-		free(path);
-		return (path_not_found(cmd));
 	}
+	else if (cmd->next == NULL
+		|| ft_strcmp(cmd->next->content, "--") == 0
+		|| ft_strcmp(cmd->next->content, "~") == 0)
+		path = cd_env("HOME");
+	else if (ft_strcmp(cmd->next->content, "-") == 0)
+		path = cd_env("OLDPWD");
 	else
-	{
-		cwd = getcwd(buf, 4096);
-		ft_modify_value("OLDPWD", pwd);
-		ft_modify_value("PWD", cwd);
-	}
-	free(path);
-	return (0);
+		path = construct_path(cmd);
+	return(change_dir(path, cmd->next->content));
 }
