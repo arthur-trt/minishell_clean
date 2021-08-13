@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:16:47 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/11 16:50:27 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:18:45 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*construct_path(char *cwd)
 
 	path = ft_strdup(cwd);
 	home = search_env("HOME");
-	if (home[0] != '\0' && ft_strncmp(cwd, home, ft_strlen(home)) == 0)
+	if (home && home[0] != '\0' && ft_strncmp(cwd, home, ft_strlen(home)) == 0)
 	{
 		path_tmp = ft_substr(path, ft_strlen(home),
 				ft_strlen(path) - ft_strlen(home));
