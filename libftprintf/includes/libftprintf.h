@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 17:59:51 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/13 19:31:57 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/14 14:00:29 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 # define LIBFTPRINTF_H
 
 # include "libft.h"
-# include "get_next_line.h"
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:45:46 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/13 19:37:53 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/14 14:03:55 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static char	*ft_itoa_helper(int len, int neg, int n)
 */
 char	*ft_itoa(int n)
 {
-	char	*res;
 	int		tmp_n;
 	int		len;
 	int		neg;
