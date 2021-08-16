@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/06/21 19:36:23 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/16 13:59:41 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,25 @@ int	ft_empty_buffer(char **s, t_list **command)
 	return (0);
 }
 
+static int	double_checker(char *s, int *i, char **res, t_list *command)
+{
+	int	r;
+
+	r = 0;
+	if (s[*i + 1] != '\"')
+	{	
+		r = ft_apply_double(s, i, &ft_double, res);
+		if (r != 0)
+			return (ft_double_error(r, command, *res));
+	}
+	else
+	{
+		(*i) += 1;
+		return (1);
+	}
+	return (0);
+}
+
 /*
 **	Checks current character and applies a function according to it
 **
@@ -56,9 +75,11 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 	r = 0;
 	if (s[*i] == '\"')
 	{
-		r = ft_apply_double(s, i, &ft_double, res);
-		if (r != 0)
-			return (ft_double_error(r, command, *res));
+		r = double_checker(s, i, res, command);
+		if (r == 1)
+			return (0);
+		if (r < 0)
+			return (r);
 	}
 	else if (s[*i] == '\'')
 		*res = ft_apply(s, i, &ft_single, *res);

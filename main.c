@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:19:37 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/21 09:50:07 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/16 13:28:09 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <term.h>
 
-static void print_key(char *key)
+static void	print_key(char *key)
 {
 	int	i;
 
