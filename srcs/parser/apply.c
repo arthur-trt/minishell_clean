@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:31:33 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/16 13:44:50 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/16 16:29:02 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,6 @@ int	ft_apply_double(char *s, int *i,
 	int		r;
 
 	r = 0;
-	// if (s[*i + 1] == '\"')
-	// {
-	// 	(*i) += 2;
-	// 	return (0);
-	// }
 	tmp_bis = NULL;
 	tmp = (*f)(s, i, &r);
 	if (!(*res) && tmp)

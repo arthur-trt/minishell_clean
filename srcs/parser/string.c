@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:29:08 by jcueille          #+#    #+#             */
-/*   Updated: 2021/04/21 20:36:05 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/16 16:19:00 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_string(char *s, int *i)
 		if (s[j] == '\\')
 		{
 			ft_remove_char(s, j);
-			j--;
+			//j--;
 		}
 		j++;
 	}
