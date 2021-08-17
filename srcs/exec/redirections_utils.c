@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/10 16:02:52 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/17 14:04:45 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 		i = 0;
 		while (tmp->content[i])
 		{
-			if (ft_ischarset(tmp->content[i], "<>"))
+			if (ft_ischarset(tmp->content[i], "<>") && tmp->d_quote == 0)
 			{
 				ret = ft_redirect(tmp, &i, fdin, fdout);
 				if (ret != 0)

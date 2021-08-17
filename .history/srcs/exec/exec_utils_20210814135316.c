@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 15:41:21 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/12 11:50:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	word_checker(t_list *tmp, char **s)
 	i = 0;
 	while (tmp->content[i])
 	{
-		if (ft_ischarset(tmp->content[i], "<>") && tmp->d_quote == 0)
+		if (ft_ischarset(tmp->content[i], "<>"))
 		{
 			if (i == 0)
 				*s = ft_strdup("");

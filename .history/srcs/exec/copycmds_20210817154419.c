@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 13:53:23 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 15:53:02 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/17 15:44:19 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_list	*copycmds(t_list *lst)
 		else
 		{
 			tmpbis = ft_lstnew(s);
-			tmpbis->d_quote = tmp->d_quote;
 			ft_lstadd_back(&res, tmpbis);
 		}
 		if (r)

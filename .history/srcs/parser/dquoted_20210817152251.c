@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:24:11 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 15:23:07 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/17 15:22:51 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_quoted_str(char *s, int *i, t_list **list, int *len)
 	if (res == NULL)
 		return (-1);
 	tmp = ft_lstnew(res);
-	g_glob->d_quote = true;
+	
 	if (tmp == NULL)
 	{
 		free(res);
@@ -102,7 +102,7 @@ int	ft_quoted_esc(char *s, int *i, t_list **list, int *len)
 	if (res == NULL)
 		return (-1);
 	tmp = ft_lstnew(res);
-	g_glob->d_quote = true;
+	
 	if (tmp == NULL)
 	{
 		free(res);

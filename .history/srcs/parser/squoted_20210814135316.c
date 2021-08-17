@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   squoted.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:30:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 15:55:43 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/05/15 12:51:16 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libftprintf/includes/libftprintf.h"
-#include "../../inc/minishell.h"
-
-extern t_glob	*g_glob;
 
 /*
 **	Handles single (strong) quoted words
@@ -29,7 +26,6 @@ char	*ft_single(char *s, int *i)
 	int		j;
 	char	*res;
 
-	g_glob->d_quote = true;
 	j = (*i) + 1;
 	while (s[j] && s[j] != '\'')
 		j++;

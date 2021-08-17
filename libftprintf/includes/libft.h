@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:06:08 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/13 19:27:38 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/17 13:50:58 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_list
 {
 	char			*content;
+	int				d_quote;
 	struct s_list	*next;
 }					t_list;
 

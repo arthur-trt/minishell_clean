@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 16:06:34 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/16 13:59:41 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ int	ft_empty_buffer(char **s, t_list **command)
 	tmp = ft_lstnew(copy);
 	if (tmp == NULL)
 		return (-2);
-	if (g_glob->d_quote == true)
-	{
-		tmp->d_quote = 1;
-		g_glob->d_quote = false;
-	}
 	ft_lstadd_back(command, tmp);
 	free(*s);
 	*s = NULL;
@@ -96,8 +91,8 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 		*res = ft_apply(s, i, &ft_string, *res);
 	if (!(*res) && !(r))
 		return (ft_parse_error(command));
-//	if (r == 2)
-//		return (0);
+	if (r == 2)
+		return (0);
 	return (r);
 }
 

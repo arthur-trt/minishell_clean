@@ -6,13 +6,11 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:24:11 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 15:23:07 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/17 13:53:36 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
-extern t_glob	*g_glob;
 
 /*
 **	Handles "normal" characters inside double quotes
@@ -37,7 +35,7 @@ int	ft_quoted_str(char *s, int *i, t_list **list, int *len)
 	if (res == NULL)
 		return (-1);
 	tmp = ft_lstnew(res);
-	g_glob->d_quote = true;
+	tmp->d_quote = 1;
 	if (tmp == NULL)
 	{
 		free(res);
@@ -72,7 +70,7 @@ int	ft_dollar(char *s, int *i, t_list **list, int *len)
 		return (0);
 	}
 	tmp = ft_lstnew(res);
-	g_glob->d_quote = true;
+	tmp->d_quote = 1;
 	if (res == NULL)
 		return (-1);
 	ft_lstadd_back(list, tmp);
@@ -102,7 +100,7 @@ int	ft_quoted_esc(char *s, int *i, t_list **list, int *len)
 	if (res == NULL)
 		return (-1);
 	tmp = ft_lstnew(res);
-	g_glob->d_quote = true;
+	tmp->d_quote = 1;
 	if (tmp == NULL)
 	{
 		free(res);
