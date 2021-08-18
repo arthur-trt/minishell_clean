@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 15:58:32 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/04 13:59:47 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/18 14:13:13 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	ft_listclear(t_list **lst);
 void	ft_remove_char(char *s, int i);
 char	*ft_search_value(char *name);
 char	*home_tild(char *res);
-
+int		ft_command_not_found(t_list *command);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 16:06:34 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/18 14:18:24 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 	int		r;
 
 	r = 0;
+	if (*i == 0 && (!(s[*i]) || s[*i] == ' ') && !command)
+		ft_command_not_found(command);
 	if (s[*i] == '\"')
 	{
 		r = double_checker(s, i, res, command);
@@ -96,8 +98,6 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 		*res = ft_apply(s, i, &ft_string, *res);
 	if (!(*res) && !(r))
 		return (ft_parse_error(command));
-//	if (r == 2)
-//		return (0);
 	return (r);
 }
 
