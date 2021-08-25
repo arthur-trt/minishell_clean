@@ -7,3 +7,5 @@ bin/*
 debug_*
 .history
 .history/*
+libftpintf.a
+libftprintf/obj/*
