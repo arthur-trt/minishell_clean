@@ -72,6 +72,7 @@ SOURCES		+=                                 		\
 		srcs/parser/lexer/add_cmd_to_lexer.c      	\
 		srcs/parser/lexer/print_lexer.c           	\
 		srcs/parser/lexer/lexer.c                 	\
+		srcs/parser/lexer/check_error.c           	\
 		srcs/parser/lexer/free_lexer.c            	\
 		srcs/parser/lexer/clean_cmd.c             	\
 

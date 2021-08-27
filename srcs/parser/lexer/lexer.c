@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:59:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/15 14:58:24 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/25 10:44:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ t_token	find_previous_token(char *str, int last_pos)
 	t_token	token;
 
 	token = T_NO;
-	if (str[last_pos] == SEMICOLON)
+	if (last_pos == 0)
+		token = T_NO;
+	else if (str[last_pos] == SEMICOLON)
 		token = T_SEMICOLON;
 	else if (str[last_pos] == PIPE)
 		token = T_PIPE;
