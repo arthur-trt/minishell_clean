@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:38:43 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/15 15:33:29 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/18 19:02:53 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	ft_get_keyvalue(char *s, char **key, char **value)
 		if (ft_get_value(s, &i, value))
 			return (-1);
 	}
+	else
+		return (1);
 	return (0);
 }
 
@@ -72,11 +74,30 @@ int	ft_addmaillon(char *key, char *value)
 	return (0);
 }
 
+int	replace_var(char *key, char *value)
+{
+	t_env	*env;
+
+	env = g_glob->env;
+	while (env)
+	{
+		if (!(ft_strcmp(key, env->key)))
+		{
+			free(env->value);
+			env->value = value;
+			return (1);
+		}
+		env = env->next;
+	}
+	return (0);
+}
+
 int	ft_export(t_list *cmd)
 {
 	t_list	*tmp;
 	char	*key;
 	char	*value;
+	int		r;
 
 	tmp = NULL;
 	if (cmd != NULL)
@@ -85,12 +106,18 @@ int	ft_export(t_list *cmd)
 	{
 		while (tmp)
 		{
-			if (ft_get_keyvalue(tmp->content, &key, &value))
+			r = ft_get_keyvalue(tmp->content, &key, &value);
+			if (r < 0)
 				return (-1);
+			if (r == 1)
+				break ;
 			if (key && ft_check_varname(key))
 				return (-2);
-			if (ft_addmaillon(key, value))
-				return (-3);
+			if (!(replace_var(key, value)))
+			{
+				if (ft_addmaillon(key, value))
+					return (-3);
+			}
 			tmp = tmp->next;
 		}
 	}

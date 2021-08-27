@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:31:33 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/18 13:40:52 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/22 15:41:26 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,10 @@ char	*ft_apply_var(char *s, int *i, char *res, int *r)
 	tmp_bis = ft_search_var(s, i);
 	if (!(tmp_bis))
 	{
-		//tmp = remove_bad_var(s, i, res);
-		tmp = ft_strdup("");
 		*r = 0;
+		if (res)
+			return (res);
+		tmp = ft_strdup("");
 		return (tmp);
 	}
 	if (res)

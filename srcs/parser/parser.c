@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/18 14:18:24 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/24 16:58:31 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 	else if (s[*i] == '~' )
 		*res = home_tild(*res);
 	else
-		*res = ft_apply(s, i, &ft_string, *res);
+		*res = ft_apply_str(s, i, *res);
 	if (!(*res) && !(r))
 		return (ft_parse_error(command));
 	return (r);
