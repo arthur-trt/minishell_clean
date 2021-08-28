@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 14:04:45 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/27 21:51:34 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 		i = 0;
 		while (tmp->content[i])
 		{
-			if (ft_ischarset(tmp->content[i], "<>") && tmp->d_quote == 0)
+			if (ft_ischarset(tmp->content[i], "<>") && tmp->d_quote == 0 && tmp->esc == 0)
 			{
 				ret = ft_redirect(tmp, &i, fdin, fdout);
 				if (ret != 0)

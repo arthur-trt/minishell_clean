@@ -6,11 +6,13 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:29:08 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/27 15:22:43 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/27 22:21:03 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+extern t_glob	*g_glob;
 
 char	*ft_apply_str(char *s, int *i, char *res)
 {
@@ -82,8 +84,15 @@ char	*ft_string(char *s, int *i)
 	char	*res;
 
 	j = 0;
+	if (s[*i] == '\\' && (s[*i + 1] == '>' || s[*i + 1] == '<'))
+	{
+		(*i)++;
+		g_glob->esc = true;
+		return (ft_strdup(&s[*i]));
+	}
 	res = malloc(get_len(s, *i) * sizeof(char));
-	while (s[*i] && s[*i] != ' ' && s[*i] != '\"' && s[*i] != '\'' && s[*i] != '$')
+	while (s[*i] && s[*i] != ' '
+		&& s[*i] != '\"' && s[*i] != '\'' && s[*i] != '$')
 	{
 		if (s[*i] == '\\')
 			(*i)++;

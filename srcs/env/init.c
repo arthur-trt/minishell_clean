@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:48:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/17 15:21:36 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/27 21:47:55 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ int	ft_init_gobal(void)
 	g_glob->heredocs = false;
 	g_glob->d_quote = false;
 	g_glob->tmp_fdout = 0;
+	g_glob->esc = false;
 	return (0);
 }

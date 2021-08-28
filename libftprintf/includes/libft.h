@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:06:08 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/17 13:50:58 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/27 21:44:30 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_list
 {
 	char			*content;
 	int				d_quote;
+	int				esc;
 	struct s_list	*next;
 }					t_list;
 

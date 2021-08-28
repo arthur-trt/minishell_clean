@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/17 15:21:14 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/27 21:47:34 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_glob
 	int				tmp_fdout;
 	char			*path;
 	bool			d_quote;
+	bool			esc;
 }					t_glob;
 
 void	printf_list(t_list *lst);

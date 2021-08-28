@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/24 16:58:31 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/27 21:53:45 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ int	ft_empty_buffer(char **s, t_list **command)
 	{
 		tmp->d_quote = 1;
 		g_glob->d_quote = false;
+	}
+	if (g_glob->esc == true)
+	{
+		tmp->esc = 1;
+		g_glob->esc = false;
 	}
 	ft_lstadd_back(command, tmp);
 	free(*s);
