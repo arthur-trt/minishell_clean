@@ -7,3 +7,7 @@ bin/*
 debug_*
 .history
 .history/*
+**/libftpintf.a
+libftprintf/obj/*
+libftprintf/libftprintf.a
+a.out

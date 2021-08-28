@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/26 14:41:40 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/27 15:22:56 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,18 @@ int	minishell(void)
 		input_user = input();
 		if (ft_strcmp(input_user, "exit") == 0)
 			break ;
-		lexed = lexer(input_user);
-		ft_exec(lexed);
-		free_lexer(&lexed);
+		if (!check_error(input_user))
+		{
+			ft_putstr_fd("minishell: syntax error\n", 2);
+			g_glob->ret = 2;
+			input_user[0] = '\0';
+		}
+		else
+		{
+			lexed = lexer(input_user);
+			ft_exec(lexed);
+			free_lexer(&lexed);
+		}
 		free(input_user);
 	}
 	free(input_user);
