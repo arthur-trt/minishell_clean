@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 15:53:57 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/30 22:21:31 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/30 23:20:05 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,11 @@ static bool	is_command_name(char *exec_name)
 	int	i;
 
 	i = 0;
+	if (exec_name[0] == '.')
+		return (false);
 	while (exec_name[i] != '\0')
 	{
-		if (exec_name[i] == '/' || exec_name[i] == '.')
+		if (exec_name[i] == '/')
 			return (false);
 		i++;
 	}
