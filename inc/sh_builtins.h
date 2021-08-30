@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:40:55 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/13 14:47:59 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/31 00:14:57 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_echo(t_list *cmd);
 int		ft_env(void);
 int		ft_pwd(void);
 int		ft_cd(t_list *cmd);
-void	ft_exit(void);
+void	ft_exit(t_list *cmds);
 
 int		ft_check_varname(char *s);
 char	*search_cdpath(char *dir);

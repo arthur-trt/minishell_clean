@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_strisdigit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 09:51:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/31 00:18:03 by atrouill         ###   ########.fr       */
+/*   Created: 2021/08/31 00:16:35 by atrouill          #+#    #+#             */
+/*   Updated: 2021/08/31 00:17:37 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_exit(t_list *cmd)
+bool	ft_strisdigit(char *s)
 {
-	if (cmd->next && cmd->next->next)
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
 	{
-		ft_putendl_fd("minishell: exit: too many arguments", 2);
-		exit (1);
+		if (ft_isdigit(s[i]) == false)
+			return (false);
 	}
-	else if (cmd->next == NULL)
-	{
-		exit (0);
-	}
-	else
-	{
-		if (ft_strisdigit(cmd->next->content) == false)
-		{
-			ft_putstr_fd("minishell: exit: ", 2);
-			ft_putstr_fd(cmd->next->content, 2);
-			ft_putendl_fd(": numeric argument required", 2);
-			exit (1);
-		}
-		exit (ft_atoi(cmd->next->content));
-	}
+	return (true);
 }

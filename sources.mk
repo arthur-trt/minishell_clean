@@ -48,6 +48,7 @@ SOURCES		+=                                 		\
 		srcs/utils/signals.c                      	\
 		srcs/utils/free_split.c                   	\
 		srcs/utils/can_exec.c                     	\
+		srcs/utils/ft_strisdigit.c                	\
 		srcs/utils/clean_path.c                   	\
 		srcs/utils/ft_str_malloc.c                	\
 
