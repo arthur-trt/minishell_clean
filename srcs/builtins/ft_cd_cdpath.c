@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 14:43:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/13 15:50:28 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/30 23:12:40 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,13 @@ static char	*scan_dir(char *path, char *dir)
 		entry = readdir(folder);
 		while (entry != NULL)
 		{
-		//	if (ft_strcmp(dir, entry->d_name) == 0)
-		//	{
-				final_path = ft_strjoin(path, dir);
-				if (is_dir(final_path) == true)
-				{
-					free(folder);
-					return (final_path);
-				}
-				free(final_path);
-		//	}
+			final_path = ft_strjoin(path, dir);
+			if (is_dir(final_path) == true)
+			{
+				free(folder);
+				return (final_path);
+			}
+			free(final_path);
 			entry = readdir(folder);
 		}
 		free(folder);

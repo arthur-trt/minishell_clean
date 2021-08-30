@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 12:36:40 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/13 15:52:36 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/30 23:30:32 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	change_dir(char *path, char *user_entry)
 {
 	char	*pwd;
 	char	buf[4096];
-	char	*cwd;
 
 	pwd = search_env("PWD");
 	if (path == NULL || chdir(path) == -1)
@@ -30,9 +29,9 @@ static int	change_dir(char *path, char *user_entry)
 	}
 	else
 	{
-		cwd = getcwd(buf, 4096);
-		ft_modify_value("OLDPWD", pwd);
-		ft_modify_value("PWD", cwd);
+		if (pwd != NULL)
+			ft_modify_value("OLDPWD", pwd);
+		ft_modify_value("PWD", getcwd(buf, 4096));
 	}
 	free(path);
 	return (0);
@@ -77,7 +76,7 @@ static char	*construct_path(t_list *cmd)
 
 	path = NULL;
 	if ((cmd->next->content[0] != '.'
-		&& cmd->next->content[0] != '/')
+			&& cmd->next->content[0] != '/')
 		&& search_env("CDPATH") != NULL)
 		path = search_cdpath(cmd->next->content);
 	else
@@ -85,7 +84,7 @@ static char	*construct_path(t_list *cmd)
 	return (path);
 }
 
-static char	*cd_env(char *env)
+static int	cd_env(char *env, char *user_entry)
 {
 	char	*path;
 
@@ -94,31 +93,36 @@ static char	*cd_env(char *env)
 		ft_putstr_fd("minishell: cd: ", 2);
 		ft_putstr_fd(env, 2);
 		ft_putstr_fd(" not set\n", 2);
-		return (NULL);
+		return (1);
 	}
 	if (ft_strcmp(search_env(env), "") != 0)
 		path = ft_strdup(search_env(env));
 	else
 		path = ft_strdup(search_env("PWD"));
-	return (path);
+	if (user_entry == NULL)
+		user_entry = path;
+	return (change_dir(path, user_entry));
 }
 
 int	ft_cd(t_list *cmd)
 {
 	char	*path;
+	char	*user_entry;
 
+	user_entry = NULL;
+	if (cmd->next)
+		user_entry = cmd->next->content;
 	if (cmd->next && cmd->next->next != NULL)
 	{
 		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
 		return (1);
 	}
 	else if (cmd->next == NULL
-		|| ft_strcmp(cmd->next->content, "--") == 0
-		|| ft_strcmp(cmd->next->content, "~") == 0)
-		path = cd_env("HOME");
-	else if (ft_strcmp(cmd->next->content, "-") == 0)
-		path = cd_env("OLDPWD");
-	else
-		path = construct_path(cmd);
-	return(change_dir(path, cmd->next->content));
+		|| ft_strcmp(user_entry, "--") == 0
+		|| ft_strcmp(user_entry, "~") == 0)
+		return (cd_env("HOME", user_entry));
+	else if (ft_strcmp(user_entry, "-") == 0)
+		return (cd_env("OLDPWD", user_entry));
+	path = construct_path(cmd);
+	return (change_dir(path, user_entry));
 }
