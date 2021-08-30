@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:29:08 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/27 22:21:03 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/08/30 12:01:56 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	get_len(char *s, int i)
 
 /*
 **	Handles non quoted characters
-**	
+**
 **	@param	s user's input string
 **	@param	i the position of the escape character on s
 **	@return res the parsed text
@@ -90,7 +90,7 @@ char	*ft_string(char *s, int *i)
 		g_glob->esc = true;
 		return (ft_strdup(&s[*i]));
 	}
-	res = malloc(get_len(s, *i) * sizeof(char));
+	res = malloc((get_len(s, *i) + 1) * sizeof(char));
 	while (s[*i] && s[*i] != ' '
 		&& s[*i] != '\"' && s[*i] != '\'' && s[*i] != '$')
 	{
