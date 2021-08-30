@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/30 15:39:10 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/30 22:20:19 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ int	exec_path(t_list *cmds)
 	char	*path;
 	char	**env;
 	char	**args;
+	int		ret_code;
 
-	path = search_path(cmds->content);
-	if (!(path))
+	ret_code = search_path(cmds->content, &path);
+	if (ret_code != 0)
 	{
-		ft_putstr_fd("Error: path or executable name incorrect.\n", 2);
-		return (127);
+		free(path);
+		return (ret_code);
 	}
 	env = env_exec_creator();
 	args = argv_exec_creator(cmds);
@@ -37,6 +38,7 @@ int	exec_path(t_list *cmds)
 		return (-1);
 	}
 	execve(path, args, env);
+	free(path);
 	return (0);
 }
 

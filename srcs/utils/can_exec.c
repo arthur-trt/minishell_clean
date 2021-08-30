@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_utils.h                                         :+:      :+:    :+:   */
+/*   can_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/30 16:25:57 by atrouill         ###   ########.fr       */
+/*   Created: 2021/08/30 16:25:31 by atrouill          #+#    #+#             */
+/*   Updated: 2021/08/30 16:25:40 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_UTILS_H
-# define SH_UTILS_H
+#include "minishell.h"
 
-# include "minishell.h"
+/*
+**	Check if the user have permission to execute the file
+**
+**	@param path Path to file to check
+**
+**	@return True if user can exec, or false if not
+*/
+bool	can_exec(char *path)
+{
+	struct stat		f_stat;
 
-char	*ft_clean_str(char *str);
-char	*ft_str_malloc(size_t size);
-char	*ft_clean_str(char *str);
-
-void	free_split(char **array);
-int		free_list(t_list *lst);
-
-char	*clean_path(char *path);
-
-void	c_handler(int sigld);
-void	d_handler(int sigld);
-
-bool	can_exec(char *path);
-
-#endif
+	if (stat(path, &f_stat) == 0)
+	{
+		if (f_stat.st_mode & S_IXUSR)
+			return (true);
+	}
+	return (false);
+}

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:35:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/13 15:36:07 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/30 16:05:19 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,3 @@ char	*clean_path(char *path)
 	}
 	return (path);
 }
-

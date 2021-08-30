@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/04 13:59:54 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/30 22:09:01 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_exec
 
 }	t_exec;
 
-char	*search_path(char *exec_name);
+int		search_path(char *exec_name, char **path);
 int		is_builtin(t_list *cmds);
 int		is_builtin_no_forks(t_list *cmds);
 char	**argv_exec_creator(t_list *cmds);
