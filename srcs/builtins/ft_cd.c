@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 12:36:40 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/30 23:30:32 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/08/31 23:16:03 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ static int	cd_env(char *env, char *user_entry)
 		path = ft_strdup(search_env(env));
 	else
 		path = ft_strdup(search_env("PWD"));
-	if (user_entry == NULL)
-		user_entry = path;
+	user_entry = path;
 	return (change_dir(path, user_entry));
 }
 
