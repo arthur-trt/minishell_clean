@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 12:28:00 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 17:18:58 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_glob	*g_glob;
 
 int	minishell(void)
 {
-	t_lexer	*lexed;
 	char	*input_user;
 
 	g_glob->prog = 0;
@@ -33,9 +32,7 @@ int	minishell(void)
 		}
 		else
 		{
-			lexed = lexer(input_user);
-			ft_exec(lexed);
-			free_lexer(&lexed);
+			ft_exec(input_user);
 		}
 		free(input_user);
 	}

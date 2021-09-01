@@ -36,9 +36,12 @@ SOURCES		+=                                 		\
 SOURCES		+=                                 		\
 		srcs/exec/copycmds.c                      	\
 		srcs/exec/exec.c                          	\
+		srcs/exec/exec_command.c                  	\
 		srcs/exec/exec_utils.c                    	\
 		srcs/exec/exec_utils2.c                   	\
 		srcs/exec/heredocs.c                      	\
+		srcs/exec/init_exec.c                     	\
+		srcs/exec/pipe.c                          	\
 		srcs/exec/redirections.c                  	\
 		srcs/exec/redirections_utils.c            	\
 		srcs/exec/search_path.c                   	\

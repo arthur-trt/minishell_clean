@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   init_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/12 13:57:43 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/01 17:43:38 by atrouill         ###   ########.fr       */
+/*   Created: 2021/09/01 16:44:43 by atrouill          #+#    #+#             */
+/*   Updated: 2021/09/01 17:16:49 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob	*g_glob;
-
-int	ft_env(void)
+t_exec	*exec_init(t_list *cmd)
 {
-	t_env	*env;
+	t_exec	*exec;
 
-	env = g_glob->env;
-	while (env)
-	{
-		ft_putstr_fd(env->key, 1);
-		write(1, "=", 1);
-		ft_putstr_fd(env->value, 1);
-		ft_putstr_fd("\n", 1);
-		env = env->next;
-	}
-	return (0);
+	exec = malloc(sizeof(*exec));
+	exec->fdtemp = 0;
+	exec->status = 0;
+	exec->fdin = 0;
+	exec->fdout = 0;
+	exec->cmds = cmd;
+	return (exec);
 }

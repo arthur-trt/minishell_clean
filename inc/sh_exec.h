@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/30 22:09:01 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 18:23:10 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		is_builtin_no_forks(t_list *cmds);
 char	**argv_exec_creator(t_list *cmds);
 char	**env_exec_creator(void);
 int		exec_path(t_list *cmds);
+t_exec	*exec_init(t_list *cmds);
 
 int		fd_opener(t_list *cmds, int *fdin, int *fdout);
 int		ft_reverse(void);
@@ -42,11 +43,18 @@ int		ft_less(t_list *tmp, int *i, int *fdin);
 int		ft_more(t_list *tmp, int *i, int *fdout);
 int		ft_append(t_list *tmp, int *i, int *fdout);
 char	*get_file_name(char *s, int *i);
-int		ft_exec(t_lexer *lexed);
+void		ft_exec(char *lexed);
 int		ft_ischarset(char c, char *charset);
 t_list	*copycmds(t_list *lst);
 int		word_checker(t_list *tmp, char **s);
 int		word_checker_bis(t_list *tmp, char **s);
 int		heredocs(t_list *cmds);
+
+void	check_command(t_list *cmd);
+void	exec_bin(t_exec *exec);
+
+void	piper(char *cmds);
+int	check_pipe(int *fds, char *cmds);
+void	exec_pipe(bool first, bool last, int *fds, char *cmd);
 
 #endif
