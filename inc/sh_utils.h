@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/31 00:17:44 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 15:12:42 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	c_handler(int sigld);
 void	d_handler(int sigld);
 
 bool	can_exec(char *path);
+bool	is_dir(char *path);
 
 bool	ft_strisdigit(char *s);
 
+void	ft_putstrerror(char *name, char *error_msg, char *error_msg2);
 #endif

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/27 15:22:56 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 12:28:00 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	minishell(void)
 		{
 			ft_putstr_fd("minishell: syntax error\n", 2);
 			g_glob->ret = 2;
-			input_user[0] = '\0';
 		}
 		else
 		{

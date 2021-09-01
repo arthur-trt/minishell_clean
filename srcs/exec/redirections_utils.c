@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/27 21:51:34 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/01 11:20:27 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ static int	ft_redirect(t_list *tmp, int *i, int *fdin, int *fdout)
 			g_glob->tmp_fdout = *fdout;
 			*fdout = 0;
 		}
-
 	}
 	return (r);
 }

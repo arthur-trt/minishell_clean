@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   can_exec.c                                         :+:      :+:    :+:   */
+/*   file_mode.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 16:25:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/30 16:25:40 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 15:09:26 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,26 @@ bool	can_exec(char *path)
 
 	if (stat(path, &f_stat) == 0)
 	{
-		if (f_stat.st_mode & S_IXUSR)
+		if ((f_stat.st_mode & S_IXUSR))
+			return (true);
+	}
+	return (false);
+}
+
+/*
+** Check if the path given is a dir or not
+**
+** @param path Path to file to check
+**
+** @return True if it's a dir, false otherwise
+*/
+bool	is_dir(char *path)
+{
+	struct stat		f_stat;
+
+	if (stat(path, &f_stat) == 0)
+	{
+		if (S_ISDIR(f_stat.st_mode))
 			return (true);
 	}
 	return (false);

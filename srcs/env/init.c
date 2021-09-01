@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:48:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/27 21:47:55 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/01 12:13:48 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,11 @@ static void	construct_env(char **environ)
 		free(tmp);
 		i++;
 	}
-	tmp_shlvl = ft_itoa(ft_atoi(search_env("SHLVL")) + 1);
-	ft_modify_value("SHLVL", tmp_shlvl);
-	free(tmp_shlvl);
+	tmp_shlvl = search_env("SHLVL");
+	if (tmp_shlvl == NULL)
+		add_env("SHLVL", "1");
+	else
+		ft_modify_value("SHLVL", ft_itoa(ft_atoi(tmp_shlvl) + 1));
 }
 
 /*
@@ -83,7 +85,7 @@ static int	ft_empty_env(void)
 
 	cwd = getcwd(buf, 4096);
 	add_env("PWD", cwd);
-	add_env("SHLVL","1");
+	add_env("SHLVL", "1");
 	return (0);
 }
 
