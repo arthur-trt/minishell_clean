@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:59:07 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/25 10:44:31 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 11:33:32 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,21 @@ t_lexer	*lexer(char *input)
 	int		last_pos;
 
 	lexer = NULL;
-	i = 0;
+	i = -1;
 	last_pos = 0;
-	while (input[i] != '\0')
+	while (input[++i] != '\0')
 	{
 		if ((input[i] == QUOTE || input[i] == DQUOTE)
 			&& ((i > 0 && input[i - 1] != BACKSLAH) || i == 0))
 			i = continue_while_quote(input, i);
-		else if (input[i] == PIPE || input[i] == SEMICOLON)
+		else if ((input[i] == PIPE || input[i] == SEMICOLON)
+			&& (i > 0 && input[i - 1] != BACKSLAH))
 		{
 			add_cmd_to_lexer(&lexer,
 				ft_substr(input, last_pos, i - last_pos),
 				find_previous_token(input, last_pos));
 			last_pos = i;
 		}
-		i++;
 	}
 	add_cmd_to_lexer(&lexer,
 		ft_substr(input, last_pos, i - last_pos),
