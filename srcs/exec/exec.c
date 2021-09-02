@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 18:47:35 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 22:20:55 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	ft_exec(char *user_input)
 {
 	int		i;
 	char	**cmds;
+	t_list	*cmd_parsed;
 
 	i = 0;
 	cmds = ft_split(user_input, ';');
 	g_glob->save_in = dup(0);
-	g_glob->save_out = dup(1);
 	while (cmds[i] != NULL)
 	{
 		if (has_pipe(cmds[i]))
@@ -45,13 +45,12 @@ void	ft_exec(char *user_input)
 		}
 		else
 		{
-			check_command(ft_parse(cmds[i]));
+			cmd_parsed = ft_parse(cmds[i]);
+			check_command(cmd_parsed);
+			free_list(cmd_parsed);
 		}
 		i++;
 	}
 	dup2(g_glob->save_in, 0);
-	dup2(g_glob->save_out, 1);
-	close(g_glob->save_in);
-	close(g_glob->save_out);
-	free(cmds);
+	free_split(cmds);
 }

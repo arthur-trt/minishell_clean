@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:45:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 19:19:55 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 23:08:21 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,65 +30,54 @@ static int	count_childs(char *cmds)
 	return (pipes);
 }
 
-static void	exec_cmd_pipe(t_list *cmd, int *fds)
+pid_t	exec_pipe(bool first, bool last, int *fds, char *cmd)
 {
-	t_exec	*exec;
+	int		i;
+	t_list	*cmd_parsed;
+	pid_t	child;
 
-	exec = exec_init(cmd);
-	g_glob->heredocs = false;
-	fd_opener(exec->cmds, &exec->fdin, &exec->fdtemp);
-	if (exec->fdtemp)
-		exec->fdout = exec->fdtemp;
-	else
-		exec->fdout = dup(g_glob->save_out);
-	exec->fdin = fds[0];
-	exec->fdout = fds[2];
-	dprintf(2, "exec_cmd_pipe : %s\n", cmd->content);
-	g_glob->ret = is_builtin(cmd);
-	if (g_glob->ret == 127)
+	child = fork();
+	if (child == 0)
 	{
-		exec_bin(exec);
-	}
-	free(exec);
-}
-
-void	exec_pipe(bool first, bool last, int *fds, char *cmd)
-{
-	int	i;
-
-	dprintf(2, "exec_pipe : %s\n", cmd);
-	if (!fork())
-	{
-		if (first == false)
+		if (!first)
 			dup2(fds[0], 0);
-		if (last == false)
+		if (!last)
 			dup2(fds[3], 1);
 		i = 0;
 		while (i < 4)
 			close(fds[i++]);
-		exec_cmd_pipe(ft_parse(cmd), fds);
+		cmd_parsed = ft_parse(cmd);
+		check_command(cmd_parsed);
+		free_list(cmd_parsed);
 		exit(g_glob->ret);
 	}
+	else
+	{
+		dprintf(2, "Cmd : %s\nPID : %d\n\n", cmd, child);
+	}
+	return (child);
 }
 
-int	check_pipe(int *fds, char *cmds)
+pid_t	*check_pipe(int *fds, char *cmds)
 {
 	bool	first_pipe;
 	bool	last_pipe;
 	char	**cmd;
-	int		childs;
+	int		i;
+	pid_t	*pid;
 
 	cmd = ft_split(cmds, '|');
-	childs = 0;
+	i = 0;
 	first_pipe = true;
 	last_pipe = false;
-	while (cmd[childs] != NULL)
+	pid = malloc((count_childs(cmds) + 1) * sizeof(pid_t));
+	ft_bzero(pid, (count_childs(cmds) + 1) * sizeof(pid_t));
+	while (cmd[i] != NULL)
 	{
-		printf("Check pipe childs : %d\n", childs);
-		if (childs == count_childs(cmds) + 1)
+		if (i + 1 == count_childs(cmds))
 			last_pipe = true;
-		exec_pipe(first_pipe, last_pipe, fds, cmd[childs]);
-		childs++;
+		pid[i] = exec_pipe(first_pipe, last_pipe, fds, cmd[i]);
+		i++;
 		first_pipe = false;
 		close(fds[0]);
 		close(fds[1]);
@@ -97,21 +86,28 @@ int	check_pipe(int *fds, char *cmds)
 		pipe(fds + 2);
 	}
 	free_split(cmd);
-	return (childs);
+	return (pid);
 }
 
 void	piper(char *cmds)
 {
-	int	fds[4];
-	int	childs;
-	int	status;
-	int	i;
+	int		fds[4];
+	pid_t	*childs;
+	int		status;
+	int		i;
 
 	pipe(fds);
 	pipe(fds + 2);
 	childs = check_pipe(fds, cmds);
-	while (childs-- > 0)
-		waitpid(-1, &status, 0);
+	i = 0;
+	while (childs[i] != 0)
+	{
+		dprintf(2, "Waiting PID : %d\n", childs[i]);
+		waitpid(childs[i], &status, 0);
+		dprintf(2, "Status : %d\n\n", status / 256);
+		i++;
+	}
+	free(childs);
 	if (WIFEXITED(status))
 		g_glob->ret = WEXITSTATUS(status);
 	i = 0;

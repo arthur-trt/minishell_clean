@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 18:23:10 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 22:54:49 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_less(t_list *tmp, int *i, int *fdin);
 int		ft_more(t_list *tmp, int *i, int *fdout);
 int		ft_append(t_list *tmp, int *i, int *fdout);
 char	*get_file_name(char *s, int *i);
-void		ft_exec(char *lexed);
+void	ft_exec(char *lexed);
 int		ft_ischarset(char c, char *charset);
 t_list	*copycmds(t_list *lst);
 int		word_checker(t_list *tmp, char **s);
@@ -54,7 +54,7 @@ void	check_command(t_list *cmd);
 void	exec_bin(t_exec *exec);
 
 void	piper(char *cmds);
-int	check_pipe(int *fds, char *cmds);
-void	exec_pipe(bool first, bool last, int *fds, char *cmd);
+pid_t	*check_pipe(int *fds, char *cmds);
+pid_t	exec_pipe(bool first, bool last, int *fds, char *cmd);
 
 #endif
