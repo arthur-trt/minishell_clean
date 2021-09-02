@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:45:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 23:08:21 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/02 09:32:14 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,6 @@ pid_t	exec_pipe(bool first, bool last, int *fds, char *cmd)
 		check_command(cmd_parsed);
 		free_list(cmd_parsed);
 		exit(g_glob->ret);
-	}
-	else
-	{
-		dprintf(2, "Cmd : %s\nPID : %d\n\n", cmd, child);
 	}
 	return (child);
 }
@@ -102,9 +98,7 @@ void	piper(char *cmds)
 	i = 0;
 	while (childs[i] != 0)
 	{
-		dprintf(2, "Waiting PID : %d\n", childs[i]);
 		waitpid(childs[i], &status, 0);
-		dprintf(2, "Status : %d\n\n", status / 256);
 		i++;
 	}
 	free(childs);
