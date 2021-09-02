@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 15:53:57 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 15:09:51 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/02 21:57:46 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,11 @@ static int	search_in_path(char *exec_name, char **final_path)
 */
 static bool	is_command_name(char *exec_name)
 {
-	int	i;
-
-	i = 0;
-	if (ft_strncmp(exec_name, "./", 2) == 0
-		|| ft_strncmp(exec_name, "../", 3) == 0
-		|| ft_strncmp(exec_name, "/", 1) == 0)
-		return (false);
+	if (exec_name != NULL)
+		if (ft_strncmp(exec_name, "./", 2) == 0
+			|| ft_strncmp(exec_name, "../", 3) == 0
+			|| ft_strncmp(exec_name, "/", 1) == 0)
+			return (false);
 	return (true);
 }
 
