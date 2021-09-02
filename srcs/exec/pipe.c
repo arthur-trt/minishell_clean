@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:45:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/02 09:32:14 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/02 10:19:56 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ pid_t	exec_pipe(bool first, bool last, int *fds, char *cmd)
 	return (child);
 }
 
+static void	switch_fds(int *fds)
+{
+	close(fds[0]);
+	close(fds[1]);
+	fds[0] = fds[2];
+	fds[1] = fds[3];
+	pipe(fds + 2);
+}
+
 pid_t	*check_pipe(int *fds, char *cmds)
 {
 	bool	first_pipe;
@@ -75,11 +84,7 @@ pid_t	*check_pipe(int *fds, char *cmds)
 		pid[i] = exec_pipe(first_pipe, last_pipe, fds, cmd[i]);
 		i++;
 		first_pipe = false;
-		close(fds[0]);
-		close(fds[1]);
-		fds[0] = fds[2];
-		fds[1] = fds[3];
-		pipe(fds + 2);
+		switch_fds(fds);
 	}
 	free_split(cmd);
 	return (pid);
