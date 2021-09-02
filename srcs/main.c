@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 17:18:58 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/02 10:13:41 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	minishell(void)
 	while (true)
 	{
 		input_user = input();
-		if (ft_strcmp(input_user, "exit") == 0)
-			break ;
 		if (!check_error(input_user))
 		{
 			ft_putstr_fd("minishell: syntax error\n", 2);
