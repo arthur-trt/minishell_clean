@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/04 00:37:41 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/04 00:44:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,10 @@ static void	remove_redirect(t_list **cmds)
 int	fd_opener(t_list **cmds, int *fdin, int *fdout)
 {
 	if (ft_redirection_check(*cmds, fdin, fdout))
+	{
+		g_glob->ret = 1;
 		return (-1);
+	}
 	remove_redirect(cmds);
 	if (!(*fdout))
 		*fdout = dup(g_glob->save_out);
