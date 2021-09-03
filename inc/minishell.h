@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 16:01:41 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/03 23:59:54 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <term.h>
 # include <errno.h>
 # include <string.h>
+# include <dirent.h>
 
 # ifdef __APPLE__
 #  include <termios.h>
