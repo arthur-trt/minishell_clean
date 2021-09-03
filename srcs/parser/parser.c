@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/04 00:06:15 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/04 00:42:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ t_list	*ft_parse(char *s)
 				return (NULL);
 		}
 		if (s[i] == ' '
-			|| ft_ischarset(res[0], "<>")
+			|| (res != NULL && ft_ischarset(res[0], "<>"))
 			|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>")))
 			if (ft_empty_buffer(&res, &command))
 				ft_parse_error(command);
