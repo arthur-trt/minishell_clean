@@ -6,13 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:44:43 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 17:16:49 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:38:12 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_exec	*exec_init(t_list *cmd)
+t_exec	*exec_init(t_list **cmd)
 {
 	t_exec	*exec;
 

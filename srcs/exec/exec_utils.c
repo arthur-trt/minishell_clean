@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/01 16:52:15 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:10:42 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,23 @@ int	word_checker(t_list *tmp, char **s)
 	int		i;
 
 	i = 0;
-	while (tmp->content[i])
+	if (tmp != NULL && tmp->content != NULL)
 	{
-		if (ft_ischarset(tmp->content[i], "<>") && tmp->d_quote == 0
-			&& tmp->esc == 0)
+		while (tmp->content[i])
 		{
-			if (i == 0)
-				*s = ft_strdup("");
-			else
-				*s = ft_substr(tmp->content, 0, i - 1);
-			return (1);
+			if (ft_ischarset(tmp->content[i], "<>") && tmp->d_quote == 0
+				&& tmp->esc == 0)
+			{
+				if (i == 0)
+					*s = ft_strdup("");
+				else
+					*s = ft_substr(tmp->content, 0, i - 1);
+				return (1);
+			}
+			i++;
 		}
-		i++;
+		*s = ft_strdup(tmp->content);
 	}
-	*s = ft_strdup(tmp->content);
 	return (0);
 }
 

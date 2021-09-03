@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/27 21:53:45 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/04 00:06:15 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	double_checker(char *s, int *i, char **res, t_list *command)
 
 	r = 0;
 	if (s[*i + 1] != '\"')
-	{	
+	{
 		r = ft_apply_double(s, i, &ft_double, res);
 		if (r != 0)
 			return (ft_double_error(r, command, *res));
@@ -67,6 +67,22 @@ static int	double_checker(char *s, int *i, char **res, t_list *command)
 		return (1);
 	}
 	return (0);
+}
+
+static char	*ft_check_redirect(int *i, char *s)
+{
+	char	*redir;
+
+	if (ft_strncmp(s + (*i), ">", 1) == 0)
+		redir = ">";
+	if (ft_strncmp(s + (*i), ">>", 2) == 0)
+	{
+		redir = ">>";
+		(*i)++;
+	}
+	if (ft_strncmp(s + (*i), "<", 1) == 0)
+		redir = "<";
+	return (ft_strdup(redir));
 }
 
 /*
@@ -83,9 +99,9 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 	int		r;
 
 	r = 0;
-	if (*i == 0 && (!(s[*i]) || s[*i] == ' ') && !command)
-		ft_command_not_found(command);
-	if (s[*i] == '\"')
+	if (s[(*i)] == '<' || s[(*i)] == '>')
+		*res = ft_check_redirect(i, s);
+	else if (s[*i] == '\"')
 	{
 		r = double_checker(s, i, res, command);
 		if (r == 1)
@@ -129,7 +145,9 @@ t_list	*ft_parse(char *s)
 			if (ft_check_char(command, &res, s, &i))
 				return (NULL);
 		}
-		else if (s[i] == ' ')
+		if (s[i] == ' '
+			|| ft_ischarset(res[0], "<>")
+			|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>")))
 			if (ft_empty_buffer(&res, &command))
 				ft_parse_error(command);
 		i++;

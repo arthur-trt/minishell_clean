@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 22:20:55 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/04 00:38:07 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_exec(char *user_input)
 		else
 		{
 			cmd_parsed = ft_parse(cmds[i]);
-			check_command(cmd_parsed);
+			check_command(&cmd_parsed);
 			free_list(cmd_parsed);
 		}
 		i++;
