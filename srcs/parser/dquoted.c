@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:24:11 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 15:23:07 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/06 17:25:56 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ int	ft_quoted_str(char *s, int *i, t_list **list, int *len)
 	t_list	*tmp;
 
 	j = *i;
+	if (s[j] == '\\')
+	{
+		j++;
+		if (s[j] == '\"' || s[j] == '\\' || s[j] == '$')
+		{	
+			(*i)++;
+			j++;
+		}
+	}
 	while (s[j] && s[j] != '\"' && s[j] != '\\' && s[j] != '$')
 		j++;
 	res = ft_substr(s, *i, j - *i);
