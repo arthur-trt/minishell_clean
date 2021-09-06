@@ -63,14 +63,14 @@ GREP			:= grep --color=auto --exclude-dir=.git
 NORMINETTE		:= norminette `ls`
 
 # Defauilt Make
-all: directories libft $(TARGET)
+all: libft $(TARGETDIR)/$(TARGET)
 	@$(ERASE)
 	@$(ECHO) "$(TARGET)\t\t[$(C_SUCCESS)✅$(C_RESET)]"
 	@$(ECHO) "$(C_SUCCESS)All done, compilation successful! 👌 $(C_RESET)"
 
 # Bonus rule
 bonus: CFLAGS += -DBONUS
-bonus: directories libft $(TARGET_BONUS)
+bonus: libft $(TARGET_BONUS)
 	@$(ERASE)
 	@$(ECHO) "$(TARGET)\t\t[$(C_SUCCESS)✅$(C_RESET)]"
 	@$(ECHO) "$(C_SUCCESS)All done, compilation successful with bonus! 👌 $(C_RESET)"
@@ -86,28 +86,33 @@ directories:
 # Clean only Objecst
 clean:
 	@$(RM) -rf $(BUILDDIR)
-	@make $@ -C libftprintf
+	@$(MAKE) $@ -C libftprintf
 
 
 # Full Clean, Objects and Binaries
 fclean: clean
 	@$(RM) -rf $(TARGETDIR)
-	@make $@ -s -C libftprintf
+	@$(MAKE) $@ -s -C libftprintf
 
 
 # Pull in dependency info for *existing* .o files
 -include $(OBJECTS:.$(OBJEXT)=.$(DEPEXT))
 
 # Link
-$(TARGET): $(OBJECTS)
+$(TARGETDIR)/$(TARGET): $(OBJECTS)
+	@mkdir -p $(TARGETDIR)
 	$(CC) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
 
 # Link Bonus
-$(TARGET_BONUS): $(OBJECTS_BONUS)
+$(TARGETDIR)/$(TARGET_BONUS): $(OBJECTS_BONUS)
+	@mkdir -p $(TARGETDIR)
 	$(CC) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
 
+$(BUILDIR):
+	@mkdir -p $@
+
 # Compile
-$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT) #| $(BUILDDIR)
 	@mkdir -p $(dir $@)
 	@$(ECHO) "$(TARGET)\t\t[$(C_PENDING)⏳$(C_RESET)]"
 	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
@@ -120,7 +125,7 @@ $(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
 	@rm -f $(BUILDDIR)/$*.$(DEPEXT).tmp
 
 libft:
-	@make -s -C libftprintf
+	@$(MAKE) -C libftprintf
 
 
 norm:
