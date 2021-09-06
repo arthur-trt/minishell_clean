@@ -6,11 +6,11 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:31:24 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/26 16:20:24 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/06 17:48:20 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libftprintf/includes/libftprintf.h"
+#include "../../inc/minishell.h"
 #include <stdio.h>
 /*
 **	Free a linked list and its content
@@ -38,63 +38,21 @@ void	ft_listclear(t_list **lst)
 	}
 }
 
-/*
-**	Removes a single char from a string
-**
-**	@param	s user's input string
-**	@param	i the position of the current character on s
-**	@return void
-*/
-// char	*ft_remove_char(char **s, int i)
-// {
-// 	char	*res;
-// 	int		j;
-
-// 	printf("%zu\n", ft_strlen(*s));
-// 	res = malloc((int)ft_strlen(*s) * sizeof(char) + 1);
-// 	if (res == NULL)
-// 		return (*s);
-// 	j = -1;
-// 	while (++j < i)
-// 		res[j] = s[0][j];
-// 	i = j;
-// 	while (s[0][++j])
-// 	{
-// 		res[i] = s[0][j];
-// 		i++;
-// 	}
-// 	res[j - 1] = '\0';
-// 	if (*s)
-// 		free(*s);
-// 	return (res);
-// 	//s[0] = ft_strdup(res);
-// 	//s = ft_strdup(res);
-// 	//free(res);
-// }
-
-char	*ft_remove_char(char *s, int i)
+int	double_checker(char *s, int *i, char **res, t_list *command)
 {
-	char	*ret;
-	int		j;
+	int	r;
 
-	printf("%zu\n", ft_strlen(s));
-	ret = malloc((int)ft_strlen(s) * sizeof(char) + 1);
-	if (ret == NULL)
-		return s;
-	j = -1;
-	while (++j < i)
-		ret[j] = s[j];
-	i = j;
-	while (s[++j])
+	r = 0;
+	if (s[*i + 1] != '\"')
 	{
-		ret[i] = s[j];
-		i++;
+		r = ft_apply_double(s, i, &ft_double, res);
+		if (r != 0)
+			return (ft_double_error(r, command, *res));
 	}
-	ret[j - 1] = '\0';
-	return (ret);
-	//if (s)
-	//	free(s);
-	//s = ret;
-	//s = ft_strdup(res);
-	//free(res);
+	else
+	{
+		(*i) += 1;
+		return (1);
+	}
+	return (0);
 }

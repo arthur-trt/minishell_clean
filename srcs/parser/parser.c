@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/06 16:26:37 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/06 17:42:29 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,6 @@ int	ft_empty_buffer(char **s, t_list **command)
 	ft_lstadd_back(command, tmp);
 	free(*s);
 	*s = NULL;
-	return (0);
-}
-
-static int	double_checker(char *s, int *i, char **res, t_list *command)
-{
-	int	r;
-
-	r = 0;
-	if (s[*i + 1] != '\"')
-	{
-		r = ft_apply_double(s, i, &ft_double, res);
-		if (r != 0)
-			return (ft_double_error(r, command, *res));
-	}
-	else
-	{
-		(*i) += 1;
-		return (1);
-	}
 	return (0);
 }
 
@@ -122,6 +103,16 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 	return (r);
 }
 
+static int	empty_buff_checker(char *s, char *res, int i)
+{
+	if (s[i] == ' '
+		|| (res != NULL && ft_ischarset(res[0], "<>"))
+		|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>"))
+		|| s[i + 1] == '$' || (s[i + 1] == '"' && s[i + 2] == '$'))
+		return (1);
+	return (0);
+}
+
 /*
 **	Parses the input according to bash standards
 **
@@ -145,10 +136,7 @@ t_list	*ft_parse(char *s)
 			if (ft_check_char(command, &res, s, &i))
 				return (NULL);
 		}
-		if (s[i] == ' '
-			|| (res != NULL && ft_ischarset(res[0], "<>"))
-			|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>"))
-			|| s[i + 1] == '$' || (s[i + 1] == '"' && s[i + 2] == '$'))
+		if (empty_buff_checker(s, res, i))
 			if (ft_empty_buffer(&res, &command))
 				ft_parse_error(command);
 		i++;

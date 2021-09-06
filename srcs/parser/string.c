@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:29:08 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/03 23:48:27 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/06 17:43:44 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,34 +50,6 @@ int	get_len(char *s, int i)
 	}
 	return (j);
 }
-
-/*
-**	Handles non quoted characters
-**
-**	@param	s user's input string
-**	@param	i the position of the escape character on s
-**	@return res the parsed text
-*/
-// char	*ft_string(char *s, int *i)
-// {
-// 	int		j;
-// 	char	*res;
-
-// 	j = *i;
-// 	res = NULL;
-// 	while (s[j] && s[j] != ' ' && s[j] != '\"' && s[j] != '\'' && s[j] != '$')
-// 	{
-// 		if (s[j] == '\\')
-// 		{
-// 			s = ft_remove_char(s, j);
-// 			//j--;
-// 		}
-// 		j++;
-// 	}
-// 	res = ft_substr(s, *i, j - *i);
-// 	(*i) = j - 1;
-// 	return (res);
-// }
 
 char	*ft_string(char *s, int *i)
 {

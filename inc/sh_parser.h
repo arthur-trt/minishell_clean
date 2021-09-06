@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 15:58:32 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/26 16:20:31 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/06 17:47:38 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ char	*ft_single(char *s, int *i);
 int		ft_parse_error(t_list *command);
 int		ft_double_error(int r, t_list *command, char *res);
 void	ft_listclear(t_list **lst);
-char	*ft_remove_char(char *s, int i);
 char	*ft_search_value(char *name);
 char	*home_tild(char *res);
 int		ft_command_not_found(t_list *command);
+int		double_checker(char *s, int *i, char **res, t_list *command);
 
 #endif
