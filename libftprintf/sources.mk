@@ -44,11 +44,6 @@ SOURCES		+=                         		\
 		srcs/ft_putstr_fd.c               	\
 		srcs/ft_isdigit.c                 	\
 		srcs/ft_calloc.c                  	\
-
-
-## BONUS ##
-
-SOURCES_BONUS	+= $(SOURCES)         			\
 		srcs/ft_lstnew_bonus.c            	\
 		srcs/ft_lstsize_bonus.c           	\
 		srcs/ft_lstadd_front_bonus.c      	\
