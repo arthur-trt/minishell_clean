@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/06 16:17:46 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/06 16:26:37 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,8 @@ t_list	*ft_parse(char *s)
 		}
 		if (s[i] == ' '
 			|| (res != NULL && ft_ischarset(res[0], "<>"))
-			|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>")) || s[i + 1] == '$')
+			|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>"))
+			|| s[i + 1] == '$' || (s[i + 1] == '"' && s[i + 2] == '$'))
 			if (ft_empty_buffer(&res, &command))
 				ft_parse_error(command);
 		i++;
