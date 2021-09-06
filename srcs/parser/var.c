@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:15:15 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/22 15:52:51 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/06 16:13:37 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,9 +136,13 @@ char	*ft_search_var(char *s, int *i)
 		(*i)++;
 	if (*i - j == 0)
 		return (NULL);
-	res = ft_search_value(ft_substr(s, j, *i - j));
+	res = ft_search_value(ft_substr(s, j, *i - j)); //le substr cause surement le leak
 	if (s[*i] == '"' || s[*i] == '\0' || s[*i] == '\'' || s[*i] == '$'
 		|| s[*i] == '/' || s[*i] == '=' || s[*i] == '\\')
 		(*i)--;
 	return (res);
 }
+
+/*
+En fait le parser split pas au $ donc il colle le result de l'expand au mot au'il y a avant genremot$var = motvalue
+*/
