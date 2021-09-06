@@ -86,7 +86,7 @@ directories:
 # Clean only Objecst
 clean:
 	@$(RM) -rf $(BUILDDIR)
-	@make $@ -s -C libftprintf
+	@make $@ -C libftprintf
 
 
 # Full Clean, Objects and Binaries

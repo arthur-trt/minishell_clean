@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:16:47 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/27 15:38:56 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/06 12:02:14 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ char	*ft_prompt(void)
 	ft_bzero(cwd_buffer, MAX_CMD_LINE);
 	ft_bzero(prompt, MAX_CMD_LINE);
 	cwd = search_env("PWD");
-	ft_strlcat(prompt, "\033[1;32m", MAX_CMD_LINE);
+	ft_strlcat(prompt, GREEN, MAX_CMD_LINE);
 	ft_strlcat(prompt, construct_username(), MAX_CMD_LINE);
-	ft_strlcat(prompt, "@minishell\033[0m:\033[1;94m", MAX_CMD_LINE);
+	ft_strlcat(prompt, "@minishell" NEUTRAL":" BLUE, MAX_CMD_LINE);
 	path = construct_path(cwd);
 	ft_strlcat(prompt, path, MAX_CMD_LINE);
 	free(path);
-	ft_strlcat(prompt, "\033[0m$ ", MAX_CMD_LINE);
+	ft_strlcat(prompt, NEUTRAL "$ ", MAX_CMD_LINE);
 	return (ft_strdup(prompt));
 }

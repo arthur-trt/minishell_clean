@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/31 00:17:44 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/06 11:16:30 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,15 @@ int		free_list(t_list *lst);
 
 char	*clean_path(char *path);
 
-void	c_handler(int sigld);
-void	d_handler(int sigld);
+void	quit_handler(void);
+void	int_handler(void);
+void	winch_handler(void);
+void	sig_handler(int sigld);
 
 bool	can_exec(char *path);
+bool	is_dir(char *path);
 
 bool	ft_strisdigit(char *s);
 
+void	ft_putstrerror(char *name, char *error_msg);
 #endif

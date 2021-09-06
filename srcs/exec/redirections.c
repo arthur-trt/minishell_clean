@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 16:11:08 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/23 11:55:47 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/04 00:37:16 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,12 @@ int	ft_less(t_list *tmp, int *i, int *fdin)
 	if (filename)
 	{
 		*fdin = open(filename, O_RDONLY);
-		if (!(fdin))
-			printf("error opening file\n");
+		if (*fdin < 0)
+		{
+			ft_putstrerror(filename, strerror(errno));
+			free(filename);
+			return (-1);
+		}
 		free(filename);
 		return (0);
 	}
@@ -82,14 +86,8 @@ int	ft_more(t_list *tmp, int *i, int *fdout)
 	return (-1);
 }
 
-static int	file_opener(char *filename, struct stat	*file_check, int *fdout)
+static int	file_opener(char *filename, int *fdout)
 {
-	if (stat(filename, file_check) == -1)
-	{
-		free(filename);
-		ft_putstr_fd("File doesn't exist\n", 2);
-		exit(EXIT_FAILURE);
-	}
 	*fdout = open(filename, O_RDWR | O_APPEND | O_CREAT, 0644);
 	free(filename);
 	return (0);
@@ -98,7 +96,6 @@ static int	file_opener(char *filename, struct stat	*file_check, int *fdout)
 int	ft_append(t_list *tmp, int *i, int *fdout)
 {
 	char		*filename;
-	struct stat	file_check;
 
 	(*i)++;
 	if (tmp->content[(*i) + 1])
@@ -117,7 +114,7 @@ int	ft_append(t_list *tmp, int *i, int *fdout)
 		tmp = tmp->next;
 	}
 	if (filename)
-		return (file_opener(filename, &file_check, fdout));
+		return (file_opener(filename, fdout));
 	ft_putstr_fd("Error: filename not specified after redirection\n", 2);
 	return (-1);
 }

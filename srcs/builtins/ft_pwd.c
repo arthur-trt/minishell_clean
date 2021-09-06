@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 20:40:56 by jcueille          #+#    #+#             */
-/*   Updated: 2021/07/15 13:37:08 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/06 13:34:35 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,24 @@
 int	ft_pwd(void)
 {
 	char	*cwd;
+	char	*pwd;
 	char	buf[4096];
 
-	cwd = getcwd(buf, 4096);
-	if (!(cwd))
+	pwd = search_env("PWD");
+	if (pwd != NULL)
 	{
-		ft_putstr_fd(buf, 1);
-		return (-1);
+		ft_putendl_fd(pwd, 1);
 	}
-	ft_putstr_fd(cwd, 1);
-	ft_putchar_fd('\n', 1);
-	exit(0);
+	else
+	{
+		cwd = getcwd(buf, 4096);
+		if (!(cwd))
+		{
+			ft_putstr_fd(buf, 1);
+			return (-1);
+		}
+		ft_putstr_fd(cwd, 1);
+		ft_putchar_fd('\n', 1);
+	}
+	return (0);
 }

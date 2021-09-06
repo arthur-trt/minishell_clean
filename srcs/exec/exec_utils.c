@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/31 00:19:06 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:10:42 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_builtin(t_list *cmds)
 	int		r;
 	t_list	*tmp;
 
-	r = 0;
+	r = 127;
 	tmp = copycmds(cmds);
 	if (cmds != NULL && cmds->content != NULL)
 	{
@@ -36,30 +36,12 @@ int	is_builtin(t_list *cmds)
 			r = ft_env();
 		else if (!(ft_strcmp("exit", cmds->content)))
 			ft_exit(tmp);
-		else
-			r = exec_path(cmds);
-	}
-	free_list(tmp);
-	return (r);
-}
-
-int	is_builtin_no_forks(t_list *cmds)
-{
-	int		r;
-	t_list	*tmp;
-
-	tmp = copycmds(cmds);
-	r = 15;
-	if (cmds != NULL && cmds->content != NULL)
-	{
-		if (!(ft_strcmp("cd", cmds->content)))
+		else if (!(ft_strcmp("cd", cmds->content)))
 			r = ft_cd(cmds);
 		else if (!(ft_strcmp("export", cmds->content)))
 			r = ft_export(tmp);
 		else if (!(ft_strcmp("unset", cmds->content)))
 			r = ft_unset(tmp);
-		if (r != 15)
-			g_glob->ret = r;
 	}
 	free_list(tmp);
 	return (r);
@@ -99,20 +81,23 @@ int	word_checker(t_list *tmp, char **s)
 	int		i;
 
 	i = 0;
-	while (tmp->content[i])
+	if (tmp != NULL && tmp->content != NULL)
 	{
-		if (ft_ischarset(tmp->content[i], "<>") && tmp->d_quote == 0
-			&& tmp->esc == 0)
+		while (tmp->content[i])
 		{
-			if (i == 0)
-				*s = ft_strdup("");
-			else
-				*s = ft_substr(tmp->content, 0, i - 1);
-			return (1);
+			if (ft_ischarset(tmp->content[i], "<>") && tmp->d_quote == 0
+				&& tmp->esc == 0)
+			{
+				if (i == 0)
+					*s = ft_strdup("");
+				else
+					*s = ft_substr(tmp->content, 0, i - 1);
+				return (1);
+			}
+			i++;
 		}
-		i++;
+		*s = ft_strdup(tmp->content);
 	}
-	*s = ft_strdup(tmp->content);
 	return (0);
 }
 

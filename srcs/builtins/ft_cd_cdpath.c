@@ -6,30 +6,11 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 14:43:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/30 23:12:40 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 15:09:32 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-/*
-**	Check if the user have permission to execute the file
-**
-**	@param path Path to file to check
-**
-**	@return True if user can exec, or false if not
-*/
-static bool	is_dir(char *path)
-{
-	struct stat		f_stat;
-
-	if (stat(path, &f_stat) == 0)
-	{
-		if (S_ISDIR(f_stat.st_mode))
-			return (true);
-	}
-	return (false);
-}
 
 /*
 **	Open dir and read all files for find a file with the same name

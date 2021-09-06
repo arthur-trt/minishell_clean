@@ -5,116 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/26 10:14:03 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/31 00:07:58 by atrouill         ###   ########.fr       */
+/*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
+/*   Updated: 2021/09/04 00:38:07 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <signal.h>
 
 extern t_glob	*g_glob;
 
-int	exec_path(t_list *cmds)
+static bool	has_pipe(char *cmd)
 {
-	char	*path;
-	char	**env;
-	char	**args;
-	int		ret_code;
+	int	i;
 
-	ret_code = search_path(cmds->content, &path);
-	if (ret_code != 0)
+	i = 0;
+	while (cmd[i])
 	{
-		free(path);
-		return (ret_code);
+		if (cmd[i] == '|')
+			return (true);
+		i++;
 	}
-	env = env_exec_creator();
-	args = argv_exec_creator(cmds);
-	if (g_glob->heredocs)
-		heredocs(cmds);
-	if (!(env) || !(args))
-	{
-		ft_putstr_fd("Error: malloc failed.\n", 2);
-		return (-1);
-	}
-	execve(path, args, env);
-	free(path);
-	return (0);
+	return (false);
 }
 
-static t_exec	*exec_init(t_lexer *lexed)
+void	ft_exec(char *user_input)
 {
-	t_exec	*exec;
+	int		i;
+	char	**cmds;
+	t_list	*cmd_parsed;
 
-	exec = malloc(sizeof(*exec));
-	exec->fdtemp = 0;
-	exec->status = 0;
-	exec->fdin = 0;
-	exec->fdout = 0;
-	exec->tmp = lexed;
-	return (exec);
-}
-
-int	exec2(t_exec *exec)
-{
-	dup2(exec->fdout, 1);
-	close(exec->fdout);
-	if (is_builtin_no_forks(exec->cmds) == 15)
+	i = 0;
+	cmds = ft_split(user_input, ';');
+	g_glob->save_in = dup(0);
+	while (cmds[i] != NULL)
 	{
-		g_glob->pid = fork();
-		g_glob->prog = 1;
-		if (g_glob->pid == 0)
+		if (has_pipe(cmds[i]))
 		{
-			exit(is_builtin(exec->cmds));
-		}
-		waitpid(-1, &exec->status, 0);
-		if (WIFEXITED(exec->status))
-			g_glob->ret = WEXITSTATUS(exec->status);
-		g_glob->prog = 0;
-	}
-	dup2(g_glob->save_in, 0);
-	dup2(g_glob->save_out, 1);
-	close(g_glob->save_in);
-	close(g_glob->save_out);
-	exec->tmp = exec->tmp->next;
-	if (exec->cmds)
-		free_list(exec->cmds);
-	return (0);
-}
-
-void	piper(t_exec *exec)
-{
-	pipe(exec->fdpipe);
-	exec->fdout = exec->fdpipe[1];
-	exec->fdin = exec->fdpipe[0];
-}
-
-int	ft_exec(t_lexer *lexed)
-{
-	t_exec	*exec;
-
-	exec = exec_init(lexed);
-	while (exec->tmp)
-	{
-		g_glob->heredocs = false;
-		g_glob->save_in = dup(0);
-		g_glob->save_out = dup(1);
-		exec->cmds = ft_parse(exec->tmp->cmd);
-		fd_opener(exec->cmds, &exec->fdin, &exec->fdtemp);
-		dup2(exec->fdin, 0);
-		close(exec->fdin);
-		if ((exec->tmp->next && exec->tmp->next->token == T_SEMICOLON)
-			|| exec->tmp->next == NULL)
-		{
-			if (exec->fdtemp)
-				exec->fdout = exec->fdtemp;
-			else
-				exec->fdout = dup(g_glob->save_out);
+			piper(cmds[i]);
 		}
 		else
-			piper(exec);
-		exec2(exec);
+		{
+			cmd_parsed = ft_parse(cmds[i]);
+			check_command(&cmd_parsed);
+			free_list(cmd_parsed);
+		}
+		i++;
 	}
-	free(exec);
-	return (0);
+	dup2(g_glob->save_in, 0);
+	free_split(cmds);
 }

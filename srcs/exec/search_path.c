@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 15:53:57 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/30 23:20:05 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/02 21:57:46 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int	scan_dir(char *folder, char *exec_name, char **path)
 		entry = readdir(dir);
 		while (entry != NULL && ret_code == 127)
 		{
-			if (ft_strcmp(exec_name, entry->d_name) == 0)
+			if (ft_strcmp(exec_name, entry->d_name) == 0
+				&& entry->d_type != DT_DIR)
 			{
 				(*path) = ft_strjoin(folder, exec_name);
 				if (can_exec(*path) == true)
@@ -85,9 +86,11 @@ static int	search_in_path(char *exec_name, char **final_path)
 	{
 		*final_path = exec_name;
 	}
-	if (stat(*final_path, &f_stat) == 0 && can_exec(*final_path) == false)
+	if (is_dir(*final_path) == true)
+		ret_code = 150;
+	else if (stat(*final_path, &f_stat) == 0 && can_exec(*final_path) == false)
 		ret_code = 126;
-	if (can_exec(*final_path))
+	else if (can_exec(*final_path))
 		ret_code = 0;
 	return (ret_code);
 }
@@ -101,17 +104,11 @@ static int	search_in_path(char *exec_name, char **final_path)
 */
 static bool	is_command_name(char *exec_name)
 {
-	int	i;
-
-	i = 0;
-	if (exec_name[0] == '.')
-		return (false);
-	while (exec_name[i] != '\0')
-	{
-		if (exec_name[i] == '/')
+	if (exec_name != NULL)
+		if (ft_strncmp(exec_name, "./", 2) == 0
+			|| ft_strncmp(exec_name, "../", 3) == 0
+			|| ft_strncmp(exec_name, "/", 1) == 0)
 			return (false);
-		i++;
-	}
 	return (true);
 }
 
@@ -129,14 +126,17 @@ int	search_path(char *exec_name, char **path)
 	}
 	if (ret_code != 0)
 	{
-		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(exec_name, 2);
 		if (ret_code == 126)
-			ft_putendl_fd(": Permission denied", 2);
+			ft_putstrerror(exec_name, "Permission denied");
 		else if (ret_code == 127 && is_command_name(exec_name))
-			ft_putendl_fd(": command not found", 2);
+			ft_putstrerror(exec_name, "command not found");
+		else if (ret_code == 150)
+		{
+			ft_putstrerror(exec_name, ": is a directory");
+			ret_code = 126;
+		}
 		else
-			ft_putendl_fd(": No such file or directory", 2);
+			ft_putstrerror(exec_name, "No such file or directory");
 	}
 	return (ret_code);
 }

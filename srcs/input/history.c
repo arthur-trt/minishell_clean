@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_lexer.c                                      :+:      :+:    :+:   */
+/*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:22:52 by atrouill          #+#    #+#             */
-/*   Updated: 2021/05/16 13:41:48 by atrouill         ###   ########.fr       */
+/*   Created: 2021/09/06 13:58:54 by atrouill          #+#    #+#             */
+/*   Updated: 2021/09/06 14:37:49 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
-**	Print linked list lexer to stdout
-**
-**	@param lexer Linked list to print
-*/
-void	print_lexer(t_lexer *lexer)
+void	history_append(char *cmd)
 {
-	t_lexer	*tmp;
+	int	fd;
 
-	tmp = lexer;
-	while (tmp)
+	fd = open(HISTORY_PATH, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	if (fd != -1)
 	{
-		printf("\ncmd : \"%s\"\n", tmp->cmd);
-		printf("token_type : %d\n\n", tmp->token);
-		tmp = tmp->next;
+		ft_putendl_fd(cmd, fd);
+		close(fd);
+	}
+	add_history(cmd);
+}
+
+void	load_history()
+{
+	int		fd;
+	char	*cmd;
+
+	using_history();
+	fd = open(HISTORY_PATH, O_RDONLY);
+	if (fd != -1)
+	{
+		while (get_next_line(fd, &cmd) != 0)
+		{
+			add_history(cmd);
+			free(cmd);
+		}
+		free(cmd);
+		close(fd);
 	}
 }

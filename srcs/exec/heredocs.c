@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 10:56:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/10 16:18:49 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/01 15:29:16 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	*find_delimiter(t_list *cmds)
 	return (0);
 }
 
-int		heredocs(t_list *cmds)
+int	heredocs(t_list *cmds)
 {
 	char	*hd;
 	int		fd[2];

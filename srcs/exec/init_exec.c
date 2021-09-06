@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   can_exec.c                                         :+:      :+:    :+:   */
+/*   init_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/30 16:25:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/30 16:25:40 by atrouill         ###   ########.fr       */
+/*   Created: 2021/09/01 16:44:43 by atrouill          #+#    #+#             */
+/*   Updated: 2021/09/03 16:38:12 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
-**	Check if the user have permission to execute the file
-**
-**	@param path Path to file to check
-**
-**	@return True if user can exec, or false if not
-*/
-bool	can_exec(char *path)
+t_exec	*exec_init(t_list **cmd)
 {
-	struct stat		f_stat;
+	t_exec	*exec;
 
-	if (stat(path, &f_stat) == 0)
-	{
-		if (f_stat.st_mode & S_IXUSR)
-			return (true);
-	}
-	return (false);
+	exec = malloc(sizeof(*exec));
+	exec->fdtemp = 0;
+	exec->status = 0;
+	exec->fdin = 0;
+	exec->fdout = 0;
+	exec->cmds = cmd;
+	return (exec);
 }
