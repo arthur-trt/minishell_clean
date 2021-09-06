@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/06 11:58:57 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/06 14:11:36 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*input(void)
 	line_read = readline(prompt);
 	free(prompt);
 	if (line_read && *line_read)
-		add_history (line_read);
+		history_append (line_read);
 	if (line_read == NULL)
 	{
 		ft_putstr_fd("exit", 0);
