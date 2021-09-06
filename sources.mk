@@ -83,5 +83,6 @@ SOURCES		+=                           		\
 		srcs/builtins/ft_pwd.c              	\
 		srcs/builtins/ft_cd.c               	\
 		srcs/builtins/ft_export.c           	\
+		srcs/builtins/export_utils.c
 
 

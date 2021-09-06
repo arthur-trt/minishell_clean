@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 12:36:40 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/06 13:51:35 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/06 17:54:40 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	change_dir(char *path, char *user_entry)
 {
 	char	*pwd;
-//	char	buf[4096];
 
 	pwd = search_env("PWD");
 	if (path == NULL || chdir(path) == -1)
