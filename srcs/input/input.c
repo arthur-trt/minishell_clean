@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/04 14:27:52 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/05 18:29:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	*ft_realloc2(void *ptr, int size, int newsize)
 	return (new);
 }
 
-
 char	*input_heredocs(char *delimiter)
 {
 	char	*heredocs;
@@ -59,7 +58,7 @@ char	*input_heredocs(char *delimiter)
 			ft_strlcat(heredocs, tmp, len);
 		}
 	}
-	len = ft_strlen(heredocs) + + 2;
+	len = ft_strlen(heredocs) + 2;
 	heredocs = ft_realloc2(heredocs, ft_strlen(heredocs), len);
 	ft_strlcat(heredocs, "\n", len);
 	free(tmp);
@@ -74,7 +73,7 @@ char	*input(void)
 	if (line_read)
 		line_read = (char *) NULL;
 	prompt = ft_prompt();
-	line_read = readline (prompt);
+	line_read = readline(prompt);
 	free(prompt);
 	if (line_read && *line_read)
 		add_history (line_read);
