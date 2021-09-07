@@ -3,16 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   exec_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/04 00:29:49 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/07 16:08:55 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_glob	*g_glob;
+
+int	exec_path_util(void)
+{
+	ft_putstr_fd("Error: malloc failed.\n", 2);
+	return (-1);
+}
 
 int	exec_path(t_list *cmds)
 {
@@ -34,10 +40,7 @@ int	exec_path(t_list *cmds)
 		if (g_glob->heredocs)
 			heredocs(cmds);
 		if (!(env) || !(args))
-		{
-			ft_putstr_fd("Error: malloc failed.\n", 2);
-			return (-1);
-		}
+			return (exec_path_util());
 		execve(path, args, env);
 		free(path);
 	}

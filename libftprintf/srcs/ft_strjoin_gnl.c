@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_gnl.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 20:06:09 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/06 14:36:42 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/07 19:57:02 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 **
 **	@param Pointer to the new string
 */
-char		*ft_strjoin_gnl(char **s1, char *s2)
+char	*ft_strjoin_gnl(char **s1, char *s2)
 {
 	char	*res;
 	size_t	len;

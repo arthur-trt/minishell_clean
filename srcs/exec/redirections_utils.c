@@ -3,53 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/04 00:44:18 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/07 16:01:41 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_glob	*g_glob;
-
-bool	ft_ischarset(char c, char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (charset[i] == c)
-			return (true);
-		i++;
-	}
-	return (false);
-}
-
-/*
-***	Gets the file name for the redirection
-*** @param char*s the string containing the filename we want to parse
-*** @param int*i our current position on the string
-*** @return The char *filename if present or NULL if no filename is specified.
-*/
-char	*get_file_name(char *s, int *i)
-{
-	int		j;
-	char	*filename;
-
-	filename = NULL;
-	while (s[*i] == ' ')
-		(*i)++;
-	j = *i;
-	while (s[j] && (ft_isalnum(s[j]) || s[j] == '_'
-			|| s[j] == '-' || s[j] == '.' || s[j] == ' '))
-		j++;
-	if (*i != j)
-		filename = ft_substr(s, *i, j - *i);
-	return (filename);
-}
 
 /*
 *** Launches the proper function according to which type of redirection is found
@@ -137,9 +100,7 @@ static void	remove_redirect(t_list **cmds)
 
 	tmp = *cmds;
 	if (tmp != NULL && is_redirect(tmp->content))
-	{
 		*cmds = tmp->next->next;
-	}
 	else
 	{
 		while (tmp != NULL && is_redirect(tmp->content) == false)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 13:58:54 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/06 14:37:49 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/07 19:50:48 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	history_append(char *cmd)
 	add_history(cmd);
 }
 
-void	load_history()
+void	load_history(void)
 {
 	int		fd;
 	char	*cmd;

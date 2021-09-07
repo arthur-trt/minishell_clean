@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/03 21:52:49 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/07 16:01:19 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		ft_more(t_list *tmp, int *i, int *fdout);
 int		ft_append(t_list *tmp, int *i, int *fdout);
 char	*get_file_name(char *s, int *i);
 void	ft_exec(char *lexed);
-bool		ft_ischarset(char c, char *charset);
+bool	ft_ischarset(char c, char *charset);
 t_list	*copycmds(t_list *lst);
 int		word_checker(t_list *tmp, char **s);
 int		word_checker_bis(t_list *tmp, char **s);

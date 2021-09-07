@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 20:09:13 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/06 14:19:10 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/07 20:28:26 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int		free_ret(char **cache, int ret)
+static int	free_ret(char **cache, int ret)
 {
 	if (*cache)
 	{
@@ -36,7 +36,7 @@ static ssize_t	locate_n(char *str, char c)
 	return (-1);
 }
 
-static int		obtain_line(char **cache, char **line)
+static int	obtain_line(char **cache, char **line)
 {
 	ssize_t	index;
 	char	*tmp;
@@ -54,14 +54,15 @@ static int		obtain_line(char **cache, char **line)
 	return (1);
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*cache;
 	ssize_t		read_size;
 	char		*buffer;
 
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (fd < 0 || !line || BUFFER_SIZE < 1
-		|| !(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		|| !(buffer))
 		return (free_ret(&cache, -1));
 	while ((read_size = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
