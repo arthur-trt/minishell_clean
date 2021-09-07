@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 20:09:13 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/07 20:28:26 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/07 21:38:36 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,18 @@ static int	obtain_line(char **cache, char **line)
 	return (1);
 }
 
+static int	get_next_line_helper(ssize_t read_size, char **cache, char **line)
+{
+	if (read_size < 0)
+		return (free_ret(cache, -1));
+	if (read_size == 0 && (ft_strncmp(*cache, "", ft_strlen(*cache)) == 0))
+	{
+		*line = ft_strdup("");
+		return (free_ret(cache, 0));
+	}
+	return (obtain_line(cache, line));
+}
+
 int	get_next_line(int fd, char **line)
 {
 	static char	*cache;
@@ -61,24 +73,18 @@ int	get_next_line(int fd, char **line)
 	char		*buffer;
 
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (fd < 0 || !line || BUFFER_SIZE < 1
-		|| !(buffer))
+	if (fd < 0 || !line || BUFFER_SIZE < 1 || !(buffer))
 		return (free_ret(&cache, -1));
-	while ((read_size = read(fd, buffer, BUFFER_SIZE)) > 0)
+	read_size = read(fd, buffer, BUFFER_SIZE);
+	while (read_size > 0)
 	{
 		buffer[read_size] = '\0';
 		if (!(ft_strjoin_gnl(&cache, buffer)))
 			return (free_ret(&cache, -1));
 		if (locate_n(cache, '\n') != -1)
 			break ;
+		read_size = read(fd, buffer, BUFFER_SIZE);
 	}
 	free(buffer);
-	if (read_size < 0)
-		return (free_ret(&cache, -1));
-	if (read_size == 0 && (ft_strncmp(cache, "", ft_strlen(cache)) == 0))
-	{
-		*line = ft_strdup("");
-		return (free_ret(&cache, 0));
-	}
-	return (obtain_line(&cache, line));
+	return (get_next_line_helper(read_size, &cache, line));
 }
