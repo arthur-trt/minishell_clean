@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/07/28 12:50:07 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/06 14:22:25 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <readline/history.h>
 
 # define MAX_CMD_LINE	4096
+
+# define GREEN					"\001\033[1;32m\002"
+# define BLUE					"\001\033[1;94m\002"
+# define NEUTRAL				"\001\033[0m\002"
 
 # define KEY_CODE_UP			"\x1b\x5b\x41\0"
 # define KEY_CODE_DOWN			"\x1b\x5b\x42\0"
@@ -51,6 +55,9 @@
 char	*input(void);
 char	*ft_prompt(void);
 char	*input_heredocs(char *delimiter);
+
+void	history_append(char *cmd);
+void	load_history();
 
 
 #endif

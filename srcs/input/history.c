@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 20:40:56 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/06 13:34:35 by atrouill         ###   ########.fr       */
+/*   Created: 2021/09/06 13:58:54 by atrouill          #+#    #+#             */
+/*   Updated: 2021/09/06 14:37:49 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_pwd(void)
+void	history_append(char *cmd)
 {
-	char	*cwd;
-	char	*pwd;
-	char	buf[4096];
+	int	fd;
 
-	pwd = search_env("PWD");
-	if (pwd != NULL)
+	fd = open(HISTORY_PATH, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	if (fd != -1)
 	{
-		ft_putendl_fd(pwd, 1);
+		ft_putendl_fd(cmd, fd);
+		close(fd);
 	}
-	else
+	add_history(cmd);
+}
+
+void	load_history()
+{
+	int		fd;
+	char	*cmd;
+
+	using_history();
+	fd = open(HISTORY_PATH, O_RDONLY);
+	if (fd != -1)
 	{
-		cwd = getcwd(buf, 4096);
-		if (!(cwd))
+		while (get_next_line(fd, &cmd) != 0)
 		{
-			ft_putstr_fd(buf, 1);
-			return (-1);
+			add_history(cmd);
+			free(cmd);
 		}
-		ft_putstr_fd(cwd, 1);
-		ft_putchar_fd('\n', 1);
+		free(cmd);
+		close(fd);
 	}
-	return (0);
 }

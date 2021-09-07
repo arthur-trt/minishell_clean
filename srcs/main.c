@@ -6,9 +6,10 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/02 10:13:41 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/06 14:24:44 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "minishell.h"
 #include <signal.h>
@@ -40,11 +41,12 @@ int	minishell(void)
 
 int	main(void)
 {
-	signal(SIGQUIT, d_handler);
-	signal(SIGINT, c_handler);
+	signal(SIGQUIT, sig_handler);
+	signal(SIGINT, sig_handler);
 	g_glob = NULL;
 	if (ft_init_gobal())
 		return (EXIT_FAILURE);
+	load_history();
 	minishell();
 	printf("\n");
 	free_glob();
