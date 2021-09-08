@@ -108,7 +108,7 @@ static int	empty_buff_checker(char *s, char *res, int i)
 	if (s[i] == ' '
 		|| (res != NULL && ft_ischarset(res[0], "<>"))
 		|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>"))
-		|| s[i + 1] == '$' || (s[i + 1] == '"' && s[i + 2] == '$'))
+		/*|| s[i + 1] == '$' */|| (s[i + 1] == '"' && s[i + 2] == '$'))
 		return (1);
 	return (0);
 }

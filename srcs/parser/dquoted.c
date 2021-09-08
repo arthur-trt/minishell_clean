@@ -81,7 +81,7 @@ int	ft_dollar(char *s, int *i, t_list **list, int *len)
 	char	*res;
 	t_list	*tmp;
 
-	res = ft_search_var(s, i);
+	res = ft_search_var(s, i, 1);
 	if (res == NULL)
 	{
 		tmp = ft_lstnew(ft_strdup(""));

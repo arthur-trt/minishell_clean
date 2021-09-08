@@ -3,7 +3,7 @@
 # genmake v0.10
 
 #Compiler and Linker
-CC			:= clang-9
+CC			:= gcc
 ifeq ($(shell uname -s),Darwin)
 	CC		:= gcc
 endif
@@ -35,10 +35,10 @@ cflags.debug		:= -Wall -Werror -Wextra -DDEBUG -ggdb -fsanitize=address -fno-omi
 CFLAGS			:= $(cflags.$(BUILD))
 
 ifeq ($(shell uname -s), Darwin)
-	lib.release		:=  -L libftprintf -lftprintf -L/Users/$(USER)/.brew/opt/readline/lib -lreadline -ltermcap
+	lib.release		:=  -L libftprintf -lftprintf -L/Users/$(USER)/.brew/opt/readline/lib -lreadline
 	INC				:= -I$(INCDIR) -I/Users/$(USER)/.brew/opt/readline/include -I/usr/local/include
 else
-	lib.release		:= -Llibftprintf -lftprintf -lreadline -ltermcap
+	lib.release		:= -Llibftprintf -lftprintf -lreadline
 	INC				:= -I$(INCDIR) -I/usr/local/include
 endif
 
