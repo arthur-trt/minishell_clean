@@ -1,3 +1,7 @@
+# Generated with GenMake
+# Arthur-TRT - https://github.com/arthur-trt/genMake
+# genmake v0.10
+
 #Compiler and Linker
 CC			:= clang-9
 ifeq ($(shell uname -s),Darwin)
@@ -70,7 +74,7 @@ all: libft $(TARGETDIR)/$(TARGET)
 
 # Bonus rule
 bonus: CFLAGS += -DBONUS
-bonus: libft $(TARGET_BONUS)
+bonus: libft $(TARGETDIR)/$(TARGET_BONUS)
 	@$(ERASE)
 	@$(ECHO) "$(TARGET)\t\t[$(C_SUCCESS)✅$(C_RESET)]"
 	@$(ECHO) "$(C_SUCCESS)All done, compilation successful with bonus! 👌 $(C_RESET)"
