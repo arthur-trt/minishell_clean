@@ -49,8 +49,7 @@ static char	*ft_add_space(char **ss, int i, char *tmp)
 		return (joined);
 	}
 	return (spaced);
-}
-
+}/*
 static char	*ft_remove_spaces(char *s)
 {
 	char	**ss;
@@ -59,24 +58,56 @@ static char	*ft_remove_spaces(char *s)
 	int		i;
 
 	i = -1;
-	res = 0;
-	tmp = NULL;
 	res = NULL;
+	tmp = NULL;
 	ss = ft_split(s, ' ');
-	free(s);
+	if (s[0] == ' ')
+		tmp = ft_strdup(" ");
 	while (ss[++i])
 	{
 		if (!(tmp) && !(ss[i + 1]))
-			res = ft_strdup(ss[i]);
+			tmp = ft_strdup(ss[i]);
 		else if (ss[i + 1])
 			tmp = ft_add_space(ss, i, tmp);
 		else
-			res = ft_strjoin(tmp, ss[i]);
-		free(ss[i]);
+			res = ft_strjoin_free(tmp, ss[i]);
 	}
-	free(tmp);
+	free(s);
 	if (ss)
 		free(ss);
+	return (res);
+}*/
+
+static char	*ft_remove_spaces(char *s, int f)
+{
+	char	**ss;
+	char	*tmp;
+	char	*res;
+	int		i;
+
+	i = -1;
+	res = NULL;
+	tmp = NULL;
+	ss = ft_split(s, ' ');
+	while (ss[++i])
+	{
+		if (!(tmp) && !(ss[i + 1]))
+			tmp = ft_strdup(ss[i]);
+		else if (ss[i + 1])
+			tmp = ft_add_space(ss, i, tmp);
+		else
+			res = ft_strjoin_free(tmp, ss[i]);
+	}
+	if (ss)
+		free(ss);
+	if (s[0] == ' ' && !(f))
+	{
+		tmp = ft_strjoin(" ", res);
+		free(res);
+		free(s);
+		return (tmp);
+	}
+	free(s);
 	return (res);
 }
 
@@ -87,7 +118,7 @@ static char	*ft_remove_spaces(char *s)
 **	@param	i the position of the current character on s
 **	@return res the value of the variable or NULL if the variable doesn't exist
 */
-char	*ft_search_value(char *name)
+char	*ft_search_value(char *name, int f)
 {
 	t_env	*tmp;
 	char	*res;
@@ -103,7 +134,7 @@ char	*ft_search_value(char *name)
 	if (name)
 		free(name);
 	if (res)
-		res = ft_remove_spaces(res);
+		res = ft_remove_spaces(res, f);
 	return (res);
 }
 
@@ -115,7 +146,7 @@ char	*ft_search_value(char *name)
 **	@param	i the position of the current character on s
 **	@return res the value of the variable or NULL if the variable doesn't exist
 */
-char	*ft_search_var(char *s, int *i)
+char	*ft_search_var(char *s, int *i, int f)
 {
 	int		j;
 	char	*res;
@@ -136,7 +167,7 @@ char	*ft_search_var(char *s, int *i)
 		(*i)++;
 	if (*i - j == 0)
 		return (NULL);
-	res = ft_search_value(ft_substr(s, j, *i - j));
+	res = ft_search_value(ft_substr(s, j, *i - j), f);
 	if (s[*i] == '"' || s[*i] == '\0' || s[*i] == '\'' || s[*i] == '$'
 		|| s[*i] == '/' || s[*i] == '=' || s[*i] == '\\')
 		(*i)--;

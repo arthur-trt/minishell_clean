@@ -21,7 +21,7 @@ char	*home_tild(char *res)
 
 	name = ft_strdup("HOME");
 	tmp_bis = NULL;
-	tmp_bis = ft_search_value(name);
+	tmp_bis = ft_search_value(name, 0);
 	if (!(tmp_bis))
 		return (res);
 	if (res)

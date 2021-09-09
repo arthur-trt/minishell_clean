@@ -111,7 +111,7 @@ char	*ft_apply_var(char *s, int *i, char *res, int *r)
 	char	*tmp_bis;
 
 	tmp_bis = NULL;
-	tmp_bis = ft_search_var(s, i);
+	tmp_bis = ft_search_var(s, i, 0);
 	if (!(tmp_bis))
 	{
 		*r = 0;
