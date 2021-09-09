@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:15:15 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/07 19:56:29 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/09 17:35:46 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char	*ft_remove_spaces(char *s, int f)
 	while (ss[++i])
 	{
 		if (!(tmp) && !(ss[i + 1]))
-			tmp = ft_strdup(ss[i]);
+			res = ft_strdup(ss[i]);
 		else if (ss[i + 1])
 			tmp = ft_add_space(ss, i, tmp);
 		else
