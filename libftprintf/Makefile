@@ -1,5 +1,5 @@
 #Compiler and Linker
-CC				:= gcc
+CC				:= clang-9
 ifeq ($(shell uname -s),Darwin)
 	CC			:= gcc
 endif
@@ -29,7 +29,7 @@ cflags.debug		:= -Wall -Werror -Wextra -DDEBUG -ggdb -fsanitize=address -fno-omi
 CFLAGS			:= $(cflags.$(BUILD))
 
 lib.release		:=
-
+lib.valgrind		:=
 lib.debug		:= $(lib.release) -fsanitize=address -fno-omit-frame-pointer
 LIB			:= $(lib.$(BUILD))
 

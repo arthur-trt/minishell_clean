@@ -29,20 +29,21 @@ OBJECTS			:= $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT
 OBJECTS_BONUS		:= $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES_BONUS:.$(SRCEXT)=.$(OBJEXT)))
 
 #Flags, Libraries and Includes
-cflags.release		:= -Wall -Werror -Wextra -g
+cflags.release		:= -Wall -Werror -Wextra -ggdb
 cflags.valgrind		:= -Wall -Werror -Wextra -DDEBUG -ggdb
 cflags.debug		:= -Wall -Werror -Wextra -DDEBUG -ggdb -fsanitize=address -fno-omit-frame-pointer
 CFLAGS			:= $(cflags.$(BUILD))
 
 ifeq ($(shell uname -s), Darwin)
 	lib.release		:=  -L libftprintf -lftprintf -L/Users/$(USER)/.brew/opt/readline/lib -lreadline
-	INC				:= -I$(INCDIR) -I/Users/$(USER)/.brew/opt/readline/include -I/usr/local/include
+	INC			:= -I$(INCDIR) -I/Users/$(USER)/.brew/opt/readline/include -I/usr/local/include
 else
 	lib.release		:= -Llibftprintf -lftprintf -lreadline
-	INC				:= -I$(INCDIR) -I/usr/local/include
+	INC			:= -I$(INCDIR) -I/usr/local/include
 endif
 
 lib.debug		:= $(lib.release) -fsanitize=address -fno-omit-frame-pointer
+lib.valgrind		:= $(lib.release)
 LIB			:= $(lib.$(BUILD))
 
 INCDEP			:= -I$(INCDIR)

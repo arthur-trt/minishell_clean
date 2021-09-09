@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/09 09:03:21 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/09 12:58:48 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,9 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 
 static int	empty_buff_checker(char *s, char *res, int i)
 {
-	if (s[i] == ' '
-		|| (res != NULL && ft_ischarset(res[0], "<>"))
+	if (s[i] == ' ' || (res != NULL && ft_ischarset(res[0], "<>"))
 		|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>"))
-		/*|| s[i + 1] == '$' */|| (s[i + 1] == '"' && s[i + 2] == '$'))
+		|| (s[i + 1] == '"' && s[i + 2] == '$'))
 		return (1);
 	return (0);
 }

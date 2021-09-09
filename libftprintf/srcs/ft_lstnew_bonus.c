@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 21:14:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/08/27 21:44:45 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/09 13:54:17 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_list	*ft_lstnew(void *content)
 		return (NULL);
 	res->content = content;
 	res->d_quote = 0;
+	res->expanded = 0;
 	res->esc = 0;
 	res->next = NULL;
 	return (res);

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:31:33 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/08 15:06:06 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/09 13:56:08 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,7 @@ char	*ft_apply_var(char *s, int *i, char *res, int *r)
 	if (res)
 		tmp = ft_strjoin(res, tmp_bis);
 	else
-	{
-		free(res);
 		return (tmp_bis);
-	}
 	free(res);
 	return (tmp);
 }
