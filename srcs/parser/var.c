@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:15:15 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/07 19:56:29 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/08 12:04:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_bracket_check(char *s, int i)
 			return (1);
 		i++;
 	}
-	printf("ERROR: BRACKET MISSING\n");
+	ft_putstrerror("parser", "found an non closing bracket");
 	return (0);
 }
 

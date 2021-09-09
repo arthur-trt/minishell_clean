@@ -70,6 +70,7 @@ SOURCES		+=                           		\
 		srcs/parser/string.c                	\
 		srcs/parser/utils.c                 	\
 		srcs/parser/var.c                   	\
+		srcs/parser/verify.c                	\
 
 
 ## SRCS/UTILS ##

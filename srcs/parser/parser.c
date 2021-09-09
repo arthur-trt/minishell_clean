@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/06 17:42:29 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/08 15:07:39 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ int	ft_empty_buffer(char **s, t_list **command)
 	{
 		tmp->esc = 1;
 		g_glob->esc = false;
+	}
+	if (g_glob->expanded == true)
+	{
+		tmp->expanded = 1;
+		g_glob->expanded = false;
 	}
 	ft_lstadd_back(command, tmp);
 	free(*s);
@@ -108,7 +113,7 @@ static int	empty_buff_checker(char *s, char *res, int i)
 	if (s[i] == ' '
 		|| (res != NULL && ft_ischarset(res[0], "<>"))
 		|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>"))
-		|| s[i + 1] == '$' || (s[i + 1] == '"' && s[i + 2] == '$'))
+		/*|| s[i + 1] == '$'*/ || (s[i + 1] == '"' && s[i + 2] == '$'))
 		return (1);
 	return (0);
 }
@@ -144,5 +149,6 @@ t_list	*ft_parse(char *s)
 	if (res)
 		if (ft_empty_buffer(&res, &command))
 			ft_parse_error(command);
+	ft_check_parser(&command);
 	return (command);
 }

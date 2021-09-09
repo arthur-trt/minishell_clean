@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   apply.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:31:33 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/22 15:41:26 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/08 15:06:06 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_parser.h"
 #include "../libftprintf/includes/libftprintf.h"
+
+extern t_glob	*g_glob;
 
 /*
 **	Applies a function  for single quotes and strings
@@ -118,6 +120,7 @@ char	*ft_apply_var(char *s, int *i, char *res, int *r)
 		tmp = ft_strdup("");
 		return (tmp);
 	}
+	g_glob->expanded = true;
 	if (res)
 		tmp = ft_strjoin(res, tmp_bis);
 	else

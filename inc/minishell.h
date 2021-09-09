@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/07 21:39:32 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/08 15:05:27 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_glob
 	char			*path;
 	bool			d_quote;
 	bool			esc;
+	bool			expanded;
 	int				childs;
 }					t_glob;
 
