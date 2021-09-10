@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/06 11:16:30 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:00:39 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,7 @@ bool	is_dir(char *path);
 bool	ft_strisdigit(char *s);
 
 void	ft_putstrerror(char *name, char *error_msg);
+
+char	**ft_split_sh(char *s, char c);
+
 #endif

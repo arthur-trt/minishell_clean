@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/08 15:14:01 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:09:51 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_exec(char *user_input)
 	t_list	*cmd_parsed;
 
 	i = 0;
-	cmds = ft_split(user_input, ';');
+	cmds = ft_split_sh(user_input, ';');
 	g_glob->save_in = dup(0);
 	while (cmds[i] != NULL)
 	{

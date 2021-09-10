@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:45:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/03 16:36:11 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:00:57 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ pid_t	*check_pipe(int *fds, char *cmds)
 	int		i;
 	pid_t	*pid;
 
-	cmd = ft_split(cmds, '|');
+	cmd = ft_split_sh(cmds, '|');
 	i = 0;
 	first_pipe = true;
 	last_pipe = false;
