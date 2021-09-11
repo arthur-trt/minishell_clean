@@ -6,13 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 12:10:57 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/10 15:19:46 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/11 13:50:23 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	skip_quotes(char *s, char c, ssize_t *i)
+static void	skip_quotes(char *s, char c, size_t *i)
 {
 	(*i)++;
 	while (s[(*i) + 1] != '\0' && s[(*i)] != c)
@@ -20,10 +20,10 @@ static void	skip_quotes(char *s, char c, ssize_t *i)
 	(*i)++;
 }
 
-static ssize_t	count_word(char *s, char c)
+static size_t	count_word(char *s, char c)
 {
-	ssize_t	nb_words;
-	ssize_t	i;
+	size_t	nb_words;
+	size_t	i;
 
 	i = 0;
 	nb_words = 0;
@@ -39,18 +39,26 @@ static ssize_t	count_word(char *s, char c)
 	return (nb_words + 1);
 }
 
-char	**ft_split_sh(char *s, char c)
+char	**dumb_norm(char *s, char c, size_t *i, size_t *j)
 {
-	ssize_t	i;
-	ssize_t	j;
-	ssize_t	start;
 	char	**splited;
 
-	j = 0;
 	splited = malloc(sizeof(char *) * (count_word(s, c) + 1));
+	(*i) = 0;
+	(*j) = 0;
+	return (splited);
+}
+
+char	**ft_split_sh(char *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	size_t	start;
+	char	**splited;
+
+	splited = dumb_norm(s, c, &i, &j);
 	if (!splited)
 		return (NULL);
-	i = 0;
 	start = 0;
 	while (s[i] != '\0')
 	{
@@ -61,6 +69,8 @@ char	**ft_split_sh(char *s, char c)
 			splited[j++] = ft_substr(s, start, i - start);
 			start = i + 1;
 		}
+		if (s[i] != '\0')
+			i++;
 	}
 	splited[j++] = ft_substr(s, start, i - start);
 	splited[j] = NULL;

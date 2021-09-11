@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/10 15:09:51 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/11 18:39:01 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,26 @@
 
 extern t_glob	*g_glob;
 
+static void	skip_quotes(char *s, char c, size_t *i)
+{
+	(*i)++;
+	while (s[(*i) + 1] != '\0' && s[(*i)] != c)
+		(*i)++;
+}
+
 static bool	has_pipe(char *cmd)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (cmd[i])
 	{
+		if (cmd[i] == '\'' || cmd[i] == '\"')
+			skip_quotes(cmd, cmd[i], &i);
 		if (cmd[i] == '|')
 			return (true);
-		i++;
+		if (cmd[i] != '\0')
+			i++;
 	}
 	return (false);
 }

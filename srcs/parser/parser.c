@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/10 15:04:32 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/11 18:37:34 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 	}
 	else if (s[*i] == '\'')
 		*res = ft_apply(s, i, &ft_single, *res);
-	else if (s[*i] == '$' )
-		*res = ft_apply_var(s, i, *res, &r);
 	else if (s[*i] == '~' )
 		*res = home_tild(*res);
 	else
@@ -111,8 +109,7 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 static int	empty_buff_checker(char *s, char *res, int i)
 {
 	if (s[i] == ' ' || (res != NULL && ft_ischarset(res[0], "<>"))
-		|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>"))
-		|| (s[i + 1] == '"' && s[i + 2] == '$'))
+		|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>")))
 		return (1);
 	return (0);
 }
@@ -129,18 +126,20 @@ t_list	*ft_parse(char *s)
 	t_list	*command;
 	char	*res;
 	int		i;
+	char	*tmp;
 
 	i = 0;
 	res = NULL;
 	command = NULL;
-	while (s[i])
+	tmp = expand_var(s);
+	while (tmp != NULL && tmp[i] != '\0')
 	{
-		if (s[i] != ' ')
+		if (tmp[i] != ' ')
 		{
-			if (ft_check_char(command, &res, s, &i))
+			if (ft_check_char(command, &res, tmp, &i))
 				return (NULL);
 		}
-		if (empty_buff_checker(s, res, i))
+		if (empty_buff_checker(tmp, res, i))
 			if (ft_empty_buffer(&res, &command))
 				ft_parse_error(command);
 		i++;
@@ -148,6 +147,6 @@ t_list	*ft_parse(char *s)
 	if (res)
 		if (ft_empty_buffer(&res, &command))
 			ft_parse_error(command);
-	ft_check_parser(&command);
+	free(tmp);
 	return (command);
 }
