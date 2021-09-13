@@ -115,5 +115,6 @@ int	ft_init_gobal(void)
 	g_glob->d_quote = false;
 	g_glob->tmp_fdout = 0;
 	g_glob->esc = false;
+	g_glob->expanded = false;
 	return (0);
 }

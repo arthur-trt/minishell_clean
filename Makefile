@@ -3,7 +3,7 @@
 # genmake v0.10
 
 #Compiler and Linker
-CC			:= clang-9
+CC			:= gcc
 ifeq ($(shell uname -s),Darwin)
 	CC		:= gcc
 endif
