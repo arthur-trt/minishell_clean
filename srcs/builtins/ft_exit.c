@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:51:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/14 15:37:07 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/14 16:04:29 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 
 extern t_glob	*g_glob;
 
-void	ft_exit(t_list *cmd, t_list **old_cmds, char **splitted)
+static void	ft_free(t_list *cmd, t_list **old_cmds, char **splitted, t_exec *exec)
+{
+	free_glob();
+	free_list(cmd);
+	cmd = NULL;
+	free_list(*old_cmds);
+	*old_cmds = NULL;
+	free_split(splitted);
+	free(exec);
+	exec = NULL;
+}
+
+void	ft_exit(t_list *cmd, t_list **old_cmds, char **splitted, t_exec *exec)
 {
 	int	exit_code;
 
@@ -34,12 +46,6 @@ void	ft_exit(t_list *cmd, t_list **old_cmds, char **splitted)
 	}
 	else
 		exit_code = ft_atoi(cmd->next->content);
-	free_glob();
-	free_list(cmd);
-	cmd = NULL;
-	(void)old_cmds;
-	free_list(*old_cmds);
-	*old_cmds = NULL;
-	free_split(splitted);
+	ft_free(cmd, old_cmds, splitted, exec);
 	exit(exit_code);
 }

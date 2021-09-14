@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/14 15:33:19 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/14 15:52:52 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ extern t_glob	*g_glob;
 ***
 *** @param the cmds linked list containing the command
 */
-int	is_builtin(t_list *cmds, char **splitted)
+int	is_builtin(t_list *cmds, char **splitted, t_exec *exec)
 {
 	int		r;
 	t_list	*tmp;
@@ -35,7 +35,7 @@ int	is_builtin(t_list *cmds, char **splitted)
 		else if (!(ft_strcmp("env", cmds->content)))
 			r = ft_env();
 		else if (!(ft_strcmp("exit", cmds->content)))
-			ft_exit(tmp, &cmds, splitted);
+			ft_exit(tmp, &cmds, splitted, exec);
 		else if (!(ft_strcmp("cd", cmds->content)))
 			r = ft_cd(cmds);
 		else if (!(ft_strcmp("export", cmds->content)))

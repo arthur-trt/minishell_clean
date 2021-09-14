@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/14 15:32:36 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/14 15:52:52 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	exec_bin(t_exec *exec, char **splitted)
 {
 	if (exec->cmds != NULL)
 	{
-		g_glob->ret = is_builtin(*exec->cmds, splitted);
+		g_glob->ret = is_builtin(*exec->cmds, splitted, exec);
 		if (g_glob->ret == 127)
 		{
 			g_glob->pid = fork();
