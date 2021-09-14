@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:51:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/14 15:05:11 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/14 15:37:07 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_glob	*g_glob;
 
-void	ft_exit(t_list *cmd, t_list **old_cmds)
+void	ft_exit(t_list *cmd, t_list **old_cmds, char **splitted)
 {
 	int	exit_code;
 
@@ -40,5 +40,6 @@ void	ft_exit(t_list *cmd, t_list **old_cmds)
 	(void)old_cmds;
 	free_list(*old_cmds);
 	*old_cmds = NULL;
+	free_split(splitted);
 	exit(exit_code);
 }

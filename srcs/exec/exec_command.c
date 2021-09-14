@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/07 16:08:55 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/14 15:32:36 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ int	exec_path(t_list *cmds)
 	return (0);
 }
 
-void	exec_bin(t_exec *exec)
+void	exec_bin(t_exec *exec, char **splitted)
 {
 	if (exec->cmds != NULL)
 	{
-		g_glob->ret = is_builtin(*exec->cmds);
+		g_glob->ret = is_builtin(*exec->cmds, splitted);
 		if (g_glob->ret == 127)
 		{
 			g_glob->pid = fork();
@@ -68,7 +68,7 @@ void	exec_bin(t_exec *exec)
 	}
 }
 
-void	check_command(t_list **cmd)
+void	check_command(t_list **cmd, char **splitted)
 {
 	t_exec	*exec;
 
@@ -86,7 +86,7 @@ void	check_command(t_list **cmd)
 			exec->fdout = dup(g_glob->save_out);
 		dup2(exec->fdout, 1);
 		close(exec->fdout);
-		exec_bin(exec);
+		exec_bin(exec, splitted);
 	}
 	dup2(g_glob->save_in, 0);
 	dup2(g_glob->save_out, 1);

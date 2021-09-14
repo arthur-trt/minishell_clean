@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/07 16:01:19 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/14 15:32:25 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_exec
 }	t_exec;
 
 int		search_path(char *exec_name, char **path);
-int		is_builtin(t_list *cmds);
+int		is_builtin(t_list *cmds, char **splitted);
 int		is_builtin_no_forks(t_list *cmds);
 char	**argv_exec_creator(t_list *cmds);
 char	**env_exec_creator(void);
@@ -50,8 +50,8 @@ int		word_checker(t_list *tmp, char **s);
 int		word_checker_bis(t_list *tmp, char **s);
 int		heredocs(t_list *cmds);
 
-void	check_command(t_list **cmd);
-void	exec_bin(t_exec *exec);
+void	check_command(t_list **cmd, char **splitted);
+void	exec_bin(t_exec *exec, char **splitted);
 
 void	piper(char *cmds);
 pid_t	*check_pipe(int *fds, char *cmds);

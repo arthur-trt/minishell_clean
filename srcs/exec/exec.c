@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/11 18:39:01 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/14 15:28:47 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_exec(char *user_input)
 		else
 		{
 			cmd_parsed = ft_parse(cmds[i]);
-			check_command(&cmd_parsed);
+			check_command(&cmd_parsed, cmds);
 			free_list(cmd_parsed);
 		}
 		i++;

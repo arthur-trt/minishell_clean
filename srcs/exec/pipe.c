@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:45:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/11 19:53:02 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/14 15:38:32 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ pid_t	exec_pipe(bool first, bool last, int *fds, char *cmd)
 		while (i < 4)
 			close(fds[i++]);
 		cmd_parsed = ft_parse(cmd);
-		check_command(&cmd_parsed);
+		check_command(&cmd_parsed, NULL);
 		free_list(cmd_parsed);
 		exit(g_glob->ret);
 	}
