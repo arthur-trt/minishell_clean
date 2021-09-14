@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:51:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/02 10:13:30 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/14 15:05:11 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_glob	*g_glob;
 
-void	ft_exit(t_list *cmd)
+void	ft_exit(t_list *cmd, t_list **old_cmds)
 {
 	int	exit_code;
 
@@ -35,5 +35,10 @@ void	ft_exit(t_list *cmd)
 	else
 		exit_code = ft_atoi(cmd->next->content);
 	free_glob();
+	free_list(cmd);
+	cmd = NULL;
+	(void)old_cmds;
+	free_list(*old_cmds);
+	*old_cmds = NULL;
 	exit(exit_code);
 }
