@@ -6,21 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/11 18:11:22 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/15 08:56:02 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_glob	*g_glob;
-
-static void	skip_quotes(char *s, char c, size_t *i)
-{
-	(*i)++;
-	while (s[(*i) + 1] != '\0' && s[(*i)] != c)
-		(*i)++;
-	(*i)++;
-}
 
 static void	add_char(char **res, char c)
 {

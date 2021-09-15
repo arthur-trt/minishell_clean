@@ -6,19 +6,11 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 12:10:57 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/11 13:50:23 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/15 08:58:59 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static void	skip_quotes(char *s, char c, size_t *i)
-{
-	(*i)++;
-	while (s[(*i) + 1] != '\0' && s[(*i)] != c)
-		(*i)++;
-	(*i)++;
-}
 
 static size_t	count_word(char *s, char c)
 {

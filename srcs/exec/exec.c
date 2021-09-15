@@ -3,23 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/14 15:28:47 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/15 08:59:28 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_glob	*g_glob;
-
-static void	skip_quotes(char *s, char c, size_t *i)
-{
-	(*i)++;
-	while (s[(*i) + 1] != '\0' && s[(*i)] != c)
-		(*i)++;
-}
 
 static bool	has_pipe(char *cmd)
 {
@@ -40,7 +33,7 @@ static bool	has_pipe(char *cmd)
 
 void	ft_exec(char *user_input)
 {
-	int		i;
+	size_t		i;
 	char	**cmds;
 	t_list	*cmd_parsed;
 
