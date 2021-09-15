@@ -138,7 +138,7 @@ static char	*ft_remove_spaces(char *s, int f)
 		while (s[i] != '\0'&& s[i] != ' ')
 		{
 			found = false;
-			s[i] = res[j++];
+			res[j++] = s[i];
 			i++;
 		}
 	}

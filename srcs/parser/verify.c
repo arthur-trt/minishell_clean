@@ -36,7 +36,7 @@ void	ft_check_parser(t_list **cmd)
 	tmp = *cmd;
 	while (tmp != NULL)
 	{
-		if (has_space(tmp->content) && tmp->expanded == 1)
+		if (has_space(tmp->content) && tmp->expanded == 1 && tmp->d_quote == 0)
 		{
 			splited = ft_split(tmp->content, ' ');
 			free(tmp->content);
