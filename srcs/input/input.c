@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/07 19:52:55 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/15 16:01:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_glob	*g_glob;
+extern int		rl_catch_signals;
 
 static void	*ft_realloc2(void *ptr, int size, int newsize)
 {

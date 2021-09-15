@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/15 08:56:02 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/15 16:16:34 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ static void	add_char(char **res, char c)
 {
 	size_t	len;
 	char	*tmp;
-
-	len = strlen(*res);
-	tmp = malloc((len + 2) * sizeof(char));
-	ft_bzero(tmp, len + 2);
-	ft_strlcpy(tmp, *res, len + 2);
-	tmp[len] = c;
-	free(*res);
-	*res = tmp;
+	if (*res != NULL)
+	{
+		len = ft_strlen(*res);
+		tmp = malloc((len + 2) * sizeof(char));
+		ft_bzero(tmp, len + 2);
+		ft_strlcpy(tmp, *res, len + 2);
+		tmp[len] = c;
+		free(*res);
+		*res = tmp;
+	}
 }
 
 static void	replace_last_ret(char **res, size_t *i, char *user_input)
@@ -45,19 +47,11 @@ static void	replace_last_ret(char **res, size_t *i, char *user_input)
 	free(tmp);
 }
 
-static void	replace_var(char *user_input, char **res, size_t *i)
+static void	dumb_norm(char **res, size_t *i, size_t start, char *user_input)
 {
-	size_t	start;
 	char	*tmp;
 	char	*var;
 
-	if (user_input[*i] == '$')
-		(*i)++;
-	start = *i;
-	while (user_input[*i] != '\0' && ft_isalnum(user_input[*i]))
-	{
-		(*i)++;
-	}
 	tmp = ft_substr(user_input, start, (*i) - start);
 	var = search_env(tmp);
 	free(tmp);
@@ -67,6 +61,31 @@ static void	replace_var(char *user_input, char **res, size_t *i)
 		ft_strjoin_gnl(res, tmp);
 		free(tmp);
 	}
+}
+
+static bool	replace_var(char *user_input, char **res, size_t *i)
+{
+	bool	flag;
+	size_t	start;
+
+	flag = true;
+	if (user_input[*i] == '$')
+		(*i)++;
+	if (user_input[*i] == '{')
+	{
+		flag = false;
+		(*i)++;
+	}
+	start = *i;
+	while (user_input[*i] != '\0' && ft_isalnum(user_input[*i]))
+		(*i)++;
+	dumb_norm(res, i, start, user_input);
+	if (user_input[(*i)] == '}')
+	{
+		flag = !flag;
+		(*i)++;
+	}
+	return (flag);
 }
 
 char	*expand_var(char *user_input)
@@ -84,13 +103,14 @@ char	*expand_var(char *user_input)
 			&& (user_input[i + 1] != '\0' && user_input[i + 1] == '?'))
 			replace_last_ret(&res, &i, user_input);
 		if (user_input[i] == '$'
-			&& !(i > 0 && user_input[i - 1] == '\\'))
-			replace_var(user_input, &res, &i);
-		if (user_input[i] != '\0')
+			&& !(i > 0 && user_input[i - 1] == '\\')
+			&& (replace_var(user_input, &res, &i) == false))
 		{
-			add_char(&res, user_input[i]);
-			i++;
+			ft_putstrerror(NULL, "bad substitution");
+			return (NULL);
 		}
+		if (user_input[i] != '\0')
+			add_char(&res, user_input[i++]);
 	}
 	return (res);
 }

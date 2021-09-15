@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 11:42:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/07 16:09:44 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:56:45 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	**env_exec_creator(void)
 		tmp = tmp->next;
 	}
 	tmp = g_glob->env;
-	envp = malloc(sizeof(char *) * i + 1);
+	envp = malloc(sizeof(char *) * (i + 1));
 	if (!(envp))
 		return (NULL);
 	i = -1;
