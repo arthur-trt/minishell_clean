@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:28:37 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/02 21:44:34 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/15 08:59:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	*remove_space(char *user_input)
 
 static bool	valid_token_input(char *user_input)
 {
-	int		i;
+	size_t	i;
 	char	*tmp;
 
 	i = 1;
@@ -58,7 +58,10 @@ static bool	valid_token_input(char *user_input)
 				return (false);
 			}
 		}
-		i++;
+		if (tmp[i] == '\"' || tmp[i] == '\'')
+			skip_quotes(tmp, tmp[i], &i);
+		if (tmp[i] != '\0')
+			i++;
 	}
 	free(tmp);
 	return (true);
@@ -95,7 +98,10 @@ static bool	valid_redirect_input(char *user_input)
 			if (c == SEMICOLON || c == PIPE || c == '>' || c == '<')
 				return (false);
 		}
-		i++;
+		if (user_input[i] == '\"' || user_input[i] == '\'')
+			skip_quotes(user_input, user_input[i], &i);
+		if (user_input[i] != '\0')
+			i++;
 	}
 	return (true);
 }
