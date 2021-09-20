@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/15 16:09:17 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 10:31:44 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static bool	has_pipe(char *cmd)
 			skip_quotes(cmd, cmd[i], &i);
 		if (cmd[i] == '|')
 			return (true);
-		if (cmd[i] != '\0')
-			i++;
+		i++;
 	}
 	return (false);
 }
@@ -47,7 +46,6 @@ void	ft_exec(char *user_input)
 		else
 		{
 			cmd_parsed = ft_parse(cmds[i]);
-			printf_list(cmd_parsed);
 			if (cmd_parsed != NULL)
 			{
 				check_command(&cmd_parsed, cmds);

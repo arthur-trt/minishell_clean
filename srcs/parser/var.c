@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:15:15 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/09 14:07:03 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 09:53:13 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,43 @@ static char	*ft_remove_spaces(char *s)
 //	return (res);
 //}
 
+//static char	*ft_remove_spaces(char *s, int f)
+//{
+//	bool	found;
+//	int		i;
+//	int		j;
+//	char	*res;
+
+//	(void)f;
+//	i = 0;
+//	j = 0;
+//	found = false;
+//	res = malloc((ft_strlen(s) + 1)* sizeof(char));
+//	while (s[i] != '\0')
+//	{
+//		while (s[i] != '\0' && s[i] == ' ')
+//		{
+//			if (found == false)
+//			{
+//				res[j++] = ' ';
+//				found = true;
+//			}
+//			i++;
+//		}
+//		while (s[i] != '\0'&& s[i] != ' ')
+//		{
+//			found = false;
+//			res[j++] = s[i];
+//			i++;
+//		}
+//	}
+//	res[j] = '\0';
+//	free(s);
+//	return (res);
+//}
+
 static char	*ft_remove_spaces(char *s, int f)
 {
-	bool	found;
 	int		i;
 	int		j;
 	char	*res;
@@ -122,27 +156,17 @@ static char	*ft_remove_spaces(char *s, int f)
 	(void)f;
 	i = 0;
 	j = 0;
-	found = false;
-	res = malloc((ft_strlen(s) + 1)* sizeof(char));
+	res = malloc((ft_strlen(s) + 1) * sizeof(char));
+	ft_bzero(res, ft_strlen(s) + 1);
 	while (s[i] != '\0')
 	{
-		while (s[i] != '\0' && s[i] == ' ')
-		{
-			if (found == false)
-			{
-				res[j++] = ' ';
-				found = true;
-			}
+		if (s[i] == ' ')
+			res[j++] = ' ';
+		while (s[i] == ' ')
 			i++;
-		}
-		while (s[i] != '\0'&& s[i] != ' ')
-		{
-			found = false;
-			res[j++] = s[i];
-			i++;
-		}
+		while (s[i] != ' ')
+			res[j++] = s[i++];
 	}
-	res[j] = '\0';
 	free(s);
 	return (res);
 }

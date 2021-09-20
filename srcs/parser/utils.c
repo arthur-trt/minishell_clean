@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:31:24 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/06 17:48:20 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/20 12:15:14 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 #include <stdio.h>
+
 /*
 **	Free a linked list and its content
 **
@@ -51,6 +52,7 @@ int	double_checker(char *s, int *i, char **res, t_list *command)
 	}
 	else
 	{
+		*res = ft_strdup("");
 		(*i) += 1;
 		return (1);
 	}
