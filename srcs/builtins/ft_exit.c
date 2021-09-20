@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:51:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/20 12:14:14 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 13:56:40 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 extern t_glob	*g_glob;
 
-static void	ft_free(t_list *cmd, t_list **old, char **splitted, t_exec *exec)
+static void	ft_free(t_list *cmd, t_list **old_cmds,
+	char **splitted, t_exec *exec)
 {
 	free_glob();
 	free_list(cmd);
 	cmd = NULL;
-	free_list(*old);
-	*old = NULL;
+	free_list(*old_cmds);
+	*old_cmds = NULL;
 	free_split(splitted);
 	free(exec);
 	exec = NULL;
