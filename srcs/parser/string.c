@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:29:08 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/06 17:43:44 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/20 12:12:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_len(char *s, int i)
 	int	j;
 
 	j = 0;
-	while (s[i] && s[i] != ' ' && s[i] != '\"' && s[i] != '\'' && s[i] != '$'
+	while (s[i] && s[i] != ' ' && s[i] != '\"' && s[i] != '\''
 		&& s[i] != '>' && s[i] != '<')
 	{
 		if (s[i] == '\\')
@@ -65,7 +65,7 @@ char	*ft_string(char *s, int *i)
 	}
 	res = malloc((get_len(s, *i) + 1) * sizeof(char));
 	while (s[*i] && s[*i] != ' ' && s[*i] != '\"' && s[*i] != '\''
-		&& s[*i] != '$' && s[*i] != '<' && s[*i] != '>')
+		&& s[*i] != '<' && s[*i] != '>')
 	{
 		if (s[*i] == '\\')
 			(*i)++;

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 12:10:57 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/15 08:58:59 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 10:32:07 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static size_t	count_word(char *s, char c)
 			skip_quotes(s, s[i], &i);
 		if (s[i] == c)
 			nb_words++;
-		if (s[i] != '\0')
-			i++;
+		i++;
 	}
 	return (nb_words + 1);
 }
@@ -61,8 +60,7 @@ char	**ft_split_sh(char *s, char c)
 			splited[j++] = ft_substr(s, start, i - start);
 			start = i + 1;
 		}
-		if (s[i] != '\0')
-			i++;
+		i++;
 	}
 	splited[j++] = ft_substr(s, start, i - start);
 	splited[j] = NULL;

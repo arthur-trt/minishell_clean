@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/15 16:16:34 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 12:07:20 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	add_char(char **res, char c)
 {
 	size_t	len;
 	char	*tmp;
+
 	if (*res != NULL)
 	{
 		len = ft_strlen(*res);
@@ -92,17 +93,19 @@ char	*expand_var(char *user_input)
 {
 	char	*res;
 	size_t	i;
+	bool	flag;
 
 	i = 0;
 	res = ft_strdup("");
+	flag = true;
 	while (user_input && user_input[i] != '\0')
 	{
 		if (user_input[i] == '\'')
-			skip_quotes(user_input, '\'', &i);
-		if (user_input[i] == '$'
+			flag = !flag;
+		if (flag && user_input[i] == '$'
 			&& (user_input[i + 1] != '\0' && user_input[i + 1] == '?'))
 			replace_last_ret(&res, &i, user_input);
-		if (user_input[i] == '$'
+		if (flag && user_input[i] == '$'
 			&& !(i > 0 && user_input[i - 1] == '\\')
 			&& (replace_var(user_input, &res, &i) == false))
 		{

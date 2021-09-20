@@ -6,14 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/15 16:01:50 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 09:26:45 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_glob	*g_glob;
-extern int		rl_catch_signals;
 
 static void	*ft_realloc2(void *ptr, int size, int newsize)
 {
