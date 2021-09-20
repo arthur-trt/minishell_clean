@@ -60,6 +60,7 @@ SOURCES		+=                           		\
 
 SOURCES		+=                           		\
 		srcs/parser/apply.c                 	\
+		srcs/parser/check_char.c            	\
 		srcs/parser/check_error.c           	\
 		srcs/parser/double.c                	\
 		srcs/parser/dquoted.c               	\

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/20 12:07:20 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 15:33:38 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,17 @@ char	*expand_var(char *user_input)
 		if (flag && user_input[i] == '$'
 			&& (user_input[i + 1] != '\0' && user_input[i + 1] == '?'))
 			replace_last_ret(&res, &i, user_input);
-		if (flag && user_input[i] == '$'
+		else if (flag && user_input[i] == '$'
 			&& !(i > 0 && user_input[i - 1] == '\\')
-			&& (replace_var(user_input, &res, &i) == false))
+			&& (user_input[i + 1] != '\0' && ft_isalnum(user_input[i + 1])))
 		{
-			ft_putstrerror(NULL, "bad substitution");
-			return (NULL);
+			if (replace_var(user_input, &res, &i) == false)
+			{
+				ft_putstrerror(NULL, "bad substitution");
+				return (NULL);
+			}
 		}
-		if (user_input[i] != '\0')
+		else if (user_input[i] != '\0')
 			add_char(&res, user_input[i++]);
 	}
 	return (res);

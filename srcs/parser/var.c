@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:15:15 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/20 09:53:13 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 14:33:57 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ static char	*ft_remove_spaces(char *s, int f)
 			res[j++] = ' ';
 		while (s[i] == ' ')
 			i++;
-		while (s[i] != ' ')
+		while (s[i] && s[i] != ' ')
 			res[j++] = s[i++];
 	}
 	free(s);

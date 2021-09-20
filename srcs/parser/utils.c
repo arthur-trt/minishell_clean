@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:31:24 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/20 12:15:14 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 14:55:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	double_checker(char *s, int *i, char **res, t_list *command)
 	}
 	else
 	{
-		*res = ft_strdup("");
+		if (*res == NULL)
+			*res = ft_strdup("");
 		(*i) += 1;
 		return (1);
 	}

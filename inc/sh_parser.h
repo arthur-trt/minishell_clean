@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 15:58:32 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/11 18:37:54 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 13:44:56 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	*home_tild(char *res);
 int		ft_command_not_found(t_list *command);
 int		double_checker(char *s, int *i, char **res, t_list *command);
 
+int		ft_check_char(t_list *command, char **res, char *s, int *i);
 void	ft_check_parser(t_list **cmd);
 
 char	*expand_var(char *user_input);

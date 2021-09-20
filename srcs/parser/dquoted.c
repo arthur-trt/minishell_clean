@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dquoted.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:24:11 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/06 17:50:45 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/20 17:18:05 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	string_esc_handler(char *s, int *i)
 	{
 		j++;
 		if (s[j] == '\"' || s[j] == '\\' || s[j] == '$')
-		{	
+		{
 			(*i)++;
 			j++;
 		}
@@ -48,7 +48,7 @@ int	ft_quoted_str(char *s, int *i, t_list **list, int *len)
 	t_list	*tmp;
 
 	j = string_esc_handler(s, i);
-	while (s[j] && s[j] != '\"' && s[j] != '\\' && s[j] != '$')
+	while (s[j] && s[j] != '\"' && s[j] != '\\')
 		j++;
 	res = ft_substr(s, *i, j - *i);
 	if (res == NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   double.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 16:03:49 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/06 17:51:42 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/20 16:44:45 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,7 @@ static int	ft_check_double(char *s, int *i, int *len, t_list **list)
 
 	while (s[*i] && s[*i] != '\"')
 	{
-		if (s[*i] == '$')
-			r = ft_dollar(s, i, list, len);
-		else if (s[*i] == '\\' && (s[*i + 1] && (s[*i + 1] == '"'
+		if (s[*i] == '\\' && (s[*i + 1] && (s[*i + 1] == '"'
 					|| s[*i + 1] == '$' || s[*i + 1] == '\'')))
 			r = ft_quoted_esc(s, i, list, len);
 		else
