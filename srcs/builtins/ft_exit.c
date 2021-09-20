@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:51:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/14 16:04:29 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/14 16:07:25 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 extern t_glob	*g_glob;
 
-static void	ft_free(t_list *cmd, t_list **old_cmds, char **splitted, t_exec *exec)
+static void	ft_free(t_list *cmd, t_list **old_cmds,
+	char **splitted, t_exec *exec)
 {
 	free_glob();
 	free_list(cmd);
