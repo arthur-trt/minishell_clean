@@ -72,6 +72,7 @@ SOURCES		+=                           		\
 		srcs/parser/utils.c                 	\
 		srcs/parser/var.c                   	\
 		srcs/parser/verify.c                	\
+		srcs/parser/check_char.c 				\
 
 
 ## SRCS/UTILS ##
