@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 12:17:10 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/20 12:18:23 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:08:27 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@ static char	*ft_check_redirect(int *i, char *s)
 {
 	char	*redir;
 
-	if (ft_strncmp(s + (*i), ">", 1) == 0)
+
+	if (ft_strncmp(s + (*i), "<<", 2) == 0)
+	{
+		redir = "<<";
+		(*i)++;
+	}
+	else if (ft_strncmp(s + (*i), ">", 1) == 0)
 		redir = ">";
-	if (ft_strncmp(s + (*i), ">>", 2) == 0)
+	else if (ft_strncmp(s + (*i), ">>", 2) == 0)
 	{
 		redir = ">>";
 		(*i)++;
 	}
-	if (ft_strncmp(s + (*i), "<", 1) == 0)
+	else if (ft_strncmp(s + (*i), "<", 1) == 0)
 		redir = "<";
 	return (ft_strdup(redir));
 }
