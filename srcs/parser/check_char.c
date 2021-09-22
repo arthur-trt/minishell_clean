@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 12:17:10 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/20 18:08:27 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/22 10:20:30 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_check_char(t_list *command, char **res, char *s, int *i)
 	r = 0;
 	if (s[(*i)] == '<' || s[(*i)] == '>')
 		*res = ft_check_redirect(i, s);
-	else if (s[*i] == '\"')
+	else if (s[*i] == '\"' && ((*i) > 0 && s[(*i) - 1] != '\\'))
 	{
 		r = double_checker(s, i, res, command);
 		if (r == 1)
