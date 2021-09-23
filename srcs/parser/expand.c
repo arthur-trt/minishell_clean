@@ -6,30 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/23 10:18:41 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/23 10:31:47 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_glob	*g_glob;
-
-void	add_char(char **res, char c)
-{
-	size_t	len;
-	char	*tmp;
-
-	if (*res != NULL)
-	{
-		len = ft_strlen(*res);
-		tmp = malloc((len + 2) * sizeof(char));
-		ft_bzero(tmp, len + 2);
-		ft_strlcpy(tmp, *res, len + 2);
-		tmp[len] = c;
-		free(*res);
-		*res = tmp;
-	}
-}
 
 static void	replace_last_ret(char **res, size_t *i, char *user_input)
 {
@@ -89,15 +72,11 @@ static bool	replace_var(char *user_input, char **res, size_t *i)
 	return (flag);
 }
 
-char	*expand_var(char *user_input)
+static char	*i_hate_norm(char *user_input, bool flag, size_t i)
 {
 	char	*res;
-	size_t	i;
-	bool	flag;
 
-	i = 0;
 	res = ft_strdup("");
-	flag = true;
 	while (user_input && user_input[i] != '\0')
 	{
 		if (user_input[i] == '\'')
@@ -119,4 +98,14 @@ char	*expand_var(char *user_input)
 			add_char(&res, user_input[i++]);
 	}
 	return (res);
+}
+
+char	*expand_var(char *user_input)
+{
+	size_t	i;
+	bool	flag;
+
+	i = 0;
+	flag = true;
+	return (i_hate_norm(user_input, flag, i));
 }

@@ -78,6 +78,7 @@ SOURCES		+=                           		\
 ## SRCS/UTILS ##
 
 SOURCES		+=                           		\
+		srcs/utils/add_char.c               	\
 		srcs/utils/clean_path.c             	\
 		srcs/utils/file_mode.c              	\
 		srcs/utils/free_list.c              	\

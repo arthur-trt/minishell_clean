@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 12:17:10 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/22 10:20:30 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/23 10:21:54 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static char	*ft_check_redirect(int *i, char *s)
 {
 	char	*redir;
-
 
 	if (ft_strncmp(s + (*i), "<<", 2) == 0)
 	{
