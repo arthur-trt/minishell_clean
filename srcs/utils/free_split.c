@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:28:35 by atrouill          #+#    #+#             */
-/*   Updated: 2021/06/21 15:00:26 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/23 12:17:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void	free_split(char **array)
 	int	i;
 
 	i = 0;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		i++;
-	}
+	if (array && *array)
+		while (array[i] != NULL)
+		{
+			if (array[i])
+				free(array[i]);
+			i++;
+		}
 	free(array);
 }

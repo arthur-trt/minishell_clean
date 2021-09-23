@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/20 14:04:03 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/23 12:37:20 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_empty_buffer(char **s, t_list **command)
 static int	empty_buff_checker(char *s, char *res, int i)
 {
 	if (s[i] == ' ' || (res != NULL && ft_ischarset(res[0], "<>"))
-		|| (s[i + 1] != '\0' && ft_ischarset(s[i + 1], "<>")))
+		|| ((ft_strlen(s) - 2) >= (size_t)i && ft_ischarset(s[i + 1], "<>")))
 		return (1);
 	return (0);
 }

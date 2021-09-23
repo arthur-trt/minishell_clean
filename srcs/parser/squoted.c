@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   squoted.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:30:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/17 15:55:43 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/23 12:40:10 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ char	*ft_single(char *s, int *i)
 	while (s[j] && s[j] != '\'')
 		j++;
 	res = ft_substr(s, (*i) + 1, j - (*i + 1));
-	(*i) = j;
+	(*i) = j - 1;
 	return (res);
 }
