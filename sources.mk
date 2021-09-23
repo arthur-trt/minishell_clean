@@ -87,6 +87,7 @@ SOURCES		+=                           		\
 		srcs/utils/ft_split_sh.c            	\
 		srcs/utils/ft_str_malloc.c          	\
 		srcs/utils/ft_strisdigit.c          	\
+		srcs/utils/quote_in_var.c           	\
 		srcs/utils/signals.c                	\
 		srcs/utils/skip_quotes.c            	\
 

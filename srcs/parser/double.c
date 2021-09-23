@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 16:03:49 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/20 16:44:45 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/23 09:45:47 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static int	ft_check_double(char *s, int *i, int *len, t_list **list)
 {
 	int		r;
 
+	r = 0;
 	while (s[*i] && s[*i] != '\"')
 	{
 		if (s[*i] == '\\' && (s[*i + 1] && (s[*i + 1] == '"'

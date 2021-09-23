@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/15 08:56:35 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/23 10:18:27 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ void	ft_putstrerror(char *name, char *error_msg);
 char	**ft_split_sh(char *s, char c);
 
 void	skip_quotes(char *s, char c, size_t *i);
+
+char	*quote_in_var(char *var);
 
 #endif

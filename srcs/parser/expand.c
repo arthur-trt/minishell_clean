@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/20 15:33:38 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/23 10:18:41 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_glob	*g_glob;
 
-static void	add_char(char **res, char c)
+void	add_char(char **res, char c)
 {
 	size_t	len;
 	char	*tmp;
@@ -58,7 +58,7 @@ static void	dumb_norm(char **res, size_t *i, size_t start, char *user_input)
 	free(tmp);
 	if (var != NULL)
 	{
-		tmp = ft_strdup(var);
+		tmp = quote_in_var(var);
 		ft_strjoin_gnl(res, tmp);
 		free(tmp);
 	}
