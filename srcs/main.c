@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/06 17:54:00 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/09/23 14:26:08 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	minishell(void)
 	return (EXIT_SUCCESS);
 }
 
+/*
+** https://shorturl.at/xGS57
+*/
 int	main(void)
 {
 	signal(SIGQUIT, sig_handler);
