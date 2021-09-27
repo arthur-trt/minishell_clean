@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/22 10:32:33 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/27 13:13:14 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static bool	has_pipe(char *cmd)
 			skip_quotes(cmd, cmd[i], &i);
 		if (cmd[i] == '|')
 			return (true);
-		i++;
+		if (cmd[i] != '\0')
+			i++;
 	}
 	return (false);
 }

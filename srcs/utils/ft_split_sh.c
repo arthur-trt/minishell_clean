@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 12:10:57 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/22 10:23:31 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/27 13:08:40 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	count_word(char *s, char c)
 	while (s[i] != '\0')
 	{
 		if ((s[i] == '\'' || s[i] == '\"')
-			&& (i > 0 && s[i - 1] != '\\'))
+			&& !(i > 0 && s[i - 1] == '\\'))
 			skip_quotes(s, s[i], &i);
 		if (s[i] == c)
 			nb_words++;
@@ -55,7 +55,7 @@ char	**ft_split_sh(char *s, char c)
 	while (s[i] != '\0')
 	{
 		if ((s[i] == '\'' || s[i] == '\"')
-			&& (i > 0 && s[i - 1] != '\\'))
+			&& !(i > 0 && s[i - 1] == '\\'))
 			skip_quotes(s, s[i], &i);
 		if (s[i] == c)
 		{
