@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/23 10:31:47 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/09/29 17:23:20 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ static char	*i_hate_norm(char *user_input, bool flag, size_t i)
 			replace_last_ret(&res, &i, user_input);
 		else if (flag && user_input[i] == '$'
 			&& !(i > 0 && user_input[i - 1] == '\\')
-			&& (user_input[i + 1] != '\0' && ft_isalnum(user_input[i + 1])))
+			&& (user_input[i + 1] != '\0'
+				&& (ft_isalnum(user_input[i + 1]) || user_input[i + 1] == '{')))
 		{
 			if (replace_var(user_input, &res, &i) == false)
 			{
