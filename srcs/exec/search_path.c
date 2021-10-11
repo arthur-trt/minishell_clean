@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 15:53:57 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/02 21:57:46 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/11 14:34:56 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static int	search_in_env(char *exec_name, char **final_path)
 		}
 		free_split(tmp);
 	}
+	printf("retcode %d\n", ret_code);
 	return (ret_code);
 }
 
@@ -116,6 +117,7 @@ int	search_path(char *exec_name, char **path)
 {
 	int	ret_code;
 
+	printf("path is %s\n", *path);
 	if (is_command_name(exec_name))
 	{
 		ret_code = search_in_env(exec_name, path);
@@ -130,6 +132,8 @@ int	search_path(char *exec_name, char **path)
 			ft_putstrerror(exec_name, "Permission denied");
 		else if (ret_code == 127 && is_command_name(exec_name))
 			ft_putstrerror(exec_name, "command not found");
+		else if (ret_code == 127 && !(is_command_name(exec_name)) && *path == NULL)
+			ft_putstrerror(exec_name, "no such file or directory");
 		else if (ret_code == 150)
 		{
 			ft_putstrerror(exec_name, ": is a directory");
