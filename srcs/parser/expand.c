@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/12 01:27:22 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/10/12 14:42:41 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char	*i_hate_norm(char *user_input, char *flag, size_t i)
 		if (*flag == '\"' && user_input[i] == '$'
 			&& (user_input[i + 1] != '\0' && user_input[i + 1] == '?'))
 			replace_last_ret(&res, &i, user_input);
-		else if (*flag == '\"' && user_input[i] == '$'
+		else if ((*flag == '\0' || *flag=='\"') && user_input[i] == '$'
 			&& !(i > 0 && user_input[i - 1] == '\\')
 			&& (user_input[i + 1] != '\0'
 				&& (ft_isalnum(user_input[i + 1]) || user_input[i + 1] == '{')))
