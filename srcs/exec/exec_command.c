@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/14 15:52:52 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/10/13 11:31:44 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int	exec_path(t_list *cmds)
 
 	if (cmds && cmds->content)
 	{
+		if (g_glob->heredocs)
+			if (heredocs(cmds) == 1)
+				return (2);
 		ret_code = search_path(cmds->content, &path);
 		if (ret_code != 0)
 		{
@@ -37,8 +40,6 @@ int	exec_path(t_list *cmds)
 		}
 		env = env_exec_creator();
 		args = argv_exec_creator(cmds);
-		if (g_glob->heredocs)
-			heredocs(cmds);
 		if (!(env) || !(args))
 			return (exec_path_util());
 		execve(path, args, env);

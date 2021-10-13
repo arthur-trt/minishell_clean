@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 10:56:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 15:29:16 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/13 11:30:14 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,56 @@ static char	*find_delimiter(t_list *cmds)
 {
 	t_list	*tmp;
 	int		i;
+	char	*eof;
 
 	tmp = cmds;
+	eof = NULL;
 	while (tmp)
 	{
 		i = 0;
-		while (tmp->content[i])
+		while (tmp && tmp->content[i])
 		{
 			if (ft_ischarset(tmp->content[i], "<>"))
 			{
 				tmp = tmp->next;
-				return (tmp->content);
+				if (eof != NULL)
+					free(eof);
+				if (tmp)
+					eof = ft_strdup(tmp->content);
 			}
 			i++;
 		}
-		tmp = tmp->next;
+		if (tmp)
+			tmp = tmp->next;
 	}
-	return (0);
+	return (eof);
 }
+
+static char	*check_error_del(t_list *cmds)
+{
+	char *eof;
+
+	eof = find_delimiter(cmds);
+	if (eof == NULL)
+	{
+		ft_putstrerror(NULL, "syntax error near unexpected token");
+		free(eof);
+		return (NULL);
+	}
+	return (eof);
+}
+
 
 int	heredocs(t_list *cmds)
 {
 	char	*hd;
 	int		fd[2];
+	char	*eof;
 
-	hd = input_heredocs(find_delimiter(cmds));
+	eof = check_error_del(cmds);
+	if (eof == NULL)
+		return (1);
+	hd = input_heredocs(eof);
 	if (g_glob->tmp_fdout != 0)
 	{
 		dup2(g_glob->tmp_fdout, 1);
