@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 13:07:52 by jcueille          #+#    #+#             */
-/*   Updated: 2021/08/14 14:24:34 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/10/11 14:07:15 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,17 @@ int	ft_check_varname(char *s)
 	if (!(ft_isalpha(s[0]) && s[0] != '_'))
 	{
 		if (s[0] == '-')
-			printf("Error: bad option: %s\n", s);
+			printf("minishell: unset: '%s': invalid option\n", s);
 		else
-			printf("Error: bad variable name: %s\n", s);
-		return (-1);
+			printf("minishell: unset: '%s': not a valid identifier\n", s);
+		return (1);
 	}
 	while (s[++i])
 	{
 		if (!(ft_isalnum(s[i])) && s[i] != '_')
 		{
-			printf("Error: bad variable name: %s\n", s);
-			return (-2);
+			printf("minishell: unset: '%s': not a valid identifier\n", s);
+			return (1);
 		}
 	}
 	return (0);
@@ -94,7 +94,7 @@ int	ft_unset(t_list *cmd)
 	tmp = cmd->next;
 	while (tmp)
 	{
-		r = ft_check_varname(cmd->content);
+		r = ft_check_varname(tmp->content);
 		if (r)
 			return (r);
 		ft_unset_launcher(tmp->content);

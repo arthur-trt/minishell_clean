@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/29 17:23:20 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/12 14:44:18 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,27 @@ static bool	replace_var(char *user_input, char **res, size_t *i)
 	return (flag);
 }
 
-static char	*i_hate_norm(char *user_input, bool flag, size_t i)
+void check_flag(char *flag, char c)
+{
+	if (!(*flag))
+		(*flag) = c;
+	else if (*flag == c)
+		(*flag) = '\0';
+}
+
+static char	*i_hate_norm(char *user_input, char *flag, size_t i)
 {
 	char	*res;
 
 	res = ft_strdup("");
 	while (user_input && user_input[i] != '\0')
 	{
-		if (user_input[i] == '\'')
-			flag = !flag;
-		if (flag && user_input[i] == '$'
+		if (user_input[i] == '\'' || user_input[i] == '\"')
+			check_flag(flag, user_input[i]);
+		if (*flag == '\"' && user_input[i] == '$'
 			&& (user_input[i + 1] != '\0' && user_input[i + 1] == '?'))
 			replace_last_ret(&res, &i, user_input);
-		else if (flag && user_input[i] == '$'
+		else if ((*flag == '\0' || *flag == '\"') && user_input[i] == '$'
 			&& !(i > 0 && user_input[i - 1] == '\\')
 			&& (user_input[i + 1] != '\0'
 				&& (ft_isalnum(user_input[i + 1]) || user_input[i + 1] == '{')))
@@ -104,9 +112,9 @@ static char	*i_hate_norm(char *user_input, bool flag, size_t i)
 char	*expand_var(char *user_input)
 {
 	size_t	i;
-	bool	flag;
+	char	flag;
 
 	i = 0;
-	flag = true;
-	return (i_hate_norm(user_input, flag, i));
+	flag = '\0';
+	return (i_hate_norm(user_input, &flag, i));
 }
