@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/23 14:26:08 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/18 12:24:16 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main(void)
 		return (EXIT_FAILURE);
 	load_history();
 	minishell();
+	clear_history();
 	printf("\n");
 	free_glob();
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/23 12:37:20 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/18 14:51:39 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ static int	empty_buff_checker(char *s, char *res, int i)
 	return (0);
 }
 
+static t_list	*norm(char **res)
+{
+	free(*res);
+	return (NULL);
+}
+
 /*
 **	Parses the input according to bash standards
 **
@@ -80,11 +86,12 @@ t_list	*ft_parse(char *s)
 	res = NULL;
 	command = NULL;
 	tmp = expand_var(s);
+	printf("Expanded : %s\n", tmp);
 	while (tmp != NULL && tmp[i] != '\0')
 	{
 		if (tmp[i] != ' ')
 			if (ft_check_char(command, &res, tmp, &i))
-				return (NULL);
+				return (norm(&tmp));
 		if (empty_buff_checker(tmp, res, i))
 			if (ft_empty_buffer(&res, &command))
 				ft_parse_error(command);

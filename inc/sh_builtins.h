@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_builtins.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:40:55 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/14 15:54:54 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/10/18 14:44:02 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_echo(t_list *cmd);
 int		ft_env(void);
 int		ft_pwd(void);
 int		ft_cd(t_list *cmd);
-void	ft_exit(t_list *cmds, t_list **old_cmds, char **splitted, t_exec *exec);
+int		ft_exit(t_list *cmds, t_list **old_cmds, char **splitted, t_exec *exec);
 
 int		export_loop(t_list *tmp);
 int		ft_check_varname(char *s);

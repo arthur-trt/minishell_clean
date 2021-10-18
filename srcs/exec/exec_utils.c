@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 20:15:26 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/14 15:52:52 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/10/18 14:55:35 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	is_builtin(t_list *cmds, char **splitted, t_exec *exec)
 		else if (!(ft_strcmp("env", cmds->content)))
 			r = ft_env();
 		else if (!(ft_strcmp("exit", cmds->content)))
-			ft_exit(tmp, &cmds, splitted, exec);
+			r = ft_exit(tmp, &cmds, splitted, exec);
 		else if (!(ft_strcmp("cd", cmds->content)))
 			r = ft_cd(cmds);
 		else if (!(ft_strcmp("export", cmds->content)))

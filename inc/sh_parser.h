@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 15:58:32 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/23 10:15:33 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/14 12:46:52 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ void	ft_check_parser(t_list **cmd);
 
 char	*expand_var(char *user_input);
 void	add_char(char **res, char c);
+
+bool	valid_heredocs(char	*user_input);
 
 #endif

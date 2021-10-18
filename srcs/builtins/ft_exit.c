@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:51:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/23 12:16:05 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/18 14:43:43 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ static void	ft_free(t_list *cmd, t_list **old_cmds,
 	exec = NULL;
 }
 
-void	ft_exit(t_list *cmd, t_list **old_cmds, char **splitted, t_exec *exec)
+int	ft_exit(t_list *cmd, t_list **old_cmds, char **splitted, t_exec *exec)
 {
 	int	exit_code;
 
 	if (cmd->next && cmd->next->next)
 	{
 		ft_putendl_fd("minishell: exit: too many arguments", 2);
-		exit_code = 1;
+		return (1);
 	}
 	else if (cmd->next == NULL)
 		exit_code = 0;
@@ -43,7 +43,7 @@ void	ft_exit(t_list *cmd, t_list **old_cmds, char **splitted, t_exec *exec)
 		ft_putstr_fd("minishell: exit: ", 2);
 		ft_putstr_fd(cmd->next->content, 2);
 		ft_putendl_fd(": numeric argument required", 2);
-		exit_code = 1;
+		exit_code = 2;
 	}
 	else
 		exit_code = ft_atoi(cmd->next->content);

@@ -6,64 +6,13 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/20 09:26:45 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/14 09:34:27 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_glob	*g_glob;
-
-static void	*ft_realloc2(void *ptr, int size, int newsize)
-{
-	char	*str;
-	char	*new;
-	int		i;
-
-	str = (char *)ptr;
-	new = (char *)malloc(sizeof(char) * newsize + 1);
-	if (!(new))
-	{
-		if (ptr && size != 0)
-			free(ptr);
-		return (NULL);
-	}
-	i = -1;
-	while (++i < size)
-		*(new + i) = *(str + i);
-	while (i < newsize)
-		*(new + i++) = '\0';
-	if (ptr && size != 0)
-		free(ptr);
-	return (new);
-}
-
-char	*input_heredocs(char *delimiter)
-{
-	char	*heredocs;
-	char	*tmp;
-	size_t	len;
-
-	tmp = readline("heredoc> ");
-	heredocs = ft_strdup(tmp);
-	while (tmp && ft_strcmp(tmp, delimiter) != 0)
-	{
-		free(tmp);
-		tmp = readline("heredoc> ");
-		if (tmp && ft_strcmp(tmp, delimiter) != 0)
-		{
-			len = ft_strlen(heredocs) + ft_strlen(tmp) + 2;
-			heredocs = ft_realloc2(heredocs, ft_strlen(heredocs), len);
-			ft_strlcat(heredocs, "\n", len);
-			ft_strlcat(heredocs, tmp, len);
-		}
-	}
-	len = ft_strlen(heredocs) + 2;
-	heredocs = ft_realloc2(heredocs, ft_strlen(heredocs), len);
-	ft_strlcat(heredocs, "\n", len);
-	free(tmp);
-	return (heredocs);
-}
 
 char	*input(void)
 {

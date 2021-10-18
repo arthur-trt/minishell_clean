@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 09:50:50 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/12 14:44:18 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/10/13 18:03:20 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,48 +31,7 @@ static void	replace_last_ret(char **res, size_t *i, char *user_input)
 	free(tmp);
 }
 
-static void	dumb_norm(char **res, size_t *i, size_t start, char *user_input)
-{
-	char	*tmp;
-	char	*var;
-
-	tmp = ft_substr(user_input, start, (*i) - start);
-	var = search_env(tmp);
-	free(tmp);
-	if (var != NULL)
-	{
-		tmp = quote_in_var(var);
-		ft_strjoin_gnl(res, tmp);
-		free(tmp);
-	}
-}
-
-static bool	replace_var(char *user_input, char **res, size_t *i)
-{
-	bool	flag;
-	size_t	start;
-
-	flag = true;
-	if (user_input[*i] == '$')
-		(*i)++;
-	if (user_input[*i] == '{')
-	{
-		flag = false;
-		(*i)++;
-	}
-	start = *i;
-	while (user_input[*i] != '\0' && ft_isalnum(user_input[*i]))
-		(*i)++;
-	dumb_norm(res, i, start, user_input);
-	if (user_input[(*i)] == '}')
-	{
-		flag = !flag;
-		(*i)++;
-	}
-	return (flag);
-}
-
-void check_flag(char *flag, char c)
+static void	check_flag(char *flag, char c)
 {
 	if (!(*flag))
 		(*flag) = c;
@@ -97,9 +56,9 @@ static char	*i_hate_norm(char *user_input, char *flag, size_t i)
 			&& (user_input[i + 1] != '\0'
 				&& (ft_isalnum(user_input[i + 1]) || user_input[i + 1] == '{')))
 		{
-			if (replace_var(user_input, &res, &i) == false)
+			if (replace_var_expand(user_input, &res, &i) == false)
 			{
-				ft_putstrerror(NULL, "bad substitution");
+				free(res);
 				return (NULL);
 			}
 		}
@@ -113,8 +72,15 @@ char	*expand_var(char *user_input)
 {
 	size_t	i;
 	char	flag;
+	char	*res;
 
 	i = 0;
 	flag = '\0';
-	return (i_hate_norm(user_input, &flag, i));
+	res = i_hate_norm(user_input, &flag, i);
+	if (res == NULL)
+	{
+		ft_putstrerror(NULL, "bad substitution");
+		return (NULL);
+	}
+	return (res);
 }

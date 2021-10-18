@@ -42,7 +42,7 @@ else
 	INC			:= -I$(INCDIR) -I/usr/local/include
 endif
 
-lib.debug		:= $(lib.release) -fsanitize=address -fno-omit-frame-pointer
+lib.debug		:= -fsanitize=address -fno-omit-frame-pointer $(lib.release)
 lib.valgrind		:= $(lib.release)
 LIB			:= $(lib.$(BUILD))
 

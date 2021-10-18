@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:28:37 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/20 17:25:54 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/14 12:47:10 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ static bool	valid_redirect_input(char *user_input)
 
 bool	check_error(char *user_input)
 {
-	if (!valid_token_input(user_input) || !valid_redirect_input(user_input))
+	if (!valid_token_input(user_input) || !valid_redirect_input(user_input)
+		|| !valid_heredocs(user_input))
 		return (false);
 	return (true);
 }

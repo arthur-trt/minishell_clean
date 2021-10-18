@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredocs.c                                         :+:      :+:    :+:   */
+/*   ft_strcontain.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/28 10:56:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/14 10:36:37 by atrouill         ###   ########.fr       */
+/*   Created: 2021/10/14 10:26:23 by atrouill          #+#    #+#             */
+/*   Updated: 2021/10/14 10:35:29 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_glob	*g_glob;
-
-int	heredocs(t_list *cmds)
+/*
+**	Return true if a string contain the char c
+**
+**	@param s String to test
+**	@param c Char to found
+**
+**	@return True if found, false otherwise
+*/
+bool	ft_strcontain(char *s, char c)
 {
-	char	*hd;
-	int		fd[2];
+	size_t	i;
 
-	hd = input_heredocs(cmds);
-	if (g_glob->tmp_fdout != 0)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		dup2(g_glob->tmp_fdout, 1);
-		close(g_glob->tmp_fdout);
+		if (s[i] == c)
+			return (true);
+		i++;
 	}
-	pipe(fd);
-	dup2(fd[0], 0);
-	ft_putstr_fd(((char *)hd), fd[1]);
-	free(hd);
-	close(fd[0]);
-	close(fd[1]);
-	g_glob->heredocs = false;
-	return (0);
+	return (false);
 }

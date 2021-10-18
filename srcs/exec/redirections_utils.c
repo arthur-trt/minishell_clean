@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/10/13 11:11:19 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:21:29 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 	while (tmp)
 	{
 		i = 0;
-		while (tmp && tmp->content[i])
+		while (tmp && (i < (int)ft_strlen(tmp->content)))
 		{
 			if (ft_ischarset(tmp->content[i], "<>") && tmp->d_quote == 0
 				&& tmp->esc == 0)
@@ -75,7 +75,8 @@ int	ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 				ret = ft_redirect(tmp, &i, fdin, fdout);
 				if (ret != 0)
 					return (ret);
-				tmp = tmp->next;
+				if (tmp)
+					tmp = tmp->next;
 			}
 			i++;
 		}
