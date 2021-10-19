@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/14 10:36:27 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/19 12:13:25 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ int	exec_path(t_list *cmds)
 	int		ret_code;
 
 	if (cmds && cmds->content)
-	{
 		if (g_glob->heredocs)
-			if (heredocs(cmds) == 1)
+			if (heredocs(&cmds) == 1)
 				return (2);
+	if (cmds && cmds->content)
+	{
 		ret_code = search_path(cmds->content, &path);
 		if (ret_code != 0)
 		{

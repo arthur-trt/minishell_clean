@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/13 11:30:23 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/19 12:08:43 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	ft_ischarset(char c, char *charset);
 t_list	*copycmds(t_list *lst);
 int		word_checker(t_list *tmp, char **s);
 int		word_checker_bis(t_list *tmp, char **s);
-int		heredocs(t_list *cmds);
+int		heredocs(t_list **cmds);
 
 void	check_command(t_list **cmd, char **splitted);
 void	exec_bin(t_exec *exec, char **splitted);

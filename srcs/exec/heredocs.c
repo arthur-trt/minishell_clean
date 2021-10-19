@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 10:56:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/14 10:36:37 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/19 12:08:34 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_glob	*g_glob;
 
-int	heredocs(t_list *cmds)
+int	heredocs(t_list **cmds)
 {
 	char	*hd;
 	int		fd[2];

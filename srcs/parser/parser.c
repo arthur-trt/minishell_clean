@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:12:48 by jcueille          #+#    #+#             */
-/*   Updated: 2021/10/18 14:51:39 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/19 11:20:05 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ t_list	*ft_parse(char *s)
 	res = NULL;
 	command = NULL;
 	tmp = expand_var(s);
-	printf("Expanded : %s\n", tmp);
 	while (tmp != NULL && tmp[i] != '\0')
 	{
 		if (tmp[i] != ' ')

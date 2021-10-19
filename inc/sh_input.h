@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/14 09:44:03 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/19 12:07:40 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@
 */
 char	*input(void);
 char	*ft_prompt(void);
-char	*input_heredocs(t_list *cmds);
+char	*input_heredocs(t_list **cmds);
 bool	replace_var_expand(char *user_input, char **res, size_t *i);
 
 void	history_append(char *cmd);
 void	load_history(void);
 char	*find_delimiter(t_list *cmds);
+void	clean_cmds_heredocs(t_list **cmds);
 
 #endif
