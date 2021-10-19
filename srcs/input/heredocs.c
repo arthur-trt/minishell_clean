@@ -6,16 +6,19 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 10:24:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/19 12:07:52 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/19 14:39:46 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+extern t_glob	*g_glob;
+
 static char	*readline_wrapper(char *prompt, char *del)
 {
 	char	*tmp;
 
+	//rl_catch_signals = 0;
 	tmp = readline(prompt);
 	if (tmp == NULL)
 	{
