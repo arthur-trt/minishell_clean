@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/14 09:34:27 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/19 18:29:12 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*input(void)
 		history_append (line_read);
 	if (line_read == NULL)
 	{
-		ft_putstr_fd("exit", 0);
+		ft_putstr_fd("exit\n", 0);
 		line_read = ft_strdup("exit");
 	}
 	return (line_read);
