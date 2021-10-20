@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 10:24:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/19 14:39:46 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/20 17:19:33 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ extern t_glob	*g_glob;
 static char	*readline_wrapper(char *prompt, char *del)
 {
 	char	*tmp;
+	(void)prompt;
 
 	//rl_catch_signals = 0;
-	tmp = readline(prompt);
+	ft_putstr_fd("> ", 1);
+	get_next_line(0, &tmp);
 	if (tmp == NULL)
 	{
 		ft_putstr_fd("minishell: warning: here-document delimited", 2);
@@ -40,7 +42,7 @@ static char	*input_loop(char *del)
 		hd = ft_strdup(tmp);
 	else
 		hd = ft_strdup("\0");
-	while (tmp && tmp[0] != '\0' && ft_strcmp(tmp, del) != 0)
+	while (tmp && ft_strcmp(tmp, del) != 0)
 	{
 		free(tmp);
 		tmp = readline_wrapper("> ", del);
