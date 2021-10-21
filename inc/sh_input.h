@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/20 11:12:24 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/21 11:46:51 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define KEY_EOF				1004
 # define KEY_CTRL_C				1005
 
-# define HISTORY_PATH			"~/.sh_history"
+# define HISTORY_PATH			"./.sh_history"
 
 /*
 **
