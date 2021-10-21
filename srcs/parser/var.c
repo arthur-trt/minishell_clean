@@ -6,11 +6,11 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:15:15 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/20 14:33:57 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/21 10:55:32 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
 extern t_glob	*g_glob;
 

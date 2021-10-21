@@ -3,7 +3,6 @@
 ## SRCS ##
 
 SOURCES		+=                             		\
-		srcs/debug.c                          	\
 		srcs/main.c                           	\
 
 
@@ -50,6 +49,7 @@ SOURCES		+=                             		\
 ## SRCS/UTILS ##
 
 SOURCES		+=                             		\
+		srcs/utils/debug.c                    	\
 		srcs/utils/ft_clean_str.c             	\
 		srcs/utils/file_mode.c                	\
 		srcs/utils/quote_in_var.c             	\

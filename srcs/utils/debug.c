@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_split.c                                       :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 13:28:35 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/21 10:54:33 by atrouill         ###   ########.fr       */
+/*   Created: 2021/10/21 10:54:12 by atrouill          #+#    #+#             */
+/*   Updated: 2021/10/21 10:54:13 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../inc/minishell.h"
 
-/*
-** Free a char array obtain with ft_split
-**
-**	@param array Array to split
-*/
-void	free_split(char **array)
+void	printf_list(t_list *lst)
 {
-	int	i;
+	t_list	*tmp;
 
-	i = 0;
-	if (array && *array)
+	tmp = lst;
+	while (tmp)
 	{
-		while (array[i] != NULL)
-		{
-			if (array[i])
-				free(array[i]);
-			i++;
-		}
+		printf("cmds: %s\n", tmp->content);
+		tmp = tmp->next;
 	}
-	free(array);
 }
