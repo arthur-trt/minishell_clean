@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/18 12:24:16 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/22 11:20:26 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ int	minishell(void)
 	return (EXIT_SUCCESS);
 }
 
-/*
-** https://shorturl.at/xGS57
-*/
 int	main(void)
 {
 	signal(SIGQUIT, sig_handler);

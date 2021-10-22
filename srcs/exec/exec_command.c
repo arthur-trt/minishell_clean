@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/20 12:09:33 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/10/22 13:59:58 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ int	exec_path(t_list *cmds)
 	int		ret_code;
 
 	if (cmds && cmds->content)
-		if (g_glob->heredocs)
-			if (heredocs(&cmds) == 1)
-				return (2);
-	if (cmds && cmds->content)
 	{
 		ret_code = search_path(cmds->content, &path);
 		if (ret_code != 0)
@@ -51,6 +47,10 @@ int	exec_path(t_list *cmds)
 
 void	exec_bin(t_exec *exec, char **splitted)
 {
+	if (exec->cmds)
+		if (g_glob->heredocs)
+			if (heredocs(exec->cmds) == 1)
+				return ;
 	if (exec->cmds != NULL)
 	{
 		g_glob->ret = is_builtin(*exec->cmds, splitted, exec);
