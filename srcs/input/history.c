@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 13:58:54 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/22 16:14:33 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/09 01:05:41 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char	*obtain_path(void)
 	{
 		tmp = getcwd(buff, 4096);
 		path = ft_strjoin(tmp, "/" HISTORY_PATH);
-		printf("path %s\n", path);
 	}
 	return (path);
 }
