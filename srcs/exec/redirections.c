@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 16:11:08 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/04 00:37:16 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/09 01:24:21 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	ft_more(t_list *tmp, int *i, int *fdout)
 	}
 	if (filename)
 	{
-		*fdout = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0644);
+		*fdout = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		free(filename);
 		return (0);
 	}
