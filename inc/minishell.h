@@ -6,12 +6,15 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/08 15:05:27 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:56:26 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+//# define _XOPEN_SOURCE 700
+//# define _DEFAULT_SOURCE 1
 
 # include "../libftprintf/includes/libftprintf.h"
 
@@ -60,6 +63,7 @@ typedef struct s_glob
 	int				save_in;
 	int				prog;
 	pid_t			pid;
+	pid_t			tmp_pid;
 	int				d;
 	int				c;
 	bool			heredocs;

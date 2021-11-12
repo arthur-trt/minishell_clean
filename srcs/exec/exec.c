@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/27 13:13:14 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:37:07 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	ft_exec(char *user_input)
 		i++;
 	}
 	dup2(g_glob->save_in, 0);
+	close(g_glob->save_in);
 	free_split(cmds);
 }
