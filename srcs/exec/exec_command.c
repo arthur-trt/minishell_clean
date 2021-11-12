@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/22 13:59:58 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/12 11:38:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	exec_path(t_list *cmds)
 
 	if (cmds && cmds->content)
 	{
+		path = NULL;
 		ret_code = search_path(cmds->content, &path);
 		if (ret_code != 0)
 		{
