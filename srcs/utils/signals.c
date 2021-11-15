@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 14:54:07 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/12 15:57:10 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/15 12:36:37 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@ extern t_glob	*g_glob;
 void	int_handler(void)
 {
 	g_glob->ret = 130;
+	//g_glob->interrupt_flag_set = 1;
 	if (g_glob->prog == 0)
 	{
 		ft_putstr_fd("\n", 0);
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
+		g_glob->interrupt_flag_set = 0;
 	}
 	else
 	{
-		rl_redisplay();
-		//ft_putchar_fd('\n', 0);
+		//kill(g_glob->pid, SIGINT);
+		//rl_redisplay();
+		ft_putchar_fd('\n', 0);
 	}
 }
 

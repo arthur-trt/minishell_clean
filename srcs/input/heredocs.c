@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 10:24:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/12 15:55:16 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/15 12:42:13 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,14 @@ static char	*readline_wrapper(char *prompt, char *del)
 {
 	char	*tmp;
 
+	//rl_catch_signals = 0;
 	tmp = readline(prompt);
+	//if (g_glob->interrupt_flag_set == 1)
+	//{
+	//	printf("Bug : [%s]\n", tmp);
+	//	free(tmp);
+	//	return (NULL);
+	//}
 	if (tmp == NULL)
 	{
 		free(tmp);
@@ -46,6 +53,8 @@ static char	*input_loop(char *del)
 	{
 		free(tmp);
 		tmp = readline_wrapper("> ", del);
+		//if (g_glob->interrupt_flag_set == 1)
+		//	break ;
 		if (tmp && ft_strcmp(tmp, del) != 0)
 		{
 			ft_strjoin_gnl(&hd, "\n");
@@ -80,6 +89,8 @@ char	*input_heredocs(t_list **cmds)
 				hd = hd_expand;
 			}
 		}
+		if (g_glob->interrupt_flag_set == 1)
+			break ;
 		tmp = tmp->next;
 	}
 	clean_cmds_heredocs(cmds);

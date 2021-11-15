@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/12 15:56:26 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/15 13:56:46 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 
 //# define _XOPEN_SOURCE 700
 //# define _DEFAULT_SOURCE 1
+
+#ifndef DEFINE_DEBUG_ONCE
+#define DEFINE_DEBUG_ONCE
+
+#if DEBUG
+  #include <stdio.h>
+  #define debug(x, ...)      do{fprintf(stderr, "%s:%s(%u): " x "\n", __FILE__, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}while(0)
+#else
+  #define debug(x, ...)      /* x */
+#endif
+
+#endif
 
 # include "../libftprintf/includes/libftprintf.h"
 
@@ -62,10 +74,10 @@ typedef struct s_glob
 	int				save_out;
 	int				save_in;
 	int				prog;
-	pid_t			pid;
-	pid_t			tmp_pid;
+	volatile pid_t	pid;
+	volatile pid_t	tmp_pid;
 	int				d;
-	int				c;
+	volatile int	c;
 	bool			heredocs;
 	int				tmp_fdout;
 	char			*path;
@@ -73,6 +85,7 @@ typedef struct s_glob
 	bool			esc;
 	bool			expanded;
 	int				childs;
+	volatile sig_atomic_t interrupt_flag_set;
 }					t_glob;
 
 void	printf_list(t_list *lst);

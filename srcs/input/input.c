@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:15:53 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/19 18:29:12 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/15 12:26:09 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*input(void)
 
 	if (line_read)
 		line_read = (char *) NULL;
-	rl_catch_signals = 0;
+	//rl_catch_signals = 0;
 	prompt = ft_prompt();
 	line_read = readline(prompt);
 	free(prompt);

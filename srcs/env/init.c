@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:48:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/09/01 22:11:32 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/15 12:04:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int	ft_init_gobal(void)
 	extern char		**environ;
 
 	g_glob = malloc(sizeof(t_glob));
+	ft_bzero(g_glob, sizeof(t_glob));
 	g_glob->env = NULL;
 	if (*environ)
 		construct_env(environ);

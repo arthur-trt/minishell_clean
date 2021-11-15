@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/12 15:37:49 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/15 14:42:46 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ int	exec_path(t_list *cmds)
 
 void	exec_bin(t_exec *exec, char **splitted)
 {
-	if (exec->cmds)
-		if (g_glob->heredocs)
-			if (heredocs(exec->cmds) == 1)
-				return ;
 	if (exec->cmds != NULL)
 	{
 		g_glob->ret = is_builtin(*exec->cmds, splitted, exec);
@@ -87,6 +83,10 @@ void	check_command(t_list **cmd, char **splitted)
 			exec->fdout = exec->fdtemp;
 		else
 			exec->fdout = dup(g_glob->save_out);
+		if (exec->cmds)
+		if (g_glob->heredocs)
+			if (heredocs(exec->cmds) == 1)
+				return ;
 		dup2(exec->fdout, 1);
 		close(exec->fdout);
 		exec_bin(exec, splitted);
