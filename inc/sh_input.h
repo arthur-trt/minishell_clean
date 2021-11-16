@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/21 11:46:51 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/16 14:01:23 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 */
 char	*input(void);
 char	*ft_prompt(void);
-char	*input_heredocs(t_list **cmds);
+char	*input_heredocs(t_list *cmds);
 bool	replace_var_expand(char *user_input, char **res, size_t *i);
 
 void	history_append(char *cmd);

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:45:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/20 12:04:18 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/16 16:15:48 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,24 @@ pid_t	exec_pipe(bool first, bool last, int *fds, char *cmd)
 	int		i;
 	t_list	*cmd_parsed;
 	pid_t	child;
+	int		parsed_fd[2];
 
 	child = fork();
 	if (child == 0)
 	{
-		if (!first)
-			dup2(fds[0], 0);
-		if (!last)
-			dup2(fds[3], 1);
-		i = 0;
-		while (i < 4)
-			close(fds[i++]);
 		cmd_parsed = ft_parse(cmd);
-		check_command(&cmd_parsed, NULL);
+		ft_bzero(fds, sizeof(int) * 2);
+		if (fd_opener(&cmd_parsed, parsed_fd) == 0)
+		{
+			if (!first && parsed_fd[0] == 0)
+				dup2(fds[0], 0);
+			if (!last && parsed_fd[1] == 0)
+				dup2(fds[3], 1);
+			i = 0;
+			while (i < 4)
+				close(fds[i++]);
+			check_command(&cmd_parsed, NULL, parsed_fd);
+		}
 		free_list(cmd_parsed);
 		exit(g_glob->ret);
 	}

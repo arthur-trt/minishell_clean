@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 10:56:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/15 14:40:30 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/16 15:42:23 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,35 @@
 
 extern t_glob	*g_glob;
 
-int	heredocs(t_list **cmds)
+int	heredocs(t_list	*cmd, int *fdin)
 {
 	char	*hd;
-	int		fd[2];
 	int		ret;
+	int		fd;
 
-	if (g_glob->tmp_fdout != 0)
-	{
-		dup2(g_glob->tmp_fdout, 1);
-		close(g_glob->tmp_fdout);
-	}
-	pipe(fd);
 
+	g_glob->prog = 1;
 	g_glob->tmp_pid = fork();
 	if (g_glob->tmp_pid == 0)
 	{
-		hd = input_heredocs(cmds);
-		if (hd != NULL /*&& g_glob->interrupt_flag_set == 0*/)
+		hd = input_heredocs(cmd);
+		if (hd != NULL)
 		{
-			dup2(fd[0], 0);
-			ft_putstr_fd(((char *)hd), fd[1]);
-			close(fd[0]);
-			close(fd[1]);
+			fd = open(".here_doc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+			ft_putstr_fd(hd, fd);
+			close(fd);
 		}
 		free(hd);
 		exit(0);
 	}
-	dprintf(2, "Before wait with pid [%d]\n", g_glob->tmp_pid);
-	waitpid(-1, &ret, 0);
-	dprintf(2, "After wait with pid [%d]\n", g_glob->tmp_pid);
-	close(fd[0]);
-	close(fd[1]);
+	waitpid(g_glob->tmp_pid, &ret, 0);
+	g_glob->prog = 0;
+	if (*fdin != 0)
+		close(*fdin);
+	(*fdin) = open(".here_doc", O_RDONLY);
+	g_glob->tmp_pid = 0;
 	g_glob->heredocs = false;
+	if (*fdin < 0)
+		return (-1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 10:24:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/15 12:42:13 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/16 14:24:13 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,10 @@ static char	*readline_wrapper(char *prompt, char *del)
 {
 	char	*tmp;
 
-	//rl_catch_signals = 0;
 	tmp = readline(prompt);
-	//if (g_glob->interrupt_flag_set == 1)
-	//{
-	//	printf("Bug : [%s]\n", tmp);
-	//	free(tmp);
-	//	return (NULL);
-	//}
 	if (tmp == NULL)
+	//ft_putstr_fd(prompt, g_glob->save_out);
+	//if (get_next_line(g_glob->save_in, &tmp) == 0)
 	{
 		free(tmp);
 		tmp = NULL;
@@ -53,8 +48,6 @@ static char	*input_loop(char *del)
 	{
 		free(tmp);
 		tmp = readline_wrapper("> ", del);
-		//if (g_glob->interrupt_flag_set == 1)
-		//	break ;
 		if (tmp && ft_strcmp(tmp, del) != 0)
 		{
 			ft_strjoin_gnl(&hd, "\n");
@@ -66,17 +59,18 @@ static char	*input_loop(char *del)
 	return (hd);
 }
 
-char	*input_heredocs(t_list **cmds)
+char	*input_heredocs(t_list *cmds)
 {
 	t_list	*tmp;
 	char	*hd;
 	char	*hd_expand;
 
-	tmp = (*cmds);
+	tmp = cmds;
 	hd = NULL;
 	while (tmp)
 	{
-		if (ft_strcontain(tmp->content, '<'))
+		//if (ft_strcontain(tmp->content, '<'))
+		if (ft_strnstr(tmp->content, "<<", ft_strlen(tmp->content)))
 		{
 			tmp = tmp->next;
 			if (hd != NULL)
@@ -88,11 +82,9 @@ char	*input_heredocs(t_list **cmds)
 				free(hd);
 				hd = hd_expand;
 			}
+			return (hd);
 		}
-		if (g_glob->interrupt_flag_set == 1)
-			break ;
 		tmp = tmp->next;
 	}
-	clean_cmds_heredocs(cmds);
 	return (hd);
 }

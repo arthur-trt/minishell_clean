@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/19 12:08:43 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/16 15:28:59 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**env_exec_creator(void);
 int		exec_path(t_list *cmds);
 t_exec	*exec_init(t_list **cmds);
 
-int		fd_opener(t_list **cmds, int *fdin, int *fdout);
+int	fd_opener(t_list **cmds, int *fds);
 int		ft_reverse(void);
 int		ft_less(t_list *tmp, int *i, int *fdin);
 int		ft_more(t_list *tmp, int *i, int *fdout);
@@ -48,9 +48,9 @@ bool	ft_ischarset(char c, char *charset);
 t_list	*copycmds(t_list *lst);
 int		word_checker(t_list *tmp, char **s);
 int		word_checker_bis(t_list *tmp, char **s);
-int		heredocs(t_list **cmds);
+int		heredocs(t_list	*cmd, int *fdin);
 
-void	check_command(t_list **cmd, char **splitted);
+void	check_command(t_list **cmd, char **splitted, int *fds);
 void	exec_bin(t_exec *exec, char **splitted);
 
 void	piper(char *cmds);

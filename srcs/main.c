@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/15 12:06:38 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/16 11:37:12 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	minishell(void)
 	g_glob->prog = 0;
 	while (true)
 	{
-		g_glob->interrupt_flag_set = 0;
 		input_user = input();
 		if (!check_error(input_user))
 		{

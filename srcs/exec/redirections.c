@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 10:26:47 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/11 11:40:09 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/16 15:08:25 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	ft_less(t_list *tmp, int *i, int *fdin)
 	filename = find_filename(tmp, i);
 	if (filename != NULL)
 	{
+		if (*fdin != 0)
+			close(*fdin);
 		*fdin = open(filename, O_RDONLY);
 		if (*fdin < 0)
 		{
@@ -80,6 +82,8 @@ int	ft_more(t_list *tmp, int *i, int *fdout)
 	filename = find_filename(tmp, i);
 	if (filename != NULL)
 	{
+		if ((*fdout) != 0)
+			close(*fdout);
 		*fdout = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		if (*fdout < 0)
 		{
@@ -110,6 +114,8 @@ int	ft_append(t_list *tmp, int *i, int *fdout)
 	filename = find_filename(tmp, i);
 	if (filename != NULL)
 	{
+		if ((*fdout) != 0)
+			close(*fdout);
 		*fdout = open(filename, O_WRONLY | O_APPEND | O_CREAT, 0644);
 		if (*fdout < 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:35:27 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/15 14:35:50 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/16 15:56:16 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ void	ft_exec(char *user_input)
 	size_t	i;
 	char	**cmds;
 	t_list	*cmd_parsed;
-	int		tmp_fd;
+	int		fds[2];
 
 	i = 0;
 	cmds = ft_split_sh(user_input, ';');
-	tmp_fd = dup(0);
+	g_glob->save_in = dup(0);
+	g_glob->save_out = dup(1);
 	while (cmds[i] != NULL)
 	{
 		if (has_pipe(cmds[i]))
@@ -48,15 +49,18 @@ void	ft_exec(char *user_input)
 		else
 		{
 			cmd_parsed = ft_parse(cmds[i]);
-			if (cmd_parsed != NULL)
+			ft_bzero(fds, sizeof(int) * 2);
+			if (cmd_parsed != NULL && fd_opener(&cmd_parsed, fds) != -1)
 			{
-				check_command(&cmd_parsed, cmds);
+				check_command(&cmd_parsed, cmds, fds);
 				free_list(cmd_parsed);
 			}
 		}
 		i++;
 	}
-	dup2(tmp_fd, 0);
-	close(tmp_fd);
+	dup2(g_glob->save_in, 0);
+	close(g_glob->save_in);
+	dup2(g_glob->save_out, 1);
+	close(g_glob->save_out);
 	free_split(cmds);
 }

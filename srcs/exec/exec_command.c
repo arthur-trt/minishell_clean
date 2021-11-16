@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/15 14:42:46 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/16 15:57:16 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,33 +67,13 @@ void	exec_bin(t_exec *exec, char **splitted)
 	}
 }
 
-void	check_command(t_list **cmd, char **splitted)
+void	check_command(t_list **cmd, char **splitted, int *fds)
 {
 	t_exec	*exec;
+	(void)fds;
 
 	exec = exec_init(cmd);
-	g_glob->save_in = dup(0);
-	g_glob->save_out = dup(1);
-	g_glob->heredocs = false;
-	if (fd_opener(exec->cmds, &exec->fdin, &exec->fdtemp) != -1)
-	{
-		dup2(exec->fdin, 0);
-		close(exec->fdin);
-		if (exec->fdtemp)
-			exec->fdout = exec->fdtemp;
-		else
-			exec->fdout = dup(g_glob->save_out);
-		if (exec->cmds)
-		if (g_glob->heredocs)
-			if (heredocs(exec->cmds) == 1)
-				return ;
-		dup2(exec->fdout, 1);
-		close(exec->fdout);
-		exec_bin(exec, splitted);
-	}
-	dup2(g_glob->save_in, 0);
-	dup2(g_glob->save_out, 1);
-	close(g_glob->save_in);
-	close(g_glob->save_out);
+	exec_bin(exec, splitted);
+	unlink(".here_doc");
 	free(exec);
 }
