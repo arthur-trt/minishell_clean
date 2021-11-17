@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:45:32 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/16 16:15:48 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/17 09:49:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ pid_t	exec_pipe(bool first, bool last, int *fds, char *cmd)
 	if (child == 0)
 	{
 		cmd_parsed = ft_parse(cmd);
-		ft_bzero(fds, sizeof(int) * 2);
+		ft_bzero(parsed_fd, sizeof(int) * 2);
 		if (fd_opener(&cmd_parsed, parsed_fd) == 0)
 		{
 			if (!first && parsed_fd[0] == 0)
@@ -51,7 +51,7 @@ pid_t	exec_pipe(bool first, bool last, int *fds, char *cmd)
 			i = 0;
 			while (i < 4)
 				close(fds[i++]);
-			check_command(&cmd_parsed, NULL, parsed_fd);
+			check_command(&cmd_parsed, NULL);
 		}
 		free_list(cmd_parsed);
 		exit(g_glob->ret);

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/16 15:57:16 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/17 10:02:47 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,9 @@ void	exec_bin(t_exec *exec, char **splitted)
 	}
 }
 
-void	check_command(t_list **cmd, char **splitted, int *fds)
+void	check_command(t_list **cmd, char **splitted)
 {
 	t_exec	*exec;
-	(void)fds;
 
 	exec = exec_init(cmd);
 	exec_bin(exec, splitted);

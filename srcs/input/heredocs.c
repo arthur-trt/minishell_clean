@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 10:24:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/16 14:24:13 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/17 10:06:15 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static char	*readline_wrapper(char *prompt, char *del)
 
 	tmp = readline(prompt);
 	if (tmp == NULL)
-	//ft_putstr_fd(prompt, g_glob->save_out);
-	//if (get_next_line(g_glob->save_in, &tmp) == 0)
 	{
 		free(tmp);
 		tmp = NULL;
@@ -69,7 +67,6 @@ char	*input_heredocs(t_list *cmds)
 	hd = NULL;
 	while (tmp)
 	{
-		//if (ft_strcontain(tmp->content, '<'))
 		if (ft_strnstr(tmp->content, "<<", ft_strlen(tmp->content)))
 		{
 			tmp = tmp->next;

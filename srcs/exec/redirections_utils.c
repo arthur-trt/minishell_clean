@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/16 15:55:13 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/17 09:45:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ static bool	is_redirect(char *s)
 {
 	if (ft_strcmp(s, ">>") == 0
 		|| ft_strcmp(s, ">") == 0
-		|| ft_strcmp(s, "<") == 0
-		|| ft_strcmp(s, "<<") == 0)
+		|| ft_strcmp(s, "<") == 0)
 		return (true);
 	return (false);
 }
