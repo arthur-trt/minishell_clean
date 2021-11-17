@@ -6,27 +6,12 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/15 13:56:46 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/17 11:39:50 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-//# define _XOPEN_SOURCE 700
-//# define _DEFAULT_SOURCE 1
-
-#ifndef DEFINE_DEBUG_ONCE
-#define DEFINE_DEBUG_ONCE
-
-#if DEBUG
-  #include <stdio.h>
-  #define debug(x, ...)      do{fprintf(stderr, "%s:%s(%u): " x "\n", __FILE__, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}while(0)
-#else
-  #define debug(x, ...)      /* x */
-#endif
-
-#endif
 
 # include "../libftprintf/includes/libftprintf.h"
 
@@ -85,7 +70,6 @@ typedef struct s_glob
 	bool			esc;
 	bool			expanded;
 	int				childs;
-	volatile sig_atomic_t interrupt_flag_set;
 }					t_glob;
 
 void	printf_list(t_list *lst);
