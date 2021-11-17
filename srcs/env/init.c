@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:48:45 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/15 12:04:18 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:18:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void	construct_env(char **environ)
 {
 	char	**tmp;
 	char	*tmp_shlvl;
+	char	*tmp_bis;
 	int		i;
 
 	i = 0;
@@ -71,9 +72,9 @@ static void	construct_env(char **environ)
 		add_env("SHLVL", "1");
 	else
 	{
-		tmp_shlvl = ft_itoa(ft_atoi(tmp_shlvl) + 1);
-		ft_modify_value("SHLVL", tmp_shlvl);
-		free(tmp_shlvl);
+		tmp_bis = ft_itoa(ft_atoi(tmp_shlvl) + 1);
+		ft_modify_value("SHLVL", tmp_bis);
+		free(tmp_bis);
 	}
 }
 

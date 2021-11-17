@@ -10,7 +10,6 @@ SOURCES		+=                             		\
 
 SOURCES		+=                             		\
 		srcs/input/promtp.c                   	\
-		srcs/input/history.c                  	\
 		srcs/input/heredocs_clean_cmds.c      	\
 		srcs/input/input.c                    	\
 		srcs/input/heredocs.c                 	\

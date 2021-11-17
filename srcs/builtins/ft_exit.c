@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:51:26 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/18 14:43:43 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/17 16:58:03 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ extern t_glob	*g_glob;
 static void	ft_free(t_list *cmd, t_list **old_cmds,
 	char **splitted, t_exec *exec)
 {
+	rl_clear_history();
 	free_glob();
 	free_list(cmd);
 	cmd = NULL;
