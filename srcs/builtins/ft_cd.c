@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 12:36:40 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/14 15:03:49 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/18 11:08:02 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,7 @@ static int	cd_env(char *env, char *user_entry)
 
 	if (search_env(env) == NULL)
 	{
-		ft_putstr_fd("minishell: cd: ", 2);
-		ft_putstr_fd(env, 2);
-		ft_putstr_fd(" not set\n", 2);
+		ft_putstrerrorparam("cd", env, "not set");
 		return (1);
 	}
 	if (ft_strcmp(search_env(env), "") != 0)

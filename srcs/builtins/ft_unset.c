@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 13:07:52 by jcueille          #+#    #+#             */
-/*   Updated: 2021/10/11 14:07:15 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/11/18 11:07:30 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ int	ft_check_varname(char *s)
 	if (!(ft_isalpha(s[0]) && s[0] != '_'))
 	{
 		if (s[0] == '-')
-			printf("minishell: unset: '%s': invalid option\n", s);
+			ft_putstrerrorparam("unset", s, "invalid option");
 		else
-			printf("minishell: unset: '%s': not a valid identifier\n", s);
+			ft_putstrerrorparam("unset", s, "not a valid identifier");
 		return (1);
 	}
 	while (s[++i])
 	{
 		if (!(ft_isalnum(s[i])) && s[i] != '_')
 		{
-			printf("minishell: unset: '%s': not a valid identifier\n", s);
+			ft_putstrerrorparam("unset", s, "not a valid identifier");
 			return (1);
 		}
 	}
