@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 14:54:07 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/18 11:58:41 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:23:47 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	int_handler(void)
 {
 	g_glob->ret = 130;
 	if (g_glob->tmp_pid != 0)
-		kill(g_glob->tmp_pid, SIGTERM);
-	if (g_glob->prog == 0)
+	{
+		kill(g_glob->tmp_pid, SIGKILL);
+	}
+	else if (g_glob->prog == 0)
 	{
 		ft_putstr_fd("\n", 0);
 		rl_on_new_line();

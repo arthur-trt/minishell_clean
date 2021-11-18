@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/17 09:45:18 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:31:52 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static void	remove_redirect(t_list **cmds)
 	t_list	*prev;
 
 	tmp = *cmds;
-	if (tmp != NULL && is_redirect(tmp->content))
+	if (tmp != NULL && is_redirect(tmp->content) && tmp->d_quote == 0)
 		*cmds = tmp->next->next;
 	else
 	{
