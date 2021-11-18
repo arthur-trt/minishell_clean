@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 10:24:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/18 11:08:39 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/18 11:58:48 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static char	*readline_wrapper(char *prompt, char *del)
 {
 	char	*tmp;
 
-	tmp = readline(prompt);
-	if (tmp == NULL)
+	ft_putstr_fd(prompt, 0);
+	if (get_next_line(0, &tmp) == 0)
 	{
 		free(tmp);
 		tmp = NULL;
