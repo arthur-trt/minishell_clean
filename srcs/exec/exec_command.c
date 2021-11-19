@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/18 15:29:02 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:51:44 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,6 @@ void	check_command(t_list **cmd, char **splitted)
 	t_exec	*exec;
 
 	exec = exec_init(cmd);
-	debug("cmds->content : [%s]", (*cmd)->content);
-	if ((*cmd)->next)
-	{
-		debug("args : [%s]", (*cmd)->next->content);
-		if ((*cmd)->next->next)
-			debug("args : [%s]", (*cmd)->next->next->content);
-	}
 	exec_bin(exec, splitted);
 	unlink(".here_doc");
 	free(exec);
