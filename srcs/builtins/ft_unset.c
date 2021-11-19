@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 13:07:52 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/18 11:07:30 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/19 15:46:58 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,41 +62,20 @@ int	ft_unset_launcher(char *s)
 	return (0);
 }
 
-int	ft_check_varname(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!(ft_isalpha(s[0]) && s[0] != '_'))
-	{
-		if (s[0] == '-')
-			ft_putstrerrorparam("unset", s, "invalid option");
-		else
-			ft_putstrerrorparam("unset", s, "not a valid identifier");
-		return (1);
-	}
-	while (s[++i])
-	{
-		if (!(ft_isalnum(s[i])) && s[i] != '_')
-		{
-			ft_putstrerrorparam("unset", s, "not a valid identifier");
-			return (1);
-		}
-	}
-	return (0);
-}
-
 int	ft_unset(t_list *cmd)
 {
 	t_list	*tmp;
-	int		r;
+	//int		r;
 
 	tmp = cmd->next;
 	while (tmp)
 	{
-		r = ft_check_varname(tmp->content);
-		if (r)
-			return (r);
+		if (check_var_name(tmp->content) == false)
+		{
+			ft_putstrerrorparam("unset", tmp->content,
+				"not a valid identifier");
+			return (1);
+		}
 		ft_unset_launcher(tmp->content);
 		tmp = tmp->next;
 	}

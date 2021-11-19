@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:07:38 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/06 18:10:37 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/11/19 15:51:29 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,14 @@ int	export_loop(t_list *tmp)
 
 	while (tmp)
 	{
+		debug("Export -> [%s]", tmp->content);
+		debug("quote : [%d]", tmp->d_quote);
 		r = ft_get_keyvalue(tmp->content, &key, &value);
 		if (r < 0)
 			return (-1);
 		if (r == 1)
 			break ;
-		if (key && ft_check_varname(key))
+		if (key && check_var_name(key) == false)
 			return (-2);
 		if (!(replace_var(key, value)))
 		{

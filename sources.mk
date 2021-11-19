@@ -45,6 +45,7 @@ SOURCES		+=                             		\
 		srcs/builtins/ft_cd.c                 	\
 		srcs/builtins/export_utils.c          	\
 		srcs/builtins/ft_exit.c               	\
+		srcs/builtins/check_var.c             	\
 		srcs/builtins/ft_echo.c               	\
 		srcs/builtins/ft_unset.c              	\
 		srcs/builtins/ft_cd_cdpath.c          	\
@@ -55,10 +56,10 @@ SOURCES		+=                             		\
 ## SRCS/INPUT ##
 
 SOURCES		+=                             		\
+		srcs/input/command_cleaner.c          	\
 		srcs/input/heredocs.c                 	\
 		srcs/input/promtp.c                   	\
 		srcs/input/input.c                    	\
-		srcs/input/heredocs_clean_cmds.c      	\
 
 
 ## SRCS/EXEC ##

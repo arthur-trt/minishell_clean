@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/16 14:01:23 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:14:19 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	history_append(char *cmd);
 void	load_history(void);
 char	*find_delimiter(t_list *cmds);
 void	clean_cmds_heredocs(t_list **cmds);
+void	clean_cmds(t_list **cmds);
 
 #endif
