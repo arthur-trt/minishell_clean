@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 17:22:36 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/18 17:45:20 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/19 14:00:24 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,32 @@ static bool	is_redirect(char *s)
 	return (false);
 }
 
-void	clean_input(t_list **cmds)
+void	clean_cmds(t_list **cmds)
 {
 	t_list	*tmp;
 	t_list	*prev;
 
 	tmp = *(cmds);
-	while (tmp != NULL)
+	if (is_redirect(tmp->content) && tmp->d_quote == 0 && tmp->esc == 0)
+			*cmds = tmp->next->next;
+	else
 	{
-		prev = tmp;
-		if (is_redirect(tmp->content) && tmp->d_quote == 0 && tmp->esc == 0)
+		while (tmp != NULL && (!is_redirect(tmp->content)
+				|| tmp->d_quote != 0 || tmp->esc != 0))
 		{
-
-
+			prev = tmp;
+			tmp = tmp->next;
 		}
+		if (tmp == NULL)
+			return ;
+		prev->next = tmp->next->next;
 	}
+	free(tmp->next->content);
+	tmp->next->content = NULL;
+	free(tmp->content);
+	tmp->content = NULL;
+	free(tmp->next);
+	tmp->next = NULL;
+	free(tmp);
+	tmp = NULL;
 }

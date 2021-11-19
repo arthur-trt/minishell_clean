@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/18 15:31:52 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:53:33 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,44 +82,6 @@ int	ft_redirection_check(t_list *cmds, int *fdin, int *fdout)
 	return (0);
 }
 
-static bool	is_redirect(char *s)
-{
-	if (ft_strcmp(s, ">>") == 0
-		|| ft_strcmp(s, ">") == 0
-		|| ft_strcmp(s, "<") == 0)
-		return (true);
-	return (false);
-}
-
-static void	remove_redirect(t_list **cmds)
-{
-	t_list	*tmp;
-	t_list	*prev;
-
-	tmp = *cmds;
-	if (tmp != NULL && is_redirect(tmp->content) && tmp->d_quote == 0)
-		*cmds = tmp->next->next;
-	else
-	{
-		while (tmp != NULL && is_redirect(tmp->content) == false)
-		{
-			prev = tmp;
-			tmp = tmp->next;
-		}
-		if (tmp == NULL)
-			return ;
-		prev->next = tmp->next->next;
-	}
-	free(tmp->next->content);
-	tmp->next->content = NULL;
-	free(tmp->content);
-	tmp->content = NULL;
-	free(tmp->next);
-	tmp->next = NULL;
-	free(tmp);
-	tmp = NULL;
-}
-
 int	fd_opener(t_list **cmds, int *fds)
 {
 	if (ft_redirection_check(*cmds, fds, fds + 1))
@@ -127,8 +89,7 @@ int	fd_opener(t_list **cmds, int *fds)
 		g_glob->ret = 1;
 		return (-1);
 	}
-	remove_redirect(cmds);
-	clean_cmds_heredocs(cmds);
+	clean_cmds(cmds);
 	if (fds[0] != 0)
 	{
 		dup2(fds[0], 0);
