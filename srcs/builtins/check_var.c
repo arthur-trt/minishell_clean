@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:26:19 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/22 11:50:52 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:57:31 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	check_var_name(char *var)
 	int	i;
 
 	i = 1;
-	if (ft_isalpha(var[0]) == false)
+	if (ft_isalpha(var[0]) == false && var[i] != '_')
 		return (false);
 	while (var && var[i])
 	{

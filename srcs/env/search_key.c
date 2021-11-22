@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 15:42:56 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/22 14:28:22 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:27:12 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@ char	*search_env(char *key)
 	if (g_glob->env != NULL)
 	{
 		tmp = *(g_glob->env);
-		debug("Trying to find [%s]", key);
 		while (tmp.next != NULL)
 		{
 			if (!ft_strncmp(tmp.key, key, ft_strlen(key)))
 			{
-				debug("Found ! key [%s]\tvalue [%s]", tmp.key, tmp.value);
 				return (tmp.value);
 			}
 			tmp = *(tmp.next);

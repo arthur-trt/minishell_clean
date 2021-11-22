@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 13:07:52 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/19 15:46:58 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:46:51 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,10 @@ int	ft_unset_launcher(char *s)
 int	ft_unset(t_list *cmd)
 {
 	t_list	*tmp;
-	//int		r;
 
 	tmp = cmd->next;
 	while (tmp)
 	{
-		if (check_var_name(tmp->content) == false)
-		{
-			ft_putstrerrorparam("unset", tmp->content,
-				"not a valid identifier");
-			return (1);
-		}
 		ft_unset_launcher(tmp->content);
 		tmp = tmp->next;
 	}

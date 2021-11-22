@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:55:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/22 14:46:55 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:56:01 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ static void	add_to_env(char *key, char *value)
 			env = malloc(sizeof(t_env));
 			if (env)
 			{
-				env->key = key;
-				env->value = value;
+				env->key = ft_strdup(key);
+				if (value != NULL)
+					env->value = ft_strdup(value);
+				else
+					env->value = ft_strdup("");
 				env->next = g_glob->env;
 				g_glob->env = env;
 			}
@@ -45,16 +48,12 @@ int	ft_export(t_list *cmd)
 	char	*key;
 	char	*value;
 
-	tmp = NULL;
-	if (cmd != NULL)
-		tmp = cmd->next;
+	tmp = cmd->next;
 	ret = 0;
 	while (tmp)
 	{
 		key = obtain_key_var(tmp->content);
 		value = obtain_value_var(tmp->content);
-		debug("export / key : [%s]", key);
-		debug("export / value : [%s]", value);
 		if (check_var_name(key) == false)
 		{
 			ft_putstrerrorparam("export", tmp->content,
@@ -62,9 +61,9 @@ int	ft_export(t_list *cmd)
 			ret = 2;
 		}
 		else if (ft_strcontain(tmp->content, '='))
-		{
 			add_to_env(key, value);
-		}
+		free(key);
+		free(value);
 		tmp = tmp->next;
 	}
 	return (ret);

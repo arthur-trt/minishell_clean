@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 22:30:11 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/22 14:24:08 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:26:36 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	ft_modify_value(char *key, char *new_value)
 	{
 		if (!(ft_strcmp(key, tmp->key)))
 		{
-			debug("key : [%s]", key);
-			debug("tmp->key : [%s]", tmp->key);
 			if (tmp->value)
 				free(tmp->value);
 			tmp->value = ft_strdup(new_value);
