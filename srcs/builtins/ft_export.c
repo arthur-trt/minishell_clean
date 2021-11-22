@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 15:38:43 by jcueille          #+#    #+#             */
-/*   Updated: 2021/09/11 18:43:18 by atrouill         ###   ########.fr       */
+/*   Created: 2021/11/22 13:55:31 by atrouill          #+#    #+#             */
+/*   Updated: 2021/11/22 14:46:55 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,58 @@
 
 extern t_glob	*g_glob;
 
-static void	no_args(void)
+static void	add_to_env(char *key, char *value)
 {
 	t_env	*env;
 
-	env = g_glob->env;
-	while (env)
+	if (search_env(key) != NULL)
 	{
-		printf("export %s=%s\n", env->key, env->value);
-		env = env->next;
+		ft_modify_value(key, value);
+	}
+	else
+	{
+		if (key)
+		{
+			env = malloc(sizeof(t_env));
+			if (env)
+			{
+				env->key = key;
+				env->value = value;
+				env->next = g_glob->env;
+				g_glob->env = env;
+			}
+		}
 	}
 }
 
 int	ft_export(t_list *cmd)
 {
 	t_list	*tmp;
-	int		r;
+	int		ret;
+	char	*key;
+	char	*value;
 
 	tmp = NULL;
 	if (cmd != NULL)
 		tmp = cmd->next;
-	if (tmp)
+	ret = 0;
+	while (tmp)
 	{
-		r = export_loop(tmp);
-		if (r < 0)
-			return (r);
+		key = obtain_key_var(tmp->content);
+		value = obtain_value_var(tmp->content);
+		debug("export / key : [%s]", key);
+		debug("export / value : [%s]", value);
+		if (check_var_name(key) == false)
+		{
+			ft_putstrerrorparam("export", tmp->content,
+				"not a valid identifier");
+			ret = 2;
+		}
+		else if (ft_strcontain(tmp->content, '='))
+		{
+			add_to_env(key, value);
+		}
+		tmp = tmp->next;
 	}
-	else
-		no_args();
-	return (0);
+	return (ret);
 }

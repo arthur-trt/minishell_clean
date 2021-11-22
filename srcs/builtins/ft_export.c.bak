@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/12 13:57:43 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/22 12:03:17 by atrouill         ###   ########.fr       */
+/*   Created: 2021/03/19 15:38:43 by jcueille          #+#    #+#             */
+/*   Updated: 2021/09/11 18:43:18 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,33 @@
 
 extern t_glob	*g_glob;
 
-int	ft_env(void)
+static void	no_args(void)
 {
 	t_env	*env;
 
 	env = g_glob->env;
 	while (env)
 	{
-		ft_putstr_fd(env->key, 1);
-		write(1, "=", 1);
-		if (env->value != NULL)
-			ft_putstr_fd(env->value, 1);
-		ft_putstr_fd("\n", 1);
+		printf("export %s=%s\n", env->key, env->value);
 		env = env->next;
 	}
+}
+
+int	ft_export(t_list *cmd)
+{
+	t_list	*tmp;
+	int		r;
+
+	tmp = NULL;
+	if (cmd != NULL)
+		tmp = cmd->next;
+	if (tmp)
+	{
+		r = export_loop(tmp);
+		if (r < 0)
+			return (r);
+	}
+	else
+		no_args();
 	return (0);
 }

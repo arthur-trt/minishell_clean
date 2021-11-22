@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 14:54:07 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/18 13:23:47 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:04:54 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	int_handler(void)
 	}
 	else if (g_glob->prog == 0)
 	{
-		ft_putstr_fd("\n", 0);
+		ft_putstr_fd("^C\n", 0);
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();

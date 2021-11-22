@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:40:55 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/19 15:29:06 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:45:26 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		ft_exit(t_list *cmds, t_list **old_cmds, char **splitted, t_exec *exec);
 int		export_loop(t_list *tmp);
 int		ft_check_varname(char *s);
 bool	check_var_name(char *var);
+char	*obtain_key_var(char *user_input);
+char	*obtain_value_var(char *user_input);
 char	*search_cdpath(char *dir);
 
 #endif

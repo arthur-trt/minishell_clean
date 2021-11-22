@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:07:38 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/19 15:51:29 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:45:54 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ int	export_loop(t_list *tmp)
 	{
 		debug("Export -> [%s]", tmp->content);
 		debug("quote : [%d]", tmp->d_quote);
+		debug("Test : [%s]", obtain_key_var(tmp->content));
+		debug("Test : [%s]", obtain_value_var(tmp->content));
 		r = ft_get_keyvalue(tmp->content, &key, &value);
 		if (r < 0)
 			return (-1);
