@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:28:37 by atrouill          #+#    #+#             */
-/*   Updated: 2021/10/14 12:47:10 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/23 10:12:19 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,8 @@ static bool	valid_token_input(char *user_input)
 	{
 		if (tmp[i] == PIPE || tmp[i] == SEMICOLON)
 		{
-			if (tmp[i + 1] && (tmp[i + 1] == PIPE || tmp[i + 1] == SEMICOLON))
-			{
-				free(tmp);
-				return (false);
-			}
+			if (tmp[i + 1] == PIPE || tmp[i + 1] == SEMICOLON || tmp[i + 1] == '\0')
+				ret = false;
 		}
 		if (tmp[i] == '\"' || tmp[i] == '\'')
 			skip_quotes(tmp, tmp[i], &i);
