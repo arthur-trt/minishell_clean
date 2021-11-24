@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:29:21 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/18 11:06:18 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:17:59 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	quit_handler(void);
 void	int_handler(void);
 void	winch_handler(void);
 void	sig_handler(int sigld);
+void	quit_child_handler(int sigid);
+void	int_heredocs_handler(int sigid);
+void    chld_handler(int signum);
 
 bool	can_exec(char *path);
 bool	is_dir(char *path);

@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:57:00 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/19 13:14:19 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:39:36 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define SH_INPUT_H
 
 # include "minishell.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
 
 # define MAX_CMD_LINE	4096
 

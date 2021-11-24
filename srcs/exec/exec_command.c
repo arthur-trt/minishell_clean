@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/19 13:51:44 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/24 17:11:06 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	exec_bin(t_exec *exec, char **splitted)
 			g_glob->prog = 1;
 			if (g_glob->pid == 0)
 			{
+				signal(SIGQUIT, quit_child_handler);
+				signal(SIGINT, sig_handler);
 				exit(exec_path(*exec->cmds));
 			}
 			waitpid(-1, &exec->status, 0);

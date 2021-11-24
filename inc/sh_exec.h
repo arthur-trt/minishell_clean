@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:18:59 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/17 10:03:44 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:39:23 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "minishell.h"
 
-# include <dirent.h>
+//# include <dirent.h>
 
 typedef struct s_exec
 {

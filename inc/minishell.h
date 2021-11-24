@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:11:42 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/18 10:35:19 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:40:28 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../libftprintf/includes/libftprintf.h"
 
 # include <stdio.h>
+# include <signal.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <unistd.h>
@@ -29,18 +30,22 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <curses.h>
-# include <term.h>
+//# include <term.h>
 # include <errno.h>
 # include <string.h>
 # include <dirent.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <sys/wait.h>
+# include <sys/types.h>
 
-# ifdef __APPLE__
-#  include <termios.h>
-#  include <sys/ioctl.h>
-# else
-#  include <termio.h>
-#  include <sys/wait.h>
-# endif
+//# ifdef __APPLE__
+//#  include <termios.h>
+//#  include <sys/ioctl.h>
+//# else
+//#  include <termio.h>
+//#  include <sys/wait.h>
+//# endif
 
 # include "sh_utils.h"
 # include "sh_lexer.h"
@@ -61,7 +66,7 @@ typedef struct s_env
 typedef struct s_glob
 {
 	t_env			*env;
-	int				ret;
+	volatile sig_atomic_t 	ret;
 	int				save_out;
 	int				save_in;
 	int				prog;
