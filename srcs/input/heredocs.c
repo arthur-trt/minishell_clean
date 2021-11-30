@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 10:24:31 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/24 18:42:04 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:07:33 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ static char	*readline_wrapper(char *prompt, char *del)
 {
 	char	*tmp;
 
-	ft_putstr_fd(prompt, 0);
-	if (get_next_line(0, &tmp) == 0)
-	//rl_catch_signals = 0;
-	//tmp = readline(prompt);
-	//if (tmp == NULL)
+	rl_outstream = stderr;
+	tmp = readline(prompt);
+	if (tmp == NULL)
 	{
 		free(tmp);
 		tmp = NULL;
@@ -40,26 +38,24 @@ static char	*input_loop(char *del)
 	char	*hd;
 
 	hd = NULL;
-	if (g_glob->ret != 130)
+	tmp = readline_wrapper("> ", del);
+	if (tmp && ft_strcmp(tmp, del) != 0)
+		hd = ft_strdup(tmp);
+	else
+		hd = ft_strdup("");
+	while (tmp && ft_strcmp(tmp, del) != 0)
 	{
-		tmp = readline_wrapper("> ", del);
-		if (tmp)
-			hd = ft_strdup(tmp);
-		else
-			hd = ft_strdup("\0");
-		while (tmp && ft_strcmp(tmp, del) != 0 && g_glob->ret != 130)
-		{
-			free(tmp);
-			tmp = readline_wrapper("> ", del);
-			if (tmp && ft_strcmp(tmp, del) != 0)
-			{
-				ft_strjoin_gnl(&hd, "\n");
-				ft_strjoin_gnl(&hd, tmp);
-			}
-		}
 		free(tmp);
-		ft_strjoin_gnl(&hd, "\n");
+		tmp = readline_wrapper("> ", del);
+		if (tmp && ft_strcmp(tmp, del) != 0)
+		{
+			ft_strjoin_gnl(&hd, "\n");
+			ft_strjoin_gnl(&hd, tmp);
+		}
 	}
+	free(tmp);
+	if (hd[0] != '\0')
+		ft_strjoin_gnl(&hd, "\n");
 	return (hd);
 }
 

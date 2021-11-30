@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:11:16 by jcueille          #+#    #+#             */
-/*   Updated: 2021/11/19 13:53:33 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:30:37 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	fd_opener(t_list **cmds, int *fds)
 {
 	if (ft_redirection_check(*cmds, fds, fds + 1))
 	{
+		close(fds[0]);
+		close(fds[1]);
 		g_glob->ret = 1;
 		return (-1);
 	}

@@ -1,73 +1,68 @@
 # Generated with GenMake
 # Arthur-TRT - https://github.com/arthur-trt/genMake
-# genmake v0.11
+# genmake v1.0
 
 #Compiler and Linker
-CC			:= clang
+CC					:= clang
 ifeq ($(shell uname -s),Darwin)
-	CC		:= gcc
+	CC				:= gcc
 endif
 
 #The Target Binary Program
-TARGET			:= minishell
+TARGET				:= minishell
 TARGET_BONUS		:= minishell-bonus
 
-BUILD			:= release
+BUILD				:= release
 
 include sources.mk
 
 #The Directories, Source, Includes, Objects, Binary and Resources
-SRCDIR			:= srcs
-INCDIR			:= inc
-BUILDDIR		:= obj
-TARGETDIR		:= bin
-SRCEXT			:= c
-DEPEXT			:= d
-OBJEXT			:= o
+SRCDIR				:= srcs
+INCDIR				:= inc
+BUILDDIR			:= obj
+TARGETDIR			:= .
+SRCEXT				:= c
+DEPEXT				:= d
+OBJEXT				:= o
 
-OBJECTS			:= $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
+OBJECTS				:= $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
 OBJECTS_BONUS		:= $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES_BONUS:.$(SRCEXT)=.$(OBJEXT)))
 
 #Flags, Libraries and Includes
-cflags.release		:= -Wall -Werror -Wextra -ggdb
+cflags.release		:= -Wall -Werror -Wextra
 cflags.valgrind		:= -Wall -Werror -Wextra -DDEBUG -ggdb
 cflags.debug		:= -Wall -Werror -Wextra -DDEBUG -ggdb -fsanitize=address -fno-omit-frame-pointer
-CFLAGS			:= $(cflags.$(BUILD))
+CFLAGS				:= $(cflags.$(BUILD))
+CPPFLAGS			:= $(cflags.$(BUILD))
 
-ifeq ($(shell uname -s), Darwin)
-	lib.release		:=  -L libftprintf -lftprintf -L/Users/$(USER)/.brew/opt/readline/lib -lreadline
-	INC			:= -I$(INCDIR) -I/Users/$(USER)/.brew/opt/readline/include -I/usr/local/include
-else
-	lib.release		:= -Llibftprintf -lftprintf -lreadline
-	INC			:= -I$(INCDIR) -I/usr/local/include
-endif
-
-lib.debug		:= -fsanitize=address -fno-omit-frame-pointer $(lib.release)
+lib.release			:=  -Llibftprintf -lftprintf -lreadline
 lib.valgrind		:= $(lib.release)
-LIB			:= $(lib.$(BUILD))
+lib.debug			:= $(lib.release) -fsanitize=address -fno-omit-frame-pointer
+LIB					:= $(lib.$(BUILD))
 
-INCDEP			:= -I$(INCDIR)
+INC					:= -I$(INCDIR) -I/usr/local/include
+INCDEP				:= -I$(INCDIR)
 
 # Colors
-C_RESET			:= \033[0m
-C_PENDING		:= \033[0;36m
-C_SUCCESS		:= \033[0;32m
+C_RESET				:= \033[0m
+C_PENDING			:= \033[0;36m
+C_SUCCESS			:= \033[0;32m
 
 # Multi platforms
-ECHO			:= echo
+ECHO				:= echo
 
 # Escape sequences (ANSI/VT100)
-ES_ERASE		:= "\033[1A\033[2K\033[1A"
-ERASE			:= $(ECHO) $(ES_ERASE)
+ES_ERASE			:= "\033[1A\033[2K\033[1A"
+ERASE				:= $(ECHO) $(ES_ERASE)
 
 # hide STD/ERR and prevent Make from returning non-zero code
-HIDE_STD		:= > /dev/null
-HIDE_ERR		:= 2> /dev/null || true
+HIDE_STD			:= > /dev/null
+HIDE_ERR			:= 2> /dev/null || true
 
-GREP			:= grep --color=auto --exclude-dir=.git
-NORMINETTE		:= norminette `ls`
+GREP				:= grep --color=auto --exclude-dir=.git
+NORMINETTE			:= norminette `ls`
 
-# Defauilt Make
+# Default Make
 all: libft $(TARGETDIR)/$(TARGET)
 	@$(ERASE)
 	@$(ECHO) "$(TARGET)\t\t[$(C_SUCCESS)✅$(C_RESET)]"
@@ -75,6 +70,7 @@ all: libft $(TARGETDIR)/$(TARGET)
 
 # Bonus rule
 bonus: CFLAGS += -DBONUS
+bonus: CPPFLAGS += -DBONUS
 bonus: libft $(TARGETDIR)/$(TARGET_BONUS)
 	@$(ERASE)
 	@$(ECHO) "$(TARGET)\t\t[$(C_SUCCESS)✅$(C_RESET)]"
@@ -83,21 +79,17 @@ bonus: libft $(TARGETDIR)/$(TARGET_BONUS)
 # Remake
 re: fclean all
 
-# Make the Directories
-directories:
-	@mkdir -p $(TARGETDIR)
-	@mkdir -p $(BUILDDIR)
-
-# Clean only Objecst
+# Clean only Objects
 clean:
+	@$(RM) -f *.d *.o
 	@$(RM) -rf $(BUILDDIR)
-	@$(MAKE) $@ -C libftprintf
+	@make $@ -C libftprintf
 
 
 # Full Clean, Objects and Binaries
 fclean: clean
-	@$(RM) -rf $(TARGETDIR)
-	@$(MAKE) $@ -s -C libftprintf
+	@$(RM) -rf $(TARGET)
+	@make $@ -C libftprintf
 
 
 # Pull in dependency info for *existing* .o files
@@ -117,11 +109,11 @@ $(BUILDIR):
 	@mkdir -p $@
 
 # Compile
-$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT) #| $(BUILDDIR)
+$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(dir $@)
 	@$(ECHO) "$(TARGET)\t\t[$(C_PENDING)⏳$(C_RESET)]"
-	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
-	@$(CC) $(CFLAGS) $(INCDEP) -MM $(SRCDIR)/$*.$(SRCEXT) > $(BUILDDIR)/$*.$(DEPEXT)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(INC) -c -o $@ $<
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INCDEP) -MM $(SRCDIR)/$*.$(SRCEXT) > $(BUILDDIR)/$*.$(DEPEXT)
 	@$(ERASE)
 	@$(ERASE)
 	@cp -f $(BUILDDIR)/$*.$(DEPEXT) $(BUILDDIR)/$*.$(DEPEXT).tmp
@@ -130,7 +122,7 @@ $(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT) #| $(BUILDDIR)
 	@rm -f $(BUILDDIR)/$*.$(DEPEXT).tmp
 
 libft:
-	@$(MAKE) -C libftprintf
+	@make -C libftprintf
 
 
 norm:

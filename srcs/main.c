@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 13:21:20 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/24 18:41:07 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:01:00 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,9 @@ int	minishell(void)
 
 int	main(void)
 {
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, sig_handler);
-	//signal(SIGCHLD, chld_handler);
 	g_glob = NULL;
+	signal(SIGINT, int_par_handler);
+	signal(SIGQUIT, SIG_IGN);
 	if (ft_init_gobal())
 		return (EXIT_FAILURE);
 	minishell();

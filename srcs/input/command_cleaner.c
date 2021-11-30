@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 17:22:36 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/19 14:00:24 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:43:09 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@ static bool	is_redirect(char *s)
 		return (true);
 	}
 	return (false);
+}
+
+static void	free_all(t_list **cmds)
+{
+	t_list	*tmp;
+
+	tmp = *(cmds);
+	free(tmp->next->content);
+	tmp->next->content = NULL;
+	free(tmp->content);
+	tmp->content = NULL;
+	free(tmp->next);
+	tmp->next = NULL;
+	free(tmp);
+	tmp = NULL;
 }
 
 void	clean_cmds(t_list **cmds)
@@ -44,12 +59,5 @@ void	clean_cmds(t_list **cmds)
 			return ;
 		prev->next = tmp->next->next;
 	}
-	free(tmp->next->content);
-	tmp->next->content = NULL;
-	free(tmp->content);
-	tmp->content = NULL;
-	free(tmp->next);
-	tmp->next = NULL;
-	free(tmp);
-	tmp = NULL;
+	free_all(&tmp);
 }

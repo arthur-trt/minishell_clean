@@ -6,7 +6,7 @@
 /*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:40:38 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/24 17:11:06 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:28:56 by atrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ void	exec_bin(t_exec *exec, char **splitted)
 			g_glob->prog = 1;
 			if (g_glob->pid == 0)
 			{
+				signal(SIGINT, int_child_handler);
 				signal(SIGQUIT, quit_child_handler);
-				signal(SIGINT, sig_handler);
 				exit(exec_path(*exec->cmds));
 			}
+			signal(SIGQUIT, quit_par_handler);
 			waitpid(-1, &exec->status, 0);
 			if (WIFEXITED(exec->status))
 				g_glob->ret = WEXITSTATUS(exec->status);
 			g_glob->prog = 0;
+			signal(SIGQUIT, SIG_IGN);
 		}
 	}
 }
