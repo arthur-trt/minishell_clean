@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:28:37 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/30 13:41:38 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:18:28 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static bool	valid_token_input(char *user_input)
 		{
 			if (tmp[i + 1] == PIPE || tmp[i + 1] == SEMICOLON
 				|| tmp[i + 1] == '\0')
-					ret = false;
+				ret = false;
 		}
 		if (tmp[i] == '\"' || tmp[i] == '\'')
 			skip_quotes(tmp, tmp[i], &i);

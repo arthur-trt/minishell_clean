@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_cleaner.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrouill <atrouill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 17:22:36 by atrouill          #+#    #+#             */
-/*   Updated: 2021/11/30 13:43:09 by atrouill         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:18:59 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	clean_cmds(t_list **cmds)
 
 	tmp = *(cmds);
 	if (is_redirect(tmp->content) && tmp->d_quote == 0 && tmp->esc == 0)
-			*cmds = tmp->next->next;
+		*cmds = tmp->next->next;
 	else
 	{
 		while (tmp != NULL && (!is_redirect(tmp->content)
